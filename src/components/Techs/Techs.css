@@ -1,0 +1,69 @@
+.technology {
+  min-height: 625px;
+  /* box-sizing: border-box; */
+  padding: 100px 70px;
+  margin: 0 auto;
+  background-color: #F5F5F5;
+
+}
+
+.technology__name {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 0 0 23px 0;
+  margin: 0 auto;
+  /* text-align: left;
+  color: #000; */
+  line-height: normal;
+  border-bottom: 1px solid black;
+
+}
+.technology__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.technology__title {
+  font-size: 50px;
+  font-weight: 400;
+  padding-top: 90px;
+  margin: 0 auto;
+  line-height: 58px;
+
+}
+
+.technology__info {
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 26px;
+  margin: 0 auto;
+  line-height: 20px;
+  max-width: 460px;
+  text-align: center;
+
+}
+
+.technology__specification {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.technology__icon {
+  width: 90px;
+  height: 60px;
+  margin: 0 auto;
+  padding-top: 21px;
+  font-size: 14px;
+  font-weight: 400;
+  /* padding: 10px 20px; */
+  /* text-align: left;
+  color: #000; */
+  line-height: normal;
+  background-color: #E8E8E8;
+  border-radius: 10px;
+  list-style-type:  none;
+  text-align: center;
+  
+
+}

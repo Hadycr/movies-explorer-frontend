@@ -1,0 +1,87 @@
+.about {
+  max-height: 608px;
+  /* box-sizing: border-box; */
+  margin: 110px 70px;
+  padding: 0;
+  /* margin: 0 auto; */
+}
+
+.about__name {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 0 0 23px 0;
+  margin: 0 auto;
+  /* text-align: left;
+  color: #000; */
+  line-height: normal;
+  border-bottom: 1px solid black;
+  /* min-width: 640px; */
+
+}
+
+.about__specification {
+  display: grid;
+  grid-template-columns: 550px 550px;
+  grid-template-rows: 24px 40px;
+  gap: 26px 40px;
+  padding-top: 70px;
+}
+
+
+.about__header {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  /* color: #000; */
+  line-height: normal;
+
+}
+
+.about__text {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0 auto;
+  text-align: left;
+  /* color: #000; */
+  line-height: 20px;
+}
+
+.about__terms {
+  display: grid;
+  grid-template-columns: 228px 912px;
+  grid-template-rows: 36px 17px;
+  row-gap: 14px;
+  padding-top: 110px;
+
+
+}
+
+.about__date {
+  background-color: #F2F2F2;
+  padding: 9px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  /* margin: 0 auto; */
+
+}
+
+.about__date_dark {
+  background-color: black;
+  color: white;
+
+}
+
+.about__specialization {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #A0A0A0;
+  line-height: 17px;
+
+}
