@@ -17,7 +17,7 @@ function Promo() {
     <section className="promo">
       <div className="promo__container">
         <h1 className="promo__name"> Учебный проект студента факультета Веб-разработки. </h1>
-        <h2 className="promo__description">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</h2>
+        <h2 className="promo__description">Листайте ниже, чтобы узнать больше про этот проект и&nbsp;его создателя.</h2>
         <div className="promo__img"></div>
         {/* <img className="promo__img" src="../../../src/images/text__COLOR_landing-logo.png" alt="Web планета"/> */}
       </div>

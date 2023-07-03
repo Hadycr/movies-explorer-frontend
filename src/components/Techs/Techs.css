@@ -16,6 +16,7 @@
   color: #000; */
   line-height: normal;
   border-bottom: 1px solid black;
+  letter-spacing: -0.88px;
 
 }
 .technology__container {
@@ -29,6 +30,7 @@
   padding-top: 90px;
   margin: 0 auto;
   line-height: 58px;
+  letter-spacing: -2px;
 
 }
 
@@ -40,20 +42,24 @@
   line-height: 20px;
   max-width: 460px;
   text-align: center;
+  letter-spacing: -0.56px;
 
 }
 
 .technology__specification {
   display: flex;
   flex-direction: row;
+  padding-top: 100px;
+  margin: 0 auto;
 
 }
 
 .technology__icon {
   width: 90px;
   height: 60px;
-  margin: 0 auto;
-  padding-top: 21px;
+  /* margin: 0 auto; */
+  padding: 21px 10px;
+  /* margin-right: 10px; */
   font-size: 14px;
   font-weight: 400;
   /* padding: 10px 20px; */
