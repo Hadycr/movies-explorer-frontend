@@ -1,0 +1,99 @@
+.profile {
+  max-height: 1079px;
+  /* box-sizing: border-box; */
+  padding: 110px 70px;
+  margin: 0 auto;
+
+}
+
+.profile__name {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 0 0 23px 0;
+  margin: 0 auto;
+  line-height: normal;
+  border-bottom: 1px solid black;
+  letter-spacing: -0.88px;
+
+}
+.profile__info {
+  padding-top: 66px;
+  display: grid;
+  grid-template-columns: 600px 270px;
+  grid-template-rows: 58px 20px 88px 108px;
+  gap: 18px 270px;
+  grid-template-areas:
+  "name img"
+  "status img"
+  "description img"
+  "github img";
+}
+
+.profile__student-name {
+  grid-area: name;
+
+  font-size: 50px;
+  font-weight: 400;
+
+  margin: 0;
+  line-height: 58px;
+  letter-spacing: -2px;
+
+}
+
+.profile__status {
+  grid-area: status;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 20px;
+}
+
+.profile__description {
+  grid-area: description;
+  padding-top: 12px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.profile__github {
+  grid-area: github;
+  padding-top: 90px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+
+}
+
+.profile__photo {
+  background-image: url('/src/images/pic__COLOR_pic.png');
+  min-width: 270px;
+  min-height: 327px;
+  border-radius: 10px;
+
+}
+
+.profile__portfolio {
+  padding-top: 100px;
+
+}
+
+.profile__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.profile__sites {
+
+}
+
+.profile__link {
+
+}
