@@ -18,16 +18,7 @@ function AboutMe() {
         <a className="profile__github link" href="https://github.com/Hadycr/movies-explorer-frontend/tree/level-2">Github</a>
         <div className="profile__photo"></div>
       </div>
-      <div className="profile__portfolio">
-        <h2 className="profile__title">Портфолио</h2>
-        <ul className="profile__sites">
-          <
-
-        <a className="profile__link link" href="https://github.com/Hadycr/movies-explorer-frontend/tree/level-2">Статичный сайт</a>
-        <a className="profile__link link" href="https://github.com/Hadycr/movies-explorer-frontend/tree/level-2">Адаптивный сайт</a>
-        <a className="profile__link link" href="https://github.com/Hadycr/movies-explorer-frontend/tree/level-2">Одностраничное приложение</a>
-
-        </ul>
+      
       </div>
     </section>
 )
