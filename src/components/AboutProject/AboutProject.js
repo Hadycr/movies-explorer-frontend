@@ -6,19 +6,19 @@ function AboutProject() {
   
   
     return (
-    <section className="about" id="about">
-      <h2 className="about__name">О проекте</h2>
-      <div className="about__specification">
-        <p className="about__header">Дипломный проект включал 5 этапов</p>
-        <p className="about__header">На выполнение диплома ушло 5 недель</p>
-        <p className="about__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
-        <p className="about__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+    <section className="about-project" id="about">
+      <h2 className="about-project__name">О проекте</h2>
+      <div className="about-project__specification">
+        <p className="about-project__header">Дипломный проект включал 5 этапов</p>
+        <p className="about-project__header">На выполнение диплома ушло 5 недель</p>
+        <p className="about-project__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+        <p className="about-project__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
       </div>
-      <div className="about__terms">
-        <div className="about__date about__date_dark">1 неделя</div>
-        <div className="about__date">4 недели</div>
-        <p className="about__specialization">Back-end</p>
-        <p className="about__specialization">Front-end</p>
+      <div className="about-project__terms">
+        <div className="about-project__date about-project__date_dark">1 неделя</div>
+        <div className="about-project__date">4 недели</div>
+        <p className="about-project__specialization">Back-end</p>
+        <p className="about-project__specialization">Front-end</p>
       </div>
     </section>
 

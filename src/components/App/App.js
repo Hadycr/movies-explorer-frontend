@@ -4,7 +4,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 // import ProtectedRoute from './ProtectedRoute';
 import './App.css';
 import Header from '../Header/Header';
-import Main from '../Main/Main'
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 
 function App() {
   const [currentUser, setСurrentUser] = useState({
@@ -16,6 +17,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Header />
       <Main />
+      <Footer />
         {/* <Routes>
           <Route path="/sign-up" element={<Register //регистрация
             handleRegistration = {handleRegistration}/>}/>

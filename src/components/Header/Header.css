@@ -3,18 +3,19 @@
   width: 100%;
   /* width:880px; */
   background-color: #F3C1F8;
- padding: 19px 70px;
+  padding: 19px 70px;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(84, 84, 84, .7);
   display: flex;
   justify-content: space-between;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .header {
-    max-width: 650px;
+    padding: 19px 30px;
+    /* max-width: 650px; */
   } 
 }
-@media screen and (max-width: 670px) {
+/*@media screen and (max-width: 670px) {
   .header {
     min-height: 56px;
     max-width: 360px;
@@ -34,4 +35,4 @@
     height: 24px;
     width: 103px;
   } 
-}
+} */

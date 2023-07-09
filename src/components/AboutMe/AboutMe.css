@@ -1,4 +1,4 @@
-.profile {
+.about-me {
   max-height: 1079px;
   /* box-sizing: border-box; */
   padding: 110px 70px;
@@ -6,7 +6,7 @@
 
 }
 
-.profile__name {
+.about-me__name {
   font-size: 22px;
   font-weight: 400;
   padding: 0 0 23px 0;
@@ -16,52 +16,58 @@
   letter-spacing: -0.88px;
 
 }
-.profile__info {
-  padding-top: 66px;
-  display: grid;
-  grid-template-columns: 600px 270px;
+.about-me__info {
+  margin: 67px 0 0;
+  display: flex;
+  justify-content: space-between;
+  /* display: grid;
+  grid-template-columns: 600px max-content;
   grid-template-rows: 58px 20px 88px 108px;
   gap: 18px 270px;
-  grid-template-areas:
-  "name img"
+  grid-template-areas: */
+  /* "name img"
   "status img"
   "description img"
-  "github img";
+  "github img"; */
+}
+.about-me__resume {
+  max-width: 600px;
 }
 
-.profile__student-name {
-  grid-area: name;
+.about-me__student-name {
+  /* grid-area: name; */
 
   font-size: 50px;
   font-weight: 400;
-
+  /* padding: 0; */
   margin: 0;
   line-height: 58px;
   letter-spacing: -2px;
 
 }
 
-.profile__status {
-  grid-area: status;
+.about-me__status {
+  /* grid-area: status; */
+  margin: 19px 0 0;
   font-size: 18px;
   font-weight: 500;
-  margin: 0;
+  /* margin: 0; */
   line-height: 20px;
 }
 
-.profile__description {
-  grid-area: description;
-  padding-top: 12px;
-  margin: 0;
+.about-me__description {
+  /* grid-area: description; */
+
+  margin: 26px 0 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
 }
 
-.profile__github {
-  grid-area: github;
-  padding-top: 90px;
-  margin: 0;
+.about-me__github {
+  /* grid-area: github; */
+  margin: 99px 0 0;
+  /* margin: 0; */
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -69,7 +75,8 @@
 
 }
 
-.profile__photo {
+.about-me__photo {
+  /* grid-area: img; */
   background-image: url('/src/images/pic__COLOR_pic.png');
   min-width: 270px;
   min-height: 327px;
@@ -77,12 +84,12 @@
 
 }
 
-.profile__portfolio {
+.about-me__portfolio {
   padding-top: 100px;
 
 }
 
-.profile__title {
+.about-me__title {
   margin: 0;
   font-size: 18px;
   font-weight: 400;
@@ -90,10 +97,17 @@
   color: #A0A0A0;
 }
 
-.profile__sites {
+.about-me__sites {
+  list-style-type: none;
+  margin-top: 50px;
+  padding: 0px;
 
 }
 
-.profile__link {
-
+.about-me__site {
+  border-bottom: 1px solid black;
+  /* display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0; */
 }
