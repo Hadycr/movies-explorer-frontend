@@ -1,7 +1,6 @@
 .header {
   min-height: 74px;
   width: 100%;
-  /* width:880px; */
   background-color: #F3C1F8;
   padding: 19px 70px;
   box-sizing: border-box;
@@ -12,27 +11,11 @@
 @media screen and (max-width: 768px) {
   .header {
     padding: 19px 30px;
-    /* max-width: 650px; */
   } 
 }
-/*@media screen and (max-width: 670px) {
+
+@media screen and (max-width: 320px) {
   .header {
-    min-height: 56px;
-    max-width: 360px;
+    padding: 14px 25px;
   } 
 }
-
-@media screen and (max-width: 400px) {
-  .header {
-    max-width: 200px;
-  } 
-}
-
-
-@media screen and (max-width: 670px) {
-  .header__logo {
-    margin-left: 27px;
-    height: 24px;
-    width: 103px;
-  } 
-} */

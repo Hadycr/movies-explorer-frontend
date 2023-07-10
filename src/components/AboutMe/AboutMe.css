@@ -1,10 +1,19 @@
 .about-me {
   max-height: 1079px;
-  /* box-sizing: border-box; */
-  padding: 110px 70px;
-  margin: 0 auto;
-
+  margin: 110px 70px;
 }
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    margin: 92px 50px;
+  } 
+}
+
+@media screen and (max-width: 320px) {
+  .about-me {
+    margin: 70px 14px;
+  } 
+} 
 
 .about-me__name {
   font-size: 22px;
@@ -16,27 +25,45 @@
   letter-spacing: -0.88px;
 
 }
+
+@media screen and (max-width: 320px) {
+  .about-me__name {
+    font-size: 18px;
+    padding: 0 0 28px 0;
+    letter-spacing: -0.72px;
+  } 
+} 
+
 .about-me__info {
   margin: 67px 0 0;
   display: flex;
   justify-content: space-between;
-  /* display: grid;
-  grid-template-columns: 600px max-content;
-  grid-template-rows: 58px 20px 88px 108px;
-  gap: 18px 270px;
-  grid-template-areas: */
-  /* "name img"
-  "status img"
-  "description img"
-  "github img"; */
 }
+
+@media screen and (max-width: 320px) {
+  .about-me__info {
+    margin: 60px 0 0;
+    flex-direction: column-reverse;
+  } 
+} 
 .about-me__resume {
   max-width: 600px;
 }
 
-.about-me__student-name {
-  /* grid-area: name; */
+@media screen and (max-width: 768px) {
+  .about-me__resume {
+    max-width: 364px;
+  } 
+} 
 
+@media screen and (max-width: 320px) {
+  .about-me__resume {
+    margin-top: 40px;
+  } 
+} 
+
+
+.about-me__student-name {
   font-size: 50px;
   font-weight: 400;
   /* padding: 0; */
@@ -46,48 +73,128 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__student-name {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  } 
+} 
+
+@media screen and (max-width: 320px) {
+  .about-me__student-name {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  } 
+} 
+
 .about-me__status {
-  /* grid-area: status; */
   margin: 19px 0 0;
   font-size: 18px;
   font-weight: 500;
-  /* margin: 0; */
   line-height: 20px;
 }
 
-.about-me__description {
-  /* grid-area: description; */
+@media screen and (max-width: 768px) {
+  .about-me__status {
+    margin: 16px 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  } 
+} 
 
+@media screen and (max-width: 320px) {
+  .about-me__status {
+    margin: 20px 0 0;
+    font-size: 11px;
+    line-height: 16px;
+  } 
+} 
+
+.about-me__description {
   margin: 26px 0 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__description {
+    margin: 20px 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  } 
+} 
+
+@media screen and (max-width: 320px) {
+  .about-me__description {
+    font-size: 11px;
+    line-height: 16px;
+  } 
+} 
+
 .about-me__github {
-  /* grid-area: github; */
+  display: inline-block;
   margin: 99px 0 0;
-  /* margin: 0; */
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
-
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__github {
+    margin: 86px 0 0;
+  } 
+} 
+
+@media screen and (max-width: 320px) {
+  .about-me__github {
+    margin: 40px 0 0;
+  } 
+} 
+
 .about-me__photo {
-  /* grid-area: img; */
   background-image: url('/src/images/pic__COLOR_pic.png');
   min-width: 270px;
   min-height: 327px;
   border-radius: 10px;
-
 }
+
+@media screen and (max-width: 768px) {
+  .about-me__photo {
+    min-width: 255px;
+    min-height: 307px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  } 
+} 
+
+@media screen and (max-width: 320px) {
+  .about-me__photo {
+    min-width: 292px;
+    min-height: 352px;
+
+  } 
+} 
 
 .about-me__portfolio {
-  padding-top: 100px;
+  margin-top: 100px;
 
 }
+@media screen and (max-width: 768px) {
+  .about-me__portfolio {
+    margin-top: 90px;
+  } 
+} 
+
+@media screen and (max-width: 320px) {
+  .about-me__portfolio {
+    margin-top: 70px;
+  } 
+} 
 
 .about-me__title {
   margin: 0;
@@ -97,17 +204,27 @@
   color: #A0A0A0;
 }
 
+@media screen and (max-width: 320px) {
+  .about-me__title {
+    font-size: 14px;
+  } 
+} 
+
 .about-me__sites {
   list-style-type: none;
-  margin-top: 50px;
+  margin-top: 17px;
   padding: 0px;
 
 }
 
-.about-me__site {
-  border-bottom: 1px solid black;
-  /* display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0; */
-}
+@media screen and (max-width: 768px) {
+  .about-me__sites {
+    margin-top: 18px;
+  } 
+} 
+
+@media screen and (max-width: 320px) {
+  .about-me__sites {
+    /* margin-top: 20px; */
+  } 
+} 
