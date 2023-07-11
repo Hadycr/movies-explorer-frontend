@@ -1,6 +1,6 @@
 .footer {
   max-height: 172px;
-  padding: 54px 70px 0 70px;
+  padding: 63px 70px 0 70px;
   /* margin: 0 auto; */
 }
 
@@ -54,5 +54,6 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: none;
+  color: black;
 
 }

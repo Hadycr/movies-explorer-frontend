@@ -14,8 +14,8 @@ function Portfolio({siteType, siteAdress}) {
     href={siteAdress}
     // rel="noreferrer"
     >
-    <p className="portfolio__site-name">{siteType}</p>
-    <div className="profile__link-icon"></div>
+      <p className="portfolio__site-name">{siteType}</p>
+      <div className="profile__link-icon"></div>
     </a>
    )
 }

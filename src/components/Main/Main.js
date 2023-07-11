@@ -1,6 +1,7 @@
 /* import {useContext } from 'react';
 import pen from '../img/pen.svg';
 import plus from '../img/plus.svg';*/
+import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -20,6 +21,7 @@ function Main() {
         isLogIn = {isLogIn}
         onClick ={onClick}
       /> */}
+      <Header />
       <Promo />
       <AboutProject />
       <Techs />

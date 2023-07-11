@@ -6,6 +6,8 @@ import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
+import Profile from '../Profile/Profile';
 
 function App() {
   const [currentUser, setСurrentUser] = useState({
@@ -15,8 +17,16 @@ function App() {
   
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header />
-      <Main />
+      {/* <Header /> */}
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/movies" element={<Movies />} /> 
+        <Route path="/profile" element={<Profile />} />
+        
+
+        /profile
+      </Routes>
+      
       <Footer />
         {/* <Routes>
           <Route path="/sign-up" element={<Register //регистрация

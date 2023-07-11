@@ -10,7 +10,7 @@
   } 
 } 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project {
     margin: 70px 18px;
   } 
@@ -33,7 +33,7 @@
   } 
 } 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__name {
     font-size: 18px;
     padding: 0 0 28px;
@@ -55,7 +55,7 @@
   } 
 } 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__specification {
 
     margin-top: 4px;
@@ -78,7 +78,7 @@
   } 
 } 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__stage  {
     margin-top: 56px;
 
@@ -96,7 +96,7 @@
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__header {
     font-size: 18px;
     letter-spacing: -0.72px;
@@ -121,12 +121,12 @@
   } 
 } 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__text {
     font-size: 11px;
     text-align: left;
     line-height: 16px;
-    padding-top: 18px;
+    padding-top: 17px;
   } 
 } 
 
@@ -145,7 +145,7 @@
   } 
 } 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__terms {
     padding-top: 58px;
     grid-template-columns: 100px minmax(100px, 184px);
@@ -164,7 +164,7 @@
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__date {
     font-size: 11px;
     padding: 12px 0;
@@ -190,7 +190,7 @@
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .about-project__specialization {
     font-size: 11px;
   } 

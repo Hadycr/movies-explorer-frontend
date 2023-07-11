@@ -1,6 +1,5 @@
 .technology {
   max-height: 625px;
-  /* box-sizing: border-box; */
   padding: 102px 70px;
   margin: 0 auto;
   background-color: #F5F5F5;
@@ -13,7 +12,7 @@
   } 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .technology {
     padding: 70px 18px;
   } 
@@ -30,7 +29,8 @@
 
 }
 
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 580px) {
   .technology__name {
     font-size: 18px;
     padding: 0 0 27px;
@@ -60,7 +60,7 @@
   } 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .technology__title {
     padding-top: 60px;
     font-size: 30px;
@@ -92,7 +92,7 @@
   } 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .technology__info {
     max-width: 292px;
     padding-top: 24px;
@@ -107,7 +107,7 @@
   /* display: flex;
   flex-direction: row; */
   padding: 0;
-  padding-top: 100px;
+  padding-top: 100px 71px 0;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(7, minmax(10px, 90px));
@@ -123,11 +123,13 @@
   } 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .technology__specification {
-    padding: 50px 71px 0;
+    margin: 50px 71px 0;
+    padding: 0;
     grid-template-columns: repeat(2, minmax(84px, 1fr));
     grid-template-rows: repeat(4, 57px);
+    place-content: center;
 
   } 
 }
@@ -156,6 +158,13 @@
 }
 
 @media screen and (max-width: 768px) {
+  .technology__icon {
+    font-size: 12px;
+
+  } 
+}
+
+@media screen and (max-width: 650px) {
   .technology__icon {
     font-size: 12px;
 

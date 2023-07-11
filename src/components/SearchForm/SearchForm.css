@@ -1,0 +1,65 @@
+.search {
+  min-height: 228px;
+  margin: 79px 70px 51px;
+
+}
+
+.search__container{
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 36px;
+
+}
+
+.search__form {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.search__input {
+  min-height: 48px;
+  min-width: 1060px;
+  background-color: #F9F9F9;
+  border-radius: 4px;
+  border: none;
+  padding: 15px 0 15px 22px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  box-sizing: border-box;
+
+}
+
+.search__button {
+  height: 44px;
+  width: 70px;
+  background-color: #000;
+  color: #FFF;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  box-sizing: border-box;
+  /* padding: 13px 5px; */
+  text-align: center;
+
+
+
+}
+
+.search__films-short-filter {
+  margin: 31px 0 0 492px;
+  display: flex;
+
+}
+
+.search__text {
+  margin: 0;
+  padding-left: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+
+
+}
