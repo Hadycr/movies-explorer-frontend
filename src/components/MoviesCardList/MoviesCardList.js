@@ -1,21 +1,18 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-
-function MoviesCardList({movies, onCardClick, onCardAddClick}) {
+import {moviesList} from '../../utils/moviesList';
+function MoviesCardList() {
 
   return (
     <div className="movies__items">
-          {movies.map((movie) =>  (
-            <MoviesCard 
-              key={movies._id}
-              movie={movie}
-              onCardClick={onCardClick}
-              onCardAddClick={onCardAddClick}
-            />)
-          )}
-        </div>   
+      {moviesList.map((movie) =>  (
+        <MoviesCard 
+          key={movie._id}
+          movie={movie}
+        />
 
-
+      ))}       
+    </div>   
   )
 }
 

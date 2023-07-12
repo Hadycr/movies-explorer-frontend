@@ -2,18 +2,19 @@ import React from 'react';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoreFilms from '../MoreFilms/MoreFilms';
 
-function Movies () {
+function SavedMovies () {
   return (
     <>
       <Header />
       <SearchForm />
       <MoviesCardList/>
-      <MoreFilms/>
+    {/* // <Preloader/>
+
+    // <MoviesCard/> */}
     </>
   )
 }
 
 
-export default Movies;
+export default SavedMovies;

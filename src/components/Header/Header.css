@@ -1,5 +1,5 @@
 .header {
-  min-height: 74px;
+  max-height: 74px;
   width: 100%;
   background-color: #F3C1F8;
   padding: 19px 70px;
@@ -18,4 +18,8 @@
   .header {
     padding: 18px 14px;
   } 
+}
+
+.header_hidden {
+  display: none;
 }

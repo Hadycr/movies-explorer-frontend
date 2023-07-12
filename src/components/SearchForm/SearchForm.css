@@ -1,6 +1,6 @@
 .search {
-  min-height: 228px;
-  margin: 79px 70px 51px;
+  max-height: 228px;
+  margin: 79px 70px 0;
 
 }
 
@@ -43,6 +43,7 @@
   box-sizing: border-box;
   /* padding: 13px 5px; */
   text-align: center;
+  border: none;
 
 
 

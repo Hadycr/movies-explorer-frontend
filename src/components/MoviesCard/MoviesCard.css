@@ -1,12 +1,13 @@
 .movie__item {
   /* list-style-type: none; */
-  max-width: 270px;
-  max-height: 151px;
+  min-width: 270px;
+  min-height: 151px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 10px;
   position: relative;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
 
 }
 
@@ -48,20 +49,34 @@
 
 }
 
-.movie__time {
+.movie__duration {
   font-size: 11px;
   font-weight: 400;
-  padding: 0;
   margin: 0;
+  padding-top: 10px;
   text-align: left;
   color: #A0A0A0;
   line-height: normal;
 
 }
 
-.movie__button {
-  background-color: url('../../images/save8.svg');
+.movies__save-button {
+  background-image: url('../../images/save8.svg');
   width: 16px;
   height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: white;
 
+}
+
+.movies__delete-button {
+  background-image: url('../../images/delete.svg');
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: white;
 }

@@ -1,0 +1,135 @@
+.navigation__logo-link {
+
+}
+
+.navigation__logo {
+  height: 38px;
+  width: 38px;
+  padding: 0;
+}
+
+.navigation__main {
+  display: flex;
+  max-width: 183px;
+  justify-content: right;
+
+  ;
+
+}
+
+.navigation__main_hidden {
+  display: none;
+
+}
+
+.navigation__registration-link {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: black;
+  text-decoration: none;
+  padding-top: 8px;
+
+}
+
+.navigation__registration-link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.navigation__registration-link:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}
+
+.navigation__login-link {
+  width: 76px;
+  height: 32px;
+  background-color: black;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin-left: 30px;
+
+
+}
+
+.navigation__movies {
+  display: flex;
+  max-width: 381px;
+  justify-content: right;
+}
+
+.navigation__movies_hidden {
+  display: none;
+  
+  
+}
+
+.navigation__movies-link {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: black;
+  text-decoration: none;
+  padding-top: 8px;
+
+
+}
+
+.navigation__saved-movies-link {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  color: black;
+  text-decoration: none;
+  padding: 8px 0 0 20px;
+
+}
+
+.navigation__profile-link {
+  width: 100px;
+  height: 32px;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.navigation__profile-account {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 20px;
+
+
+  margin-left: 30px;
+
+}
+
+.navigation__profile-logo {
+  background-image: url('../../images/profile.svg');
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+
+}
