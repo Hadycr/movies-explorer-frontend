@@ -27,7 +27,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         
 
-        /profile
+        {/* /profile */}
       </Routes>
       
       <Footer />

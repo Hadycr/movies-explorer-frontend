@@ -1,19 +1,22 @@
 .technology {
-  max-height: 625px;
-  padding: 102px 70px;
-  margin: 0 auto;
+  min-height: 625px;
+  width: 100%;
+  padding: 100px 70px;
   background-color: #F5F5F5;
+  box-sizing: border-box;
 
 }
 
 @media screen and (max-width: 768px) {
   .technology {
+    min-height: 528px;
     padding: 90px 50px;
   } 
 }
 
 @media screen and (max-width: 580px) {
   .technology {
+    min-height: 651px;
     padding: 70px 18px;
   } 
 }
@@ -106,8 +109,8 @@
 .technology__specification {
   /* display: flex;
   flex-direction: row; */
-  padding: 0;
-  padding-top: 100px 71px 0;
+  /* padding: 0; */
+  padding: 100px 71px 0;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(7, minmax(10px, 90px));

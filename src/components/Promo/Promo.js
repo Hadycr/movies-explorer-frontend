@@ -1,5 +1,6 @@
 import React from 'react';
 import './Promo.css';
+import { Link, animateScroll as scroll } from "react-scroll";
 // import { Link} from 'react-router-dom';
 
 function Promo() {
@@ -23,7 +24,16 @@ function Promo() {
         <div className="promo__img"></div>
         {/* <img className="promo__img" src="../../../src/images/text__COLOR_landing-logo.png" alt="Web планета"/> */}
       </div>
-      <button className="promo__button">Узнать больше</button>
+      <Link
+      className="promo__button"
+    // activeClass="promo__button"
+    to="about"
+    spy={true}
+    smooth={true}
+    offset={-70}
+    duration={500}>Узнать больше</Link>
+      
+      {/* <button className="promo__button">Узнать больше</button> */}
     </section>
   )
 }

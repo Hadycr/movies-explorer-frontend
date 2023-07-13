@@ -20,7 +20,7 @@ function Navigation() {
         Войти
       </Link>
     </div>
-    <div className={pathName === "/movies" ? "navigation__movies" : "navigation__movies_hidden"}>
+    <div className={pathName === "/movies" || pathName === "/profile" ? "navigation__movies" : "navigation__movies_hidden"}>
       <Link to="/movies" className="navigation__movies-link">
         Фильмы
       </Link>

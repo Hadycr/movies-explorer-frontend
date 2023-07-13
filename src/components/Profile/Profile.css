@@ -1,5 +1,5 @@
 .profile {
-  margin: 70px 435px 70px;
+  margin: 73px 436px 70px;
   min-height: 626px;
   box-sizing: border-box;
 
@@ -16,7 +16,7 @@
   font-weight: 500;
   line-height: normal;
   margin: 0 auto;
-  padding: 0;
+  padding-right: 9px;
   /* box-sizing: border-box; */
 
 
