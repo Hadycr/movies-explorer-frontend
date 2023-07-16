@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoreFilms from '../MoreFilms/MoreFilms';
+import Footer from '../Footer/Footer';
+
 
 function Movies () {
   return (
@@ -11,6 +13,7 @@ function Movies () {
       <SearchForm />
       <MoviesCardList/>
       <MoreFilms/>
+      <Footer />
     </>
   )
 }

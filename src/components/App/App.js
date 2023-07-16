@@ -3,12 +3,12 @@ import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 // import ProtectedRoute from './ProtectedRoute';
 import './App.css';
-import Header from '../Header/Header';
 import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 function App() {
   const [currentUser, setСurrentUser] = useState({
@@ -25,12 +25,13 @@ function App() {
         <Route path="/saved-movies" element={<SavedMovies />} /> 
         
         <Route path="/profile" element={<Profile />} />
-        
+        <Route path="/signup" element={<Register />} />
+        <Route path="/signin" element={<Login />} />
 
         {/* /profile */}
       </Routes>
       
-      <Footer />
+
         {/* <Routes>
           <Route path="/sign-up" element={<Register //регистрация
             handleRegistration = {handleRegistration}/>}/>
