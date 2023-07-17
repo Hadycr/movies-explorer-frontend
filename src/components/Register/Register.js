@@ -10,9 +10,11 @@ function Register({name, email, password, handleSubmit, handleChangeName, handle
 
     <div className="login">
       <div className="login__container">
-        <img className="login__logo"
-          src={navigationLogo}
-          alt="Логотип"/>
+        <Link to="/" className="login__logo-link">
+          <img className="login__logo"
+            src={navigationLogo}
+            alt="Логотип"/>
+        </Link>
         <h2 className="login__title">Добро пожаловать!</h2>
         <form className="login__form" onSubmit ={handleSubmit}>
           <label className="login__label">

@@ -1,12 +1,12 @@
 .search {
   max-height: 228px;
-  margin: 79px 70px 0;
+  margin: 80px 70px 0;
 
 }
 
 .search__container{
   border-bottom: 1px solid #E8E8E8;
-  padding-bottom: 36px;
+  padding-bottom: 39px;
 
 }
 
@@ -63,4 +63,14 @@
   line-height: 18px;
 
 
+}
+
+.search__link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.search__link:disabled {
+  opacity: 0.2;
+  cursor: auto;
 }

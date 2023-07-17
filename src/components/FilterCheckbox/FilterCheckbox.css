@@ -26,15 +26,16 @@
 .filter-checkbox__slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
+  height: 13px;
+  width: 13px;
   left: 2px;
-  bottom: 2px;
-  background-color: #2BE080;
-  border: 1px solid white;
+  bottom: 3px;
+  background-color: #EBEBEB;
+  border: 2px solid white;
   -webkit-transition: transform 0.4s;
   transition: transform 0.4s;
 }
+
 
 .filter-checkbox__input:checked + .filter-checkbox__slider {
   background-color: #EBEBEB;
@@ -42,12 +43,14 @@
 
 .filter-checkbox__input:focus + .filter-checkbox__slider {
   box-shadow: 0 0 1px #F5F5F5;
+
 }
 
 .filter-checkbox__input:checked + .filter-checkbox__slider:before {
   -webkit-transform: translateX(16px);
   -ms-transform: translateX(16px);
-  transform: translateX(16px);
+  transform: translateX(16px);  
+  background-color: #2BE080;
 }
 
 .filter-checkbox__slider_round {

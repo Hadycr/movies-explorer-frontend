@@ -62,13 +62,25 @@
 
 .movies__save-button {
   background-image: url('../../images/save8.svg');
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
   background-color: white;
 
+}
+
+.movies__save-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.movies__save-button:disabled {
+  opacity: 0.2;
+  cursor: auto;
 }
 
 .movies__delete-button {
@@ -79,4 +91,14 @@
   background-size: contain;
   border: none;
   background-color: white;
+}
+
+.movies__delete-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.movies__delete-button:disabled {
+  opacity: 0.2;
+  cursor: auto;
 }

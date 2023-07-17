@@ -10,9 +10,11 @@ function Login({name, email, password, handleSubmit, handleChangeName, handleCha
 
     <div className="login">
       <div className="login__container">
-        <img className="login__logo"
-          src={navigationLogo}
-          alt="Логотип"/>
+        <Link to="/">
+          <img className="login__logo"
+            src={navigationLogo}
+            alt="Логотип"/>
+        </Link>
         <h2 className="login__title">Рады видеть!</h2>
         <form className="login__form" onSubmit ={handleSubmit}>
           <label className="login__label">

@@ -8,8 +8,8 @@ function Footer() {
       <div className="footer__container">
         <p className="footer__date">© {new Date().getFullYear()}</p>
         <div className="footer__link-container">
-          <a className="footer__link link" href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
-          <a className="footer__link link" href="https://github.com/">Github</a>
+          <a className="footer__link" href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
+          <a className="footer__link" href="https://github.com/">Github</a>
         </div>
       </div>
     </footer>

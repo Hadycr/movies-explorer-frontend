@@ -8,7 +8,7 @@ function SearchForm() {
       <div className="search__container">
         <form className="search__form">
           <input className="search__input" name="movie" type="text" placeholder="Фильм"></input>
-          <button className="search__button" type="submit">Найти</button>
+          <button className="search__button search__link" type="submit">Найти</button>
           
         </form>
         <div className="search__films-short-filter">

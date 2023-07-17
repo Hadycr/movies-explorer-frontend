@@ -18,7 +18,11 @@ function Header({isLogIn, email, userStatus, pathname, onClick }) {
       pathName === "/signup"
         ? ""
         : "header_hidden"
-    }`}
+    } ${pathName === "/" 
+       ? "header_background-pink"
+       : ""
+       }
+    `}
   >
       <Navigation
         // loggedIn={setLoggedIn()}
