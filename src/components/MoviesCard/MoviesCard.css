@@ -23,6 +23,14 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .movie__img {
+    width: 339px;
+    height: 190px;
+    
+     } 
+} 
+
 .movie__description {
   margin: 14px 12px;
   display: flex;

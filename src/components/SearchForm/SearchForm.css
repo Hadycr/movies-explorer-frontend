@@ -4,6 +4,22 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .search {
+    margin: 80px 30px 0;
+  }
+
+
+}
+
+@media screen and (max-width: 550px) {
+  .search {
+    margin: 80px 14px 0;
+  }
+
+
+}
+
 .search__container{
   border-bottom: 1px solid #E8E8E8;
   padding-bottom: 39px;
@@ -31,6 +47,22 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .search__input {
+    min-width: 628px;
+  }
+
+
+}
+
+@media screen and (max-width: 550px) {
+  .search__input {
+    min-width: 212px;
+  }
+
+
+}
+
 .search__button {
   height: 44px;
   width: 70px;
@@ -53,6 +85,13 @@
   margin: 31px 0 0 492px;
   display: flex;
 
+}
+
+@media screen and (max-width: 768px) {
+  .search__films-short-filter {
+    margin: 31px 0 0 275px;
+
+  }
 }
 
 .search__text {
