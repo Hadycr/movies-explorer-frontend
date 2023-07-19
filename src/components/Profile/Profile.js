@@ -1,14 +1,13 @@
 import './Profile.css';
-import Header from '../Header/Header';
+
 import { Link } from 'react-router-dom';
 
 function Profile({name, email, handleSubmit, handleChangeName, handleChangeEmail}) {
 
 
   return (
-    <>
-    <Header 
-    />
+
+
 
     <div className="profile">  
       <div className="profile__container">
@@ -35,7 +34,7 @@ function Profile({name, email, handleSubmit, handleChangeName, handleChangeEmail
         </div>
       </div>
     </div>  
-    </>
+
   )
 }
 

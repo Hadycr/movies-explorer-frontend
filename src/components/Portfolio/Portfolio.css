@@ -1,4 +1,4 @@
-.portfolio__link  {
+.portfolio  {
   display: flex;
   min-height: 28px;
   box-sizing: border-box;
@@ -12,17 +12,17 @@
 }
 
 
-.portfolio__link:hover {
+.portfolio:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-.portfolio__link:disabled {
+.portfolio:disabled {
   opacity: 0.2;
   cursor: auto;
 }
 @media screen and (max-width: 650px) {
-  .portfolio__link {
+  .portfolio {
     /* margin: 0; */
     padding: 20px 0 20px;
     box-sizing: border-box;

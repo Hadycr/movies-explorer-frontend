@@ -26,6 +26,14 @@
 
 }
 
+@media screen and (max-width: 550px) {
+  .search__container {
+    padding-bottom: 40px;
+  }
+
+
+}
+
 .search__form {
   display: flex;
   justify-content: space-between;
@@ -94,6 +102,13 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .search__films-short-filter {
+    margin: 43px 0 0 71px;
+
+  }
+}
+
 .search__text {
   margin: 0;
   padding-left: 12px;
@@ -104,6 +119,16 @@
 
 }
 
+@media screen and (max-width: 550px) {
+  .search__text {
+    padding-left: 13px;
+    font-size: 11px;
+
+
+  
+  
+  }
+}
 .search__link:hover {
   opacity: 0.5;
   cursor: pointer;

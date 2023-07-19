@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer';
 function Movies () {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <SearchForm />
       <MoviesCardList/>
       <MoreFilms/>

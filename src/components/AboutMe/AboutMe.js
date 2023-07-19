@@ -24,13 +24,13 @@ function AboutMe() {
       <div className="about-me__portfolio">
         <h2 className="about-me__title">Портфолио</h2>
         <ul className="about-me__sites">
-          <li className="about-me__site_underline">
+          <li className="about-me__site about-me__site_underline">
             <Portfolio
             siteType = "Статичный сайт"
             siteAdress = "https://hadycr.github.io/how-to-learn/" 
             />
           </li>
-          <li className="about-me__site_underline">
+          <li className="about-me__site about-me__site-underline">
             <Portfolio
             siteType = "Адаптивный сайт"
             siteAdress = "https://hadycr.github.io/russian-travel/" 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
-function Header({isLogIn, email, userStatus, pathname, onClick }) {
+function Header({onClose, isOpen, handleChangeOpen, isLogIn, email, userStatus, pathname, onClick }) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
 
@@ -27,9 +27,9 @@ function Header({isLogIn, email, userStatus, pathname, onClick }) {
       <Navigation
         // loggedIn={setLoggedIn()}
         // pathName={pathName}
-        // isOpen={isOpen}
-        // onMenuButtonClick={onMenuButtonClick}
-        // onClose={onClose}
+        isOpen={isOpen}
+        handleChangeOpen={handleChangeOpen}
+        onClose={onClose}
         // onCloseByOverlay={onCloseByOverlay}
         // onCloseByEsc={onCloseByEsc}
       />

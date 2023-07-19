@@ -5,7 +5,7 @@ function Portfolio({siteType, siteAdress}) {
 
   return (
     <a
-    className="portfolio__link"
+    className="portfolio"
     href={siteAdress}
     >
       <p className="portfolio__site-name">{siteType}</p>
