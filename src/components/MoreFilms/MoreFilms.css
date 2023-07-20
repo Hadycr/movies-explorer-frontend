@@ -1,18 +1,14 @@
 .more-films {
   min-height: 196px;
   margin-bottom: 10px;
-
-
 }
 
 @media screen and (max-width: 768px) {
   .more-films {
     padding-bottom: 20px;
     margin: 0;
-    
-     } 
+  } 
 } 
-
 
 .more-films__button {
   margin: 80px 480px;
@@ -24,23 +20,20 @@
   line-height: normal;
   background-color: #FFF;
   width: 100%;
-
+  padding: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .more-films__button {
     margin: 45px 224px 0;
-    
-     } 
+  } 
 } 
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 767px) {
   .more-films__button {
     margin: 80px 40px 0;
     max-width: 240px;
-
-    
-     } 
+  } 
 } 
 
 .more-films__button:hover {

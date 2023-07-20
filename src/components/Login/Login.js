@@ -2,7 +2,7 @@ import '../Login/Login.css';
 import { Link } from 'react-router-dom';
 import navigationLogo from "../../images/logo.png";
 
-function Login({name, email, password, handleSubmit, handleChangeName, handleChangeEmail, handleChangePassword}) {
+function Login({email, password, handleSubmit, handleChangeEmail, handleChangePassword}) {
 
 
   return (
@@ -19,14 +19,13 @@ function Login({name, email, password, handleSubmit, handleChangeName, handleCha
         <form className="login__form" onSubmit ={handleSubmit}>
           <label className="login__label">
             <div className="login__placeholder">E-mail</div>
-            <input  className="login__input" id="email" type="text" name="email" value={email} 
+            <input  className="login__input" id="email" type="text" name="email" value={email} minLength="2" maxLength="30" 
               onChange={ handleChangeEmail } required/>
-
           </label>
           <label className="login__label">
             <div className="login__placeholder">Пароль</div>
             <input className="login__input" id="password" name="password" type="password" value={password} 
-              onChange={ handleChangePassword } required/>
+              onChange={ handleChangePassword } required minLength="2" maxLength="30"/>
               <span className="login__error">Что-то пошло не так...</span>
           </label>
           <button type="submit" className="login__button login__button_login login__link">Войти</button>

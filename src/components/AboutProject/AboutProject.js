@@ -2,10 +2,7 @@ import React from 'react';
 import './AboutProject.css';
 
 function AboutProject() {
- 
-  
-  
-    return (
+  return (
     <section className="about-project" id="about">
       <h2 className="about-project__name">О проекте</h2>
       <div className="about-project__specification">
@@ -27,8 +24,7 @@ function AboutProject() {
         <p className="about-project__specialization">Front-end</p>
       </div>
     </section>
-
-    )
-  }
+  )
+}
 
 export default AboutProject;

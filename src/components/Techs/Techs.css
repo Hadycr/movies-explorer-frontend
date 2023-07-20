@@ -4,7 +4,6 @@
   padding: 100px 70px;
   background-color: #F5F5F5;
   box-sizing: border-box;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -29,7 +28,6 @@
   line-height: normal;
   border-bottom: 1px solid black;
   letter-spacing: -0.88px;
-
 }
 
 
@@ -53,13 +51,11 @@
   margin: 0 auto;
   line-height: 58px;
   letter-spacing: -2px;
-
 }
 
 @media screen and (max-width: 768px) {
   .technology__title {
     padding-top: 80px;
-
   } 
 }
 
@@ -69,7 +65,6 @@
     font-size: 30px;
     line-height: normal;
     letter-spacing: -1.2px;
-
   } 
 }
 
@@ -82,7 +77,6 @@
   max-width: 460px;
   text-align: center;
   letter-spacing: -0.56px;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -91,7 +85,6 @@
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.48px;
-
   } 
 }
 
@@ -102,27 +95,21 @@
     font-size: 11px;
     line-height: 16px;
     letter-spacing: -0.44px;
-
   } 
 }
 
 .technology__specification {
-  /* display: flex;
-  flex-direction: row; */
-  /* padding: 0; */
   padding: 100px 71px 0;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(7, minmax(10px, 90px));
   gap: 10px;
-
 }
 
 @media screen and (max-width: 768px) {
   .technology__specification {
     padding: 83px 10px 0;
     grid-template-columns: repeat(7, minmax(10px, 84px));
-
   } 
 }
 
@@ -133,43 +120,25 @@
     grid-template-columns: repeat(2, minmax(84px, 1fr));
     grid-template-rows: repeat(4, 57px);
     place-content: center;
-
   } 
 }
 
-
 .technology__icon {
-  /* width: 90px; */
   max-height: 60px;
-  /* margin: 0 auto; */
- padding-top: 21px;
- padding-bottom: 20px;
-  /* margin-right: 10px; */
+  padding-top: 21px;
+  padding-bottom: 20px;
   font-size: 14px;
   font-weight: 400;
-  /* padding: 10px 20px; */
-  /* text-align: left;
-  color: #000; */
   line-height: normal;
   background-color: #E8E8E8;
   border-radius: 10px;
   list-style-type:  none;
   text-align: center;
   justify-content: space-between;
-  
-
 }
 
 @media screen and (max-width: 768px) {
   .technology__icon {
     font-size: 12px;
-
-  } 
-}
-
-@media screen and (max-width: 650px) {
-  .technology__icon {
-    font-size: 12px;
-
   } 
 }

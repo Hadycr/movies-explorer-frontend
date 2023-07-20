@@ -1,5 +1,4 @@
 import {useState } from 'react';
-// import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
@@ -14,9 +13,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-
   function closeAllPopups() {
-    // setInfoTooltipOpen(false);
     setMenuOpen(false);
   }
 
@@ -41,7 +38,7 @@ function App() {
         <Route path="/404" element={<PageNotFound />} />
       </Routes>
 
-      </> 
+    </> 
   );
 }
 

@@ -1,8 +1,8 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import {moviesList} from '../../utils/moviesList';
-function MoviesCardList() {
 
+function MoviesCardList() {
   return (
     <div className="movies__items">
       {moviesList.map((movie) =>  (
@@ -10,7 +10,6 @@ function MoviesCardList() {
           key={movie._id}
           movie={movie}
         />
-
       ))}       
     </div>   
   )

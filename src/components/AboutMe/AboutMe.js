@@ -3,10 +3,7 @@ import './AboutMe.css';
 import Portfolio from '../Portfolio/Portfolio';
 
 function AboutMe() {
- 
-  
-  
-    return (
+  return (
     <section className="about-me">
       <h2 className="about-me__name">Студент</h2>
       <div className="about-me__info">
@@ -28,24 +25,24 @@ function AboutMe() {
             <Portfolio
             siteType = "Статичный сайт"
             siteAdress = "https://hadycr.github.io/how-to-learn/" 
-            />
+          />
           </li>
           <li className="about-me__site about-me__site-underline">
             <Portfolio
             siteType = "Адаптивный сайт"
             siteAdress = "https://hadycr.github.io/russian-travel/" 
-            />
+          />
           </li>
           <li className="about-me__site">
             <Portfolio
             siteType = "Одностраничное приложение"
             siteAdress = "https://hadycr.github.io/mesto" 
-            />
+          />
           </li>
         </ul>
       </div>
     </section>
-)
+  )
 }
 
 export default AboutMe;

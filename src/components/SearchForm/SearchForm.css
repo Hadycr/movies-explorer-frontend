@@ -1,48 +1,40 @@
 .search {
   max-height: 228px;
   margin: 80px 70px 0;
-
 }
 
 @media screen and (max-width: 768px) {
   .search {
     margin: 80px 30px 0;
   }
-
-
 }
 
 @media screen and (max-width: 550px) {
   .search {
     margin: 80px 14px 0;
   }
-
-
 }
 
 .search__container{
   border-bottom: 1px solid #E8E8E8;
   padding-bottom: 39px;
-
 }
 
 @media screen and (max-width: 550px) {
   .search__container {
     padding-bottom: 40px;
   }
-
-
 }
 
 .search__form {
   display: flex;
   justify-content: space-between;
-
 }
 
 .search__input {
   min-height: 48px;
-  min-width: 1060px;
+  max-width: 1060px;
+  width: 100%;
   background-color: #F9F9F9;
   border-radius: 4px;
   border: none;
@@ -52,23 +44,19 @@
   font-weight: 400;
   line-height: 18px;
   box-sizing: border-box;
-
+  margin-right: 5px;
 }
 
 @media screen and (max-width: 768px) {
   .search__input {
-    min-width: 628px;
+    max-width: 628px;
   }
-
-
 }
 
 @media screen and (max-width: 550px) {
   .search__input {
-    min-width: 212px;
+    max-width: 212px;
   }
-
-
 }
 
 .search__button {
@@ -81,31 +69,24 @@
   font-weight: 500;
   line-height: 18px;
   box-sizing: border-box;
-  /* padding: 13px 5px; */
   text-align: center;
   border: none;
-
-
-
 }
 
 .search__films-short-filter {
   margin: 31px 0 0 492px;
   display: flex;
-
 }
 
 @media screen and (max-width: 768px) {
   .search__films-short-filter {
     margin: 31px 0 0 275px;
-
   }
 }
 
 @media screen and (max-width: 550px) {
   .search__films-short-filter {
     margin: 43px 0 0 71px;
-
   }
 }
 
@@ -115,18 +96,12 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-
-
 }
 
 @media screen and (max-width: 550px) {
   .search__text {
     padding-left: 13px;
     font-size: 11px;
-
-
-  
-  
   }
 }
 .search__link:hover {

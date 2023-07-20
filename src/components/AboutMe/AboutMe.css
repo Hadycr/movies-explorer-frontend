@@ -1,11 +1,11 @@
 .about-me {
   max-height: 1079px;
-  margin: 110px 70px 118px;
+  margin: 110px 70px 114px;
 }
 
 @media screen and (max-width: 768px) {
   .about-me {
-    margin: 92px 50px;
+    margin: 92px 50px 124px;
   } 
 }
 
@@ -21,9 +21,8 @@
   padding: 0 0 23px 0;
   margin: 0 auto;
   line-height: normal;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   letter-spacing: -0.88px;
-
 }
 
 @media screen and (max-width: 650px) {
@@ -46,6 +45,7 @@
     flex-direction: column-reverse;
   } 
 } 
+
 .about-me__resume {
   max-width: 600px;
 }
@@ -62,15 +62,12 @@
   } 
 } 
 
-
 .about-me__student-name {
   font-size: 50px;
   font-weight: 400;
-  /* padding: 0; */
   margin: 0;
   line-height: 58px;
   letter-spacing: -2px;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -141,7 +138,7 @@
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
-  color: black;
+  color: #000;
 }
 
 .about-me__github:hover {
@@ -167,7 +164,7 @@
 } 
 
 .about-me__photo {
-  background-image: url('/src/images/1480494344_kot_sneg.jpg');
+  background-image: url("/src/images/1480494344_kot_sneg.jpg");
   min-width: 270px;
   min-height: 327px;
   border-radius: 10px;
@@ -179,7 +176,6 @@
   .about-me__photo {
     min-width: 255px;
     min-height: 307px;
-
   } 
 } 
 
@@ -187,8 +183,6 @@
   .about-me__photo {
     min-width: 292px;
     min-height: 352px;
-    /* background-size: contain; */
-
   } 
 } 
 
@@ -219,7 +213,6 @@
 @media screen and (max-width: 650px) {
   .about-me__title {
     font-size: 14px;
-    /* padding-bottom: 8px; */
   } 
 } 
 
@@ -227,14 +220,10 @@
   list-style-type: none;
   margin-top: 32px;
   padding: 0px;
-
 }
 
 @media screen and (max-width: 650px) {
   .about-me__sites {
-    /* margin-top: 8px; */
-    /* display: flex;
-    flex-direction: column; */
     margin-top: 18px;
   } 
 } 
@@ -246,3 +235,13 @@
 .about-me__site {
   border-bottom: none;
 }
+
+.about-me__site:last-of-type {
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .about-me__site:last-of-type {
+    padding-top: 0;
+  } 
+} 

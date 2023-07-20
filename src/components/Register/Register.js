@@ -4,10 +4,7 @@ import navigationLogo from "../../images/logo.png";
 
 function Register({name, email, password, handleSubmit, handleChangeName, handleChangeEmail, handleChangePassword}) {
 
-
   return (
-
-
     <div className="login">
       <div className="login__container">
         <Link to="/" className="login__logo-link">
@@ -26,7 +23,6 @@ function Register({name, email, password, handleSubmit, handleChangeName, handle
             <div className="login__placeholder">E-mail</div>
             <input  className="login__input" id="email" type="text" name="email" value={email} 
               onChange={ handleChangeEmail } required/>
-
           </label>
           <label className="login__label">
             <div className="login__placeholder">Пароль</div>

@@ -9,16 +9,15 @@ function SearchForm() {
         <form className="search__form">
           <input className="search__input" name="movie" type="text" placeholder="Фильм"></input>
           <button className="search__button search__link" type="submit">Найти</button>
-          
         </form>
         <div className="search__films-short-filter">
-            <FilterCheckbox />
-            <p className="search__text">Короткометражки</p>
+          <FilterCheckbox />
+          <p className="search__text">Короткометражки</p>
         </div>
       </div>
     </section>
   )
 }
 
-  export default SearchForm;
+export default SearchForm;
   

@@ -7,6 +7,8 @@ function Portfolio({siteType, siteAdress}) {
     <a
     className="portfolio"
     href={siteAdress}
+    target="_blank" 
+    rel="noreferrer"
     >
       <p className="portfolio__site-name">{siteType}</p>
       <div className="profile__link-icon"></div>

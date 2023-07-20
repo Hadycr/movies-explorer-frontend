@@ -2,16 +2,13 @@ import React from 'react';
 import './Techs.css';
 
 function Techs() {
- 
-  
-  
-    return (
+  return (
     <section className="technology">
       <h2 className="technology__name"> Технологии</h2>
       <div className="technology__container">
         <h3 className="technology__title"> 7 технологий</h3>
         <h3 className="technology__info"> На курсе веб-разработки мы освоили технологии, которые применили 
-в дипломном проекте.</h3>
+          в дипломном проекте.</h3>
         <ul className="technology__specification">
           <li className="technology__icon">HTML</li>
           <li className="technology__icon">CSS</li>
@@ -23,9 +20,7 @@ function Techs() {
         </ul>
       </div>
     </section>
-
-
-    )
-  }
+  )
+}
 
 export default Techs;

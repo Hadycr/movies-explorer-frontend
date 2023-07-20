@@ -15,8 +15,6 @@ import MoviesImage14 from "../images/14.png";
 import MoviesImage15 from "../images/15.png";
 import MoviesImage16 from "../images/16.png";
 
-
-
 export const moviesList = [
   {
     _id: "1",
