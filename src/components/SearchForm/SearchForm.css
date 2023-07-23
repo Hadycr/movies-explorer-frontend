@@ -1,6 +1,8 @@
 .search {
   max-height: 228px;
   margin: 80px 70px 0;
+  max-width: 100%;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -29,11 +31,12 @@
 .search__form {
   display: flex;
   justify-content: space-between;
+
 }
 
 .search__input {
   min-height: 48px;
-  max-width: 1060px;
+  align-items: center;
   width: 100%;
   background-color: #F9F9F9;
   border-radius: 4px;
@@ -44,7 +47,7 @@
   font-weight: 400;
   line-height: 18px;
   box-sizing: border-box;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -61,7 +64,7 @@
 
 .search__button {
   height: 44px;
-  width: 70px;
+  min-width: 70px;
   background-color: #000;
   color: #FFF;
   text-align: left;
@@ -71,11 +74,14 @@
   box-sizing: border-box;
   text-align: center;
   border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .search__films-short-filter {
   margin: 31px 0 0 492px;
   display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {

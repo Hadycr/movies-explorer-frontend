@@ -1,14 +1,13 @@
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';
+import './SavedMovies.css';
 
 function SavedMovies () {
   return (
-    <section>
+    <section className="saved-movies">
       <SearchForm />
       <MoviesCardList/>
-      <Footer />
     </section>
   )
 }

@@ -1,18 +1,20 @@
 import '../Login/Login.css';
 import { Link } from 'react-router-dom';
-import navigationLogo from "../../images/logo.png";
+import Logo from '../Logo/Logo';
+// import navigationLogo from "../../images/logo.png";
 
 function Register({name, email, password, handleSubmit, handleChangeName, handleChangeEmail, handleChangePassword}) {
 
   return (
     <div className="login">
       <div className="login__container">
-        <Link to="/" className="login__logo-link">
+        {/* <Link to="/" className="login__logo-link">
           <img className="login__logo"
             src={navigationLogo}
             alt="Логотип"/>
-        </Link>
-        <h2 className="login__title">Добро пожаловать!</h2>
+        </Link> */}
+        <Logo />
+        <h1 className="login__title">Добро пожаловать!</h1>
         <form className="login__form" onSubmit ={handleSubmit}>
           <label className="login__label">
             <div className="login__placeholder">Имя</div>

@@ -20,7 +20,7 @@
   } 
 }
 
-.technology__name {
+.technology__title {
   font-size: 22px;
   font-weight: 400;
   padding: 0 0 23px;
@@ -32,7 +32,7 @@
 
 
 @media screen and (max-width: 580px) {
-  .technology__name {
+  .technology__title {
     font-size: 18px;
     padding: 0 0 28px;
     letter-spacing: -0.72px;
@@ -44,7 +44,7 @@
   flex-direction: column;
 }
 
-.technology__title {
+.technology__description {
   font-size: 50px;
   font-weight: 400;
   padding-top: 90px;
@@ -54,13 +54,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .technology__title {
+  .technology__description {
     padding-top: 80px;
   } 
 }
 
 @media screen and (max-width: 580px) {
-  .technology__title {
+  .technology__description {
     padding-top: 60px;
     font-size: 30px;
     line-height: normal;

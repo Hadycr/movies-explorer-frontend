@@ -1,8 +1,10 @@
 .page-not-found {
   width: 100%;
+  /* height: 100vh; */
     min-height: 700px;
     display: flex;
     flex-direction: column;
+
 }
 
 .page-not-found__title {
@@ -42,7 +44,7 @@
 
 .page-not-found__button {
   margin: 184px auto 0;
-  color: #000;
+  color: #3456F3;
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;

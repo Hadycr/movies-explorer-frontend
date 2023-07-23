@@ -16,6 +16,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   margin: 0 auto;
+  /* height: 100vh; */
   
 }
 

@@ -16,7 +16,7 @@ function MoviesCard({movie}) {
       <img className="movie__img" src={movie.image} alt={movie.name}/>
         <div className="movie__description">
           <div className="movie__info">
-            <h3 className="movie__title">{movie.name}</h3>
+            <p className="movie__name">{movie.name}</p>
             <p className="movie__duration">{movie.duration}</p>
           </div>
           <button 

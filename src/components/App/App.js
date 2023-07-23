@@ -9,6 +9,7 @@ import Profile from '../Profile/Profile';
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import Footer from '../Footer/Footer';
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/signin" element={<Login />} />
         <Route path="/404" element={<PageNotFound />} />
       </Routes>
+      <Footer /> 
 
     </> 
   );

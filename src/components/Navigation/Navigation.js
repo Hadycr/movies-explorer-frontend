@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Navigation.css';
-import navigationLogo from "../../images/logo.png";
+import Logo from '../Logo/Logo';
 
 function Navigation({onClose, isOpen, handleChangeOpen}) {
   const uselocation  = useLocation();
@@ -8,71 +8,67 @@ function Navigation({onClose, isOpen, handleChangeOpen}) {
 
   return (
     <>
-      <Link to="/" className="navigation__logo-link navigation__link">
-        <img className="navigation__logo"
-          src={navigationLogo}
-          alt="Логотип" />
-      </Link>
-      <div className={pathName === "/" ? "navigation__main" : "navigation__main_hidden"}>
-        <Link to="/signup" className="navigation__registration-link navigation__link">
+      <Logo />
+      <nav className={pathName === "/" ? "navigation-main" : "navigation-hidden"}>
+        <Link to="/signup" className="navigation-main__registration-link navigation-link">
           Регистрация
         </Link>
-        <Link to="/signin" className="navigation__login-link navigation__link">
+        <Link to="/signin" className="navigation-main__login-link navigation-link">
           Войти
         </Link>
-      </div>
-      <div className={pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" ? "navigation__movies" : "navigation__movies-hidden"}>
-        <Link to="/movies" className="navigation__movies-link navigation__movies-link_dark navigation__link">
+      </nav>
+      <nav className={pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" ? "navigation-movies" : "navigation-hidden"}>
+        <Link to="/movies" className="navigation-movies__link navigatio-movies__link_dark navigation-link">
           Фильмы
         </Link>
-        <Link to="/saved-movies" className="navigation__movies-link navigation__link">
+        <Link to="/saved-movies" className="navigation-movies__link navigation-link">
           Сохранённые фильмы
         </Link>
-        <Link to="/saved-movies" className="navigation__profile navigation__link">
-          <Link to="/profile" className="navigation__profile-link">
-            <p className="navigation__profile-account">Аккаунт</p>
-            <div className="navigation__profile-logo"></div>
+        <Link to="/saved-movies" className="navigation-profile navigation-link">
+          <Link to="/profile" className="navigation-profile__link">
+            <p className="navigation-profile__account">Аккаунт</p>
+            <div className="navigation-profile__logo"></div>
           </Link>
         </Link>
-      </div>
+      </nav>
       <button className={pathName === "/movies" || 
                         pathName === "/saved-movies" || 
                         pathName === "/profile" 
-                        ? "navigation__burger-button" 
-                        : "navigation__burger-disable"
+                        ? "navigation-burger__button" 
+                        : "navigation-hidden"
                         } 
               onClick={handleChangeOpen}
               type="button">
-        <span className="navigation__burger-span"></span>
-        <span className="navigation__burger-span"></span>
-        <span className="navigation__burger-span"></span>
+        <span className="navigation-burger__span"></span>
+        <span className="navigation-burger__span"></span>
+        <span className="navigation-burger__span"></span>
       </button>
-      <div className={`navigation__menu ${isOpen ? "navigation__menu_open" : ""}`} >
-        <button className="navigation__burger-closed" 
+      <div className={`navigation-burger ${isOpen ? "navigation-burger_open" : ""}`} >
+        <button className="navigation-burger__closed" 
           type="button"
           onClick={onClose}>
         </button>
         <nav>
-          <ul className="navigation__burger">
-            <li className="navigation__burger-list">
-              <Link to="/" className="navigation__burger-link navigation__link" onClick={onClose}>
+          <ul className="navigation-burger__menu">
+            <li className="navigation-burger__list">
+              <Link to="/" className="navigation-burger__link navigation-link" onClick={onClose}>
                 Главная
               </Link>
             </li>
-            <li className="navigation__burger-list navigation__burger-link_underline">
-              <Link to="/movies" className="navigation__burger-link navigation__link" onClick={onClose}>
+            <li className="navigation-burger__list">
+              <Link to="/movies" className="navigation-burger__link navigation-link" onClick={onClose}>
                 Фильмы
               </Link>
             </li>
-            <li className="navigation__burger-list">
-              <Link to="/saved-movies" className="navigation__burger-link navigation__link" onClick={onClose}>
+            <li className="navigation-burger__list">
+              <Link to="/saved-movies" className="navigation-burger__link navigation-link" onClick={onClose}>
                 Сохранённые фильмы
               </Link>
             </li>
-            <li className="navigation__burger-list navigation__burger-list_bottom">
-              <Link to="/profile" className="navigation__profile-link navigation__profile-burger-link navigation__link" onClick={onClose}>
-                <p className="navigation__profile-account">Аккаунт</p>
-                <div className="navigation__profile-logo"></div>
+            <li className="navigation-burger__list">
+              <Link to="/profile" className="navigation-profile__link navigation-profile__burger-link navigation-link" onClick={onClose}>
+                <p className="navigation-profile__account">Аккаунт</p>
+                <div className="navigation-profile__logo"></div>
               </Link>
             </li>
           </ul>

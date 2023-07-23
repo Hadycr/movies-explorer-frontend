@@ -28,7 +28,7 @@
   } 
 }
 
-.login__logo {
+/* .login__logo {
   height: 38px;
   width: 38px;
   padding: 0;
@@ -39,7 +39,7 @@
   .login__logo {
     margin: 0 141px;
   } 
-}
+} */
 
 .login__form {
   margin-top: 40px;

@@ -1,18 +1,14 @@
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoreFilms from '../MoreFilms/MoreFilms';
-import Footer from '../Footer/Footer';
-
-
+import './Movies.css';
 
 function Movies () {
   return (
-    <section>
+    <section className="movies">
       <SearchForm />
       <MoviesCardList/>
-      <MoreFilms/>
-      <Footer />
+      <button type="button" className="movies__button">Ещё</button>
     </section>
   )
 }

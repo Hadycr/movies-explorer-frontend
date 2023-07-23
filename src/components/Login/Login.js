@@ -1,6 +1,7 @@
 import '../Login/Login.css';
 import { Link } from 'react-router-dom';
-import navigationLogo from "../../images/logo.png";
+import Logo from '../Logo/Logo';
+// import navigationLogo from "../../images/logo.png";
 
 function Login({email, password, handleSubmit, handleChangeEmail, handleChangePassword}) {
 
@@ -10,12 +11,13 @@ function Login({email, password, handleSubmit, handleChangeEmail, handleChangePa
 
     <div className="login">
       <div className="login__container">
-        <Link to="/">
+        {/* <Link to="/">
           <img className="login__logo"
             src={navigationLogo}
             alt="Логотип"/>
-        </Link>
-        <h2 className="login__title">Рады видеть!</h2>
+        </Link> */}
+        <Logo />
+        <h1 className="login__title">Рады видеть!</h1>
         <form className="login__form" onSubmit ={handleSubmit}>
           <label className="login__label">
             <div className="login__placeholder">E-mail</div>

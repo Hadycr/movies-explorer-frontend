@@ -8,7 +8,7 @@ function Promo() {
     <section className="promo">
       <div className="promo__container">
         <div className="promo__info">
-          <h1 className="promo__name"> Учебный проект студента факультета Веб-разработки.</h1>
+          <h1 className="promo__title"> Учебный проект студента факультета Веб-разработки.</h1>
           <h2 className="promo__description">Листайте ниже, чтобы узнать больше про этот проект и&nbsp;его создателя.</h2>
         </div>
         <div className="promo__img"></div>

@@ -1,5 +1,5 @@
 .about-project {
-  max-height: 608px;
+  /* max-height: 608px; */
   margin: 110px 70px;
   padding: 0;
 }
@@ -16,7 +16,7 @@
   } 
 } 
 
-.about-project__name {
+.about-project__title {
   font-size: 22px;
   font-weight: 400;
   padding: 0 0 23px;
@@ -27,13 +27,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about-project__name {
+  .about-project__title {
     padding: 0 0 22px;
   } 
 } 
 
 @media screen and (max-width: 580px) {
-  .about-project__name {
+  .about-project__title {
     font-size: 18px;
     padding: 0 0 28px;
     letter-spacing: -0.72px;
