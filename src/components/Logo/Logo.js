@@ -7,9 +7,9 @@ function Logo() {
   return (
     <div className="logo">
       <Link to="/" className="logo__link">
-          <img className="logo__img"
-            src={navigationLogo}
-            alt="Логотип" />
+        <img className="logo__img"
+          src={navigationLogo}
+          alt="Логотип" />
       </Link>
     </div>
   )

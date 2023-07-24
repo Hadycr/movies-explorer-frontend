@@ -49,13 +49,6 @@
   } 
 } 
 
-/* @media screen and (max-width: 550px) {
-  .movie__img {
-    max-width: 339px;
-    height: 168px;
-  } 
-}  */
-
 .movie__description {
   margin: 14px 12px;
   display: flex;

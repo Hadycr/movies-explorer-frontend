@@ -1,10 +1,10 @@
 .saved-movies {
-  padding: 0 0 140px;
+  padding: 0 0 149px;
 }
 
 @media screen and (max-width: 768px) {
   .saved-movies {
-    padding: 0 0 170px;
+    padding: 0 0 225px;
   }
 }
 

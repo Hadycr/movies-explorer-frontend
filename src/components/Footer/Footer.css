@@ -1,20 +1,24 @@
 .footer {
   max-height: 172px;
-  padding: 79px 70px 20px;
+  padding: 70px 70px 20px;
 
 }
 
 @media screen and (max-width: 768px) {
   .footer {
-    padding: 79px 30px 20px;
+    padding: 25px 30px 20px;
   } 
 } 
 
 @media screen and (max-width: 550px) {
   .footer {
-    padding: 88px 10px 20px;
+    padding: 89px 10px 20px;
   } 
 } 
+
+.footer_hidden {
+  display: none;
+}
 
 .footer__title {
   font-size: 13px;
@@ -28,7 +32,7 @@
 }
 
 @media screen and (max-width: 550px) {
-  .footer__name {
+  .footer__title {
     font-size: 12px;
     padding-bottom: 21px;
   } 

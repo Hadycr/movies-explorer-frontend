@@ -1,7 +1,16 @@
-import './Profile.css';
+import {useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Profile.css';
+
 
 function Profile({handleSubmit, handleChangeName, handleChangeEmail}) {
+
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  function switchUpdate(evt) {
+    evt.preventDefault();
+    setIsUpdate(!isUpdate);
+  }
 
 
   return (
@@ -24,10 +33,21 @@ function Profile({handleSubmit, handleChangeName, handleChangeEmail}) {
             onChange={ handleChangeEmail } required/>
           </div>
         </form>
+        {!isUpdate && (
         <div className="profile__info">
-          <button type="submit" className="profile__link">Редактировать</button>
-          <Link to="/signin" className="profile__signin">Выйти из аккаунта</Link>
+          <button type="submit" className="profile__edit profile__link" onclick={switchUpdate}>
+            Редактировать
+          </button>
+          <Link to="/signin" className="profile__signin profile__link">Выйти из аккаунта</Link>
         </div>
+        )}
+        {isUpdate && (
+        <div className="profile__info">
+          <button type="submit" className="profile__save profile__link" onclick={switchUpdate}>
+            Сохранить
+          </button>
+        </div>
+        )}
       </div>
     </section>  
   )

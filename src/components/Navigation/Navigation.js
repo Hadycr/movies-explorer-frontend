@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Navigation.css';
 import Logo from '../Logo/Logo';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Navigation({onClose, isOpen, handleChangeOpen}) {
   const uselocation  = useLocation();
@@ -17,11 +18,14 @@ function Navigation({onClose, isOpen, handleChangeOpen}) {
           Войти
         </Link>
       </nav>
-      <nav className={pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" ? "navigation-movies" : "navigation-hidden"}>
-        <Link to="/movies" className="navigation-movies__link navigatio-movies__link_dark navigation-link">
+      <nav className={pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" 
+      ? "navigation-movies" : "navigation-hidden"}>
+        <Link to="/movies" className={`navigation-movies__link navigation-link ${
+          pathName === "/movies" ? "navigation-movies__link_active" : ""}`}>
           Фильмы
         </Link>
-        <Link to="/saved-movies" className="navigation-movies__link navigation-link">
+        <Link to="/saved-movies" className={`navigation-movies__link navigation-link ${
+          pathName === "/saved-movies" ? "navigation-movies__link_active" : ""}`}>
           Сохранённые фильмы
         </Link>
         <Link to="/saved-movies" className="navigation-profile navigation-link">
@@ -43,37 +47,10 @@ function Navigation({onClose, isOpen, handleChangeOpen}) {
         <span className="navigation-burger__span"></span>
         <span className="navigation-burger__span"></span>
       </button>
-      <div className={`navigation-burger ${isOpen ? "navigation-burger_open" : ""}`} >
-        <button className="navigation-burger__closed" 
-          type="button"
-          onClick={onClose}>
-        </button>
-        <nav>
-          <ul className="navigation-burger__menu">
-            <li className="navigation-burger__list">
-              <Link to="/" className="navigation-burger__link navigation-link" onClick={onClose}>
-                Главная
-              </Link>
-            </li>
-            <li className="navigation-burger__list">
-              <Link to="/movies" className="navigation-burger__link navigation-link" onClick={onClose}>
-                Фильмы
-              </Link>
-            </li>
-            <li className="navigation-burger__list">
-              <Link to="/saved-movies" className="navigation-burger__link navigation-link" onClick={onClose}>
-                Сохранённые фильмы
-              </Link>
-            </li>
-            <li className="navigation-burger__list">
-              <Link to="/profile" className="navigation-profile__link navigation-profile__burger-link navigation-link" onClick={onClose}>
-                <p className="navigation-profile__account">Аккаунт</p>
-                <div className="navigation-profile__logo"></div>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      < BurgerMenu 
+        isOpen = {isOpen}
+        onClose = {onClose}
+      />
     </>
 
   )

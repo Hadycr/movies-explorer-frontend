@@ -12,7 +12,6 @@ function SearchForm() {
         </form>
         <div className="search__films-short-filter">
           <FilterCheckbox />
-          <p className="search__text">Короткометражки</p>
         </div>
       </div>
     </section>

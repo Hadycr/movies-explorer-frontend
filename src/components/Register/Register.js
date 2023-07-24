@@ -1,35 +1,29 @@
 import '../Login/Login.css';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
-// import navigationLogo from "../../images/logo.png";
 
 function Register({name, email, password, handleSubmit, handleChangeName, handleChangeEmail, handleChangePassword}) {
 
   return (
     <div className="login">
       <div className="login__container">
-        {/* <Link to="/" className="login__logo-link">
-          <img className="login__logo"
-            src={navigationLogo}
-            alt="Логотип"/>
-        </Link> */}
         <Logo />
         <h1 className="login__title">Добро пожаловать!</h1>
         <form className="login__form" onSubmit ={handleSubmit}>
           <label className="login__label">
             <div className="login__placeholder">Имя</div>
             <input  className="login__input" id="name" type="text" name="name" value={name} 
-              onChange={ handleChangeName } required/>  
+              onChange={ handleChangeName } required placeholder="Ваше имя"/>  
           </label>
           <label className="login__label">
             <div className="login__placeholder">E-mail</div>
-            <input  className="login__input" id="email" type="text" name="email" value={email} 
-              onChange={ handleChangeEmail } required/>
+            <input  className="login__input" id="email" type="email" name="email" value={email} 
+              onChange={ handleChangeEmail } required placeholder="Ваш email"/>
           </label>
           <label className="login__label">
             <div className="login__placeholder">Пароль</div>
             <input className="login__input" id="password" name="password" type="password" value={password} 
-              onChange={ handleChangePassword } required/>
+              onChange={ handleChangePassword } required placeholder="Пароль"/>
               <span className="login__error">Что-то пошло не так...</span>
           </label>
           <button type="submit" className="login__button login__button_registration login__link">Зарегистрироваться</button>

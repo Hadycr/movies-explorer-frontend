@@ -1,5 +1,4 @@
 .about-me {
-  /* max-height: 1079px; */
   margin: 110px 70px 114px;
 }
 
@@ -11,7 +10,7 @@
 
 @media screen and (max-width: 320px) {
   .about-me {
-    margin: 70px 14px;
+    margin: 70px 14px 40px;
   } 
 } 
 
@@ -166,7 +165,7 @@
 .about-me__photo {
   background-image: url("/src/images/1480494344_kot_sneg.jpg");
   min-width: 270px;
-  min-height: 327px;
+  min-height: 327px; 
   border-radius: 10px;
   background-repeat: no-repeat;
   background-size: contain;
