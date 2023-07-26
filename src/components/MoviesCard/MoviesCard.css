@@ -1,5 +1,4 @@
-.movie__item {
-  max-width: 270px;
+.movie {
   width: 100%;
   min-height: 151px;
   display: flex;
@@ -11,13 +10,13 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .movie__item {
+  .movi {
     max-width: 339px;
   } 
 } 
 
 @media screen and (max-width: 650px) {
-  .movie__item {
+  .movie {
     max-width: 300px;
   } 
 } 
@@ -82,7 +81,7 @@
   line-height: normal;
 }
 
-.movies__save-button {
+.movie__save-button {
   background-image: url('../../images/save8.svg');
   width: 20px;
   height: 20px;
@@ -94,17 +93,17 @@
   background-color: white;
 }
 
-.movies__save-button:hover {
+.movie__save-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-.movies__save-button:disabled {
+.movie__save-button:disabled {
   opacity: 0.2;
   cursor: auto;
 }
 
-.movies__delete-button {
+.movie__delete-button {
   background-image: url('../../images/delete.svg');
   width: 16px;
   height: 16px;
@@ -114,12 +113,12 @@
   background-color: white;
 }
 
-.movies__delete-button:hover {
+.movie__delete-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-.movies__delete-button:disabled {
+.movie__delete-button:disabled {
   opacity: 0.2;
   cursor: auto;
 }

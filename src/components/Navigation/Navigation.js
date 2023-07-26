@@ -8,50 +8,50 @@ function Navigation({onClose, isOpen, handleChangeOpen}) {
   const pathName = uselocation.pathname;
 
   return (
-    <>
+    <div className="navigation">
       <Logo />
-      <nav className={pathName === "/" ? "navigation-main" : "navigation-hidden"}>
-        <Link to="/signup" className="navigation-main__registration-link navigation-link">
+      <nav className={pathName === "/" ? "navigation__main" : "navigation__hidden"}>
+        <Link to="/signup" className="navigation__registration-link navigation__link">
           Регистрация
         </Link>
-        <Link to="/signin" className="navigation-main__login-link navigation-link">
+        <Link to="/signin" className="navigation__login-link navigation__link">
           Войти
         </Link>
       </nav>
       <nav className={pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" 
-      ? "navigation-movies" : "navigation-hidden"}>
-        <Link to="/movies" className={`navigation-movies__link navigation-link ${
-          pathName === "/movies" ? "navigation-movies__link_active" : ""}`}>
+      ? "navigation__movies" : "navigation__hidden"}>
+        <Link to="/movies" className={`navigation__movies-link navigation__link ${
+          pathName === "/movies" ? "navigation__movies-link_active" : ""}`}>
           Фильмы
         </Link>
-        <Link to="/saved-movies" className={`navigation-movies__link navigation-link ${
-          pathName === "/saved-movies" ? "navigation-movies__link_active" : ""}`}>
+        <Link to="/saved-movies" className={`navigation__movies-link navigation__link  ${
+          pathName === "/saved-movies" ? "navigation__movies-link_active" : ""}`}>
           Сохранённые фильмы
         </Link>
-        <Link to="/saved-movies" className="navigation-profile navigation-link">
-          <Link to="/profile" className="navigation-profile__link">
-            <p className="navigation-profile__account">Аккаунт</p>
-            <div className="navigation-profile__logo"></div>
+        <Link to="/saved-movies" className="navigation__profile navigation__link ">
+          <Link to="/profile" className="navigation__profile-link">
+            <p className="navigation__profile-account">Аккаунт</p>
+            <div className="navigation__profile-logo"></div>
           </Link>
         </Link>
       </nav>
       <button className={pathName === "/movies" || 
                         pathName === "/saved-movies" || 
                         pathName === "/profile" 
-                        ? "navigation-burger__button" 
-                        : "navigation-hidden"
+                        ? "navigation__burger" 
+                        : "navigation__hidden"
                         } 
               onClick={handleChangeOpen}
               type="button">
-        <span className="navigation-burger__span"></span>
-        <span className="navigation-burger__span"></span>
-        <span className="navigation-burger__span"></span>
+        <span className="navigation__span"></span>
+        <span className="navigation__span"></span>
+        <span className="navigation__span"></span>
       </button>
       < BurgerMenu 
         isOpen = {isOpen}
         onClose = {onClose}
       />
-    </>
+    </div>
 
   )
 }

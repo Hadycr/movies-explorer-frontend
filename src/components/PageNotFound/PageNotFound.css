@@ -1,27 +1,29 @@
 .page-not-found {
   height: 100vh;
-  min-height: 700px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-not-found__title {
-  margin: 246px auto 0;
-  padding: 0;
+  padding-top: 105px;
   font-size: 140px;
   font-weight: 400;
   line-height: normal;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 
 @media screen and (max-width: 768px) {
   .page-not-found__title {
-    margin: 408px auto 0;
+    padding-top: 185px;
   } 
 } 
 
 @media screen and (max-width: 550px) {
   .page-not-found__title {
-    margin: 329px auto 0;
+    margin: 110px auto 0;
     font-size: 80px;
   } 
 } 
@@ -60,7 +62,6 @@
   opacity: 0.5;
   cursor: pointer;
 }
-
 
 .page-not-found__button:disabled {
   opacity: 0.2;

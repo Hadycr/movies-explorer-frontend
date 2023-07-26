@@ -114,8 +114,7 @@
 
 .about-project__terms {
   display: grid;
-  grid-template-columns: 228px minmax(300px, 912px);
-  grid-template-rows: 36px 17px;
+  grid-template-columns: minmax(140px, 1fr) 4fr;
   row-gap: 14px;
   padding-top: 110px;
 }
@@ -123,14 +122,12 @@
 @media screen and (max-width: 768px) {
   .about-project__terms {
     padding-top: 93px;
-    grid-template-columns: 140px minmax(300px, 528px);
   } 
 } 
 
 @media screen and (max-width: 580px) {
   .about-project__terms {
     padding-top: 58px;
-    grid-template-columns: 100px minmax(100px, 184px);
     row-gap: 7px;
   } 
 } 

@@ -50,7 +50,7 @@
   } 
 }
 
-.profile__link-icon {
+.portfolio__link-icon {
   background-image: url("../../images/text__COLOR_font-main.svg");
   background-size: cover;
   width: 18px;
@@ -61,7 +61,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .profile__link-icon {
+  .portfolio__link-icon {
     width: 12px;
     height: 12px;
     text-align: center;

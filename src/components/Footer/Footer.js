@@ -16,7 +16,7 @@ function Footer() {
      } 
     `}
     >
-      <p className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</p>
+      <h3 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
       <div className="footer__container">
         <p className="footer__date">© {new Date().getFullYear()}</p>
         <div className="footer__link-container">

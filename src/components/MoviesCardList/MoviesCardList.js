@@ -4,14 +4,14 @@ import {moviesList} from '../../utils/moviesList';
 
 function MoviesCardList() {
   return (
-    <div className="movies__items">
+    <section className="movie-items">
       {moviesList.map((movie) =>  (
         <MoviesCard 
           key={movie._id}
           movie={movie}
         />
       ))}       
-    </div>   
+    </section>   
   )
 }
 

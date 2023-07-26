@@ -20,7 +20,7 @@ function AboutMe() {
         <div className="about-me__photo"></div>
       </div>
       <div className="about-me__portfolio">
-        <h2 className="about-me__name">Портфолио</h2>
+        <h3 className="about-me__name">Портфолио</h3>
         <ul className="about-me__sites">
           <li className="about-me__site about-me__site_underline">
             <Portfolio

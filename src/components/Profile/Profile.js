@@ -14,9 +14,9 @@ function Profile({handleSubmit, handleChangeName, handleChangeEmail}) {
 
 
   return (
-    <section className="profile">  
+    <main className="profile">  
       <div className="profile__container">
-        <p className="profile__title">Привет, Виталий!</p>
+        <h1 className="profile__title">Привет, Виталий!</h1>
         <form className="profile__form" onSubmit ={handleSubmit}>
           <div className="profile__form-input profile__form-input_underline">
             <p className="profile__user-name">
@@ -49,7 +49,7 @@ function Profile({handleSubmit, handleChangeName, handleChangeEmail}) {
         </div>
         )}
       </div>
-    </section>  
+    </main>  
   )
 }
 

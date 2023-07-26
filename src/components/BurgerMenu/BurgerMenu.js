@@ -8,11 +8,11 @@ function BurgerMenu({isOpen, onClose}) {
   return (
     <section className={`burger ${isOpen ? "burger_open" : ""}`}>
       <div className="burger__menu">
-        <button className="burger__menu__closed" 
+        <button className="burger__closed" 
           type="button"
           onClick={onClose}>
         </button>    
-        <nav>
+        <nav className="burger__menu-links">
           <ul className="burger__menu-navigation">
             <li>
               <Link to="/" className="burger__menu-link burger__link"
@@ -34,13 +34,11 @@ function BurgerMenu({isOpen, onClose}) {
                 Сохранённые фильмы
               </Link>
             </li>
-            <li>
-              <Link to="/profile" className="burger__menu-profile burger__link" onClick={onClose}>
+          </ul>
+          <Link to="/profile" className="burger__menu-profile burger__link" onClick={onClose}>
                 <p className="burger__menu-profile-account">Аккаунт</p>
                 <div className="burger__menu-profile-logo"></div>
-              </Link>
-            </li>
-          </ul>
+          </Link>
         </nav>
       </div>
     </section>
