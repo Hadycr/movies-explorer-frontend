@@ -1,0 +1,15 @@
+.logo__img {
+  height: 38px;
+  width: 38px;
+  padding: 0;
+}
+
+.logo__link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.logo__link:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}

@@ -1,0 +1,12 @@
+.app {
+  min-height: 100vh;
+  min-width: 320px;
+  width: 1278px;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 768px) {
+  .app {
+    max-width: 768px;
+  } 
+}

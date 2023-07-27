@@ -1,0 +1,25 @@
+@import url(../src/vendor/normalize.css);
+@import url(../src/vendor/fonts/fonts.css);
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 auto;
+
+}
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}

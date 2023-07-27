@@ -1,0 +1,124 @@
+.movie {
+  width: 100%;
+  min-height: 151px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (max-width: 1279px) {
+  .movi {
+    max-width: 339px;
+  } 
+} 
+
+@media screen and (max-width: 650px) {
+  .movie {
+    max-width: 300px;
+  } 
+} 
+
+.movie__img {
+  margin: 0;
+  padding: 0;
+  width: 270px;
+  width: 100%;
+  height: 151px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+@media screen and (max-width: 1279px) {
+  .movie__img {
+    max-width: 339px;
+    height: 190px;
+  } 
+} 
+
+@media screen and (max-width: 650px) {
+  .movie__img {
+    max-width: 300px;
+    height: 168px;
+  } 
+} 
+
+.movie__description {
+  margin: 14px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.movie__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie__name {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  line-height: normal;
+
+}
+
+.movie__duration {
+  font-size: 11px;
+  font-weight: 400;
+  margin: 0;
+  padding-top: 10px;
+  text-align: left;
+  color: #A0A0A0;
+  line-height: normal;
+}
+
+.movie__save-button {
+  background-image: url('../../images/save8.svg');
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: white;
+}
+
+.movie__save-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.movie__save-button:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}
+
+.movie__delete-button {
+  background-image: url('../../images/delete.svg');
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: white;
+}
+
+.movie__delete-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.movie__delete-button:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}

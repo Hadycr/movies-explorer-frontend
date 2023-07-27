@@ -1,0 +1,160 @@
+.profile {
+  margin: 73px 435px;
+  max-height: 400px;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    margin: 236px 179px 70px;
+  } 
+} 
+
+@media screen and (max-width: 700px) {
+  .profile {
+    margin: 70px 30px;
+  } 
+} 
+
+.profile__container {
+  width: 100%;
+  max-width: 1280px;
+}
+
+.profile__title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0 auto;
+}
+
+.profile__form {
+  margin-top: 107px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+@media screen and (max-width: 768px) {
+  .profile__form {
+    margin-top: 80px;
+  } 
+} 
+
+@media screen and (max-width: 550px) {
+  .profile__form {
+    margin-top: 65px;
+  } 
+} 
+
+.profile__form-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: none;
+  min-height: 30px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 17px 0 0;
+  padding: 0;
+}
+
+.profile__form-input_underline {
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.profile__input {
+  min-width: 300px;
+  border: none;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0 0 16px;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__input {
+    min-width: 200px;
+  } 
+} 
+
+.profile__user-name {
+  padding: 0;
+  margin: 0;
+}
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 204px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__info {
+    margin-top: 193px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile__info {
+    margin-top: 360px;
+  }
+}
+
+.profile__edit {
+  border: none;
+  background-color: white;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__edit {
+    font-size: 12px;
+  }
+}
+
+.profile__signin {
+  text-decoration: none;
+  color: #FF4062;
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__signin {
+    font-size: 12px;
+  }
+}
+
+.profile__save {
+  background-color: #3456F3;
+  color: #FFFFFF;
+  width: 100%;
+  height: 45px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 20px 0 16px;
+  padding: 0;
+}
+
+.profile__link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.profile__link:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}
