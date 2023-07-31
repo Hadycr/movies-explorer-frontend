@@ -1,10 +1,11 @@
 import { useLocation } from "react-router-dom";
 import './MoviesCard.css';
+import {MOVIES_BASE_URL} from "../../config/config";
 
 function MoviesCard({movie}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-
+  const imageUrl = `${MOVIES_BASE_URL}${movie.image.url}`
   function handleCardSaveClick () {
   }
   
@@ -13,10 +14,10 @@ function MoviesCard({movie}) {
   
   return (
     <section className="movie">
-      <img className="movie__img" src={movie.image} alt={movie.name}/>
+      <img className="movie__img" src={imageUrl} alt={movie.nameRU}/>
         <div className="movie__description">
           <div className="movie__info">
-            <h3 className="movie__name">{movie.name}</h3>
+            <h3 className="movie__name">{movie.nameRU}</h3>
             <p className="movie__duration">{movie.duration}</p>
           </div>
           <button 

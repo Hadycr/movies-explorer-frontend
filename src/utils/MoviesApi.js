@@ -1,5 +1,3 @@
-import {MOVIES_BASE_URL} from "../config/config";
-
 function handleResponse(res) {
   if (res.ok) {
     return res.json();
@@ -8,7 +6,7 @@ function handleResponse(res) {
 }
 
 export const getMovies = () => {
-  return fetch({MOVIES_BASE_URL}, {
+  return fetch("https://api.nomoreparties.co/beatfilm-movies", {
     method: 'GET',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify()

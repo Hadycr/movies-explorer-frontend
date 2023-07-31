@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import {useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
@@ -10,9 +10,21 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Footer from '../Footer/Footer';
+import * as moviesApi from '../../utils/MoviesApi';
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    moviesApi.getMovies()
+      .then ((movies) => {
+        setMovies(movies);
+        console.log(movies);
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+
+  })
 
   function closeAllPopups() {
     setMenuOpen(false);
@@ -31,7 +43,9 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies" element={<Movies 
+          movies={movies}
+        />} />
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Register />} />
