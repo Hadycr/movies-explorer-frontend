@@ -42,3 +42,15 @@
   opacity: 0.2;
   cursor: auto;
 }
+
+.movies__error {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  color: #FF4062;
+  display: block;
+  margin-top: 10px;
+  box-sizing: border-box;
+  min-height: 10px;
+  text-align: center;
+}

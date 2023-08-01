@@ -122,3 +122,13 @@
   opacity: 0.2;
   cursor: auto;
 }
+
+.movie__link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.movie__link:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}
