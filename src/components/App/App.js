@@ -1,6 +1,7 @@
 import {useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -14,11 +15,16 @@ import * as moviesApi from '../../utils/MoviesApi';
 import * as mainApi from '../../utils/MainApi';
 
 
+
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [movies, setMovies] = useState([]);
   const [errorRegistration, seterrorRegistration] = useState("");
   const [isLogIn, setIsLogIn] = useState(false);
+  const [currentUser, setСurrentUser] = useState({
+    name:"",
+    email:"",
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,8 +37,8 @@ function App() {
 
   })
 
-  function handleRegistration({name, email, password}) {
-    mainApi.register({name, email, password})
+  function handleRegistration(values) {
+    mainApi.register(values.name, values.email, values.password)
       .then((data) => {
         if(data !== undefined) {
           localStorage.setItem('token', data.token);
@@ -53,8 +59,21 @@ function App() {
         if(data !== undefined) {
           localStorage.setItem('token', data.token);
           setIsLogIn(true);
+          setСurrentUser(data);
           navigate('/');
         }
+      })
+      .catch(() => {
+        seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
+      })
+  }
+
+  function handleLogin({email, password}) {
+    mainApi.authorize({email, password})
+      .then((res) => {
+        localStorage.setItem('token', res.token);
+        setIsLogIn(true);
+        navigate('/');
       })
       .catch(() => {
         seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
@@ -71,6 +90,7 @@ function App() {
   
   return (
     <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Header
       isOpen={isMenuOpen}
       onClose={closeAllPopups} 
@@ -94,7 +114,7 @@ function App() {
         <Route path="/404" element={<PageNotFound />} />
       </Routes>
       <Footer /> 
-
+    </CurrentUserContext.Provider>
     </> 
   );
 }

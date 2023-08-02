@@ -10,11 +10,11 @@ function handleResponse(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = ({name, email, password}) => {
+export const register = (values) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ name, email, password })
+    body: JSON.stringify(values.name, values.email, values.password)
 
   })
   .then(res => handleResponse(res))

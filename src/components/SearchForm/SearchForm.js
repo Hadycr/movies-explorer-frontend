@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({onSearchMovie}) {
+function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
 
   function handleChange(evt) {
     setSearchValue(evt.target.value);
-    console.log(evt.target.value);
   }
 
   function handleSubmit(evt) {
@@ -32,7 +31,9 @@ function SearchForm({onSearchMovie}) {
         </form>
         <span className="search__error">{!searchValue && searchError}</span>
         <div className="search__films-short-filter">
-          <FilterCheckbox />
+          <FilterCheckbox 
+            onChangeFilter = {onChangeFilter}
+            isChecked = {isChecked}/>
         </div>
       </div>
     </section>
