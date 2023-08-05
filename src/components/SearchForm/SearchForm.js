@@ -3,11 +3,12 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
+  // function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
 
   function handleChange(evt) {
-    setSearchValue(evt.target.value);
+    setSearchValue(evt.target.value.replace(/^\s+/,''));
   }
 
   function handleSubmit(evt) {
@@ -15,7 +16,8 @@ function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
     if (!searchValue) {
       setsearchError("Нужно ввести ключевое слово");
     } else {
-      onSearchMovie(searchValue)
+      onSearchMovie(searchValue);
+      localStorage.setItem("searchValueMovie", searchValue);
     }
 
   }
@@ -33,7 +35,8 @@ function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
         <div className="search__films-short-filter">
           <FilterCheckbox 
             onChangeFilter = {onChangeFilter}
-            isChecked = {isChecked}/>
+            isChecked = {isChecked}
+          />
         </div>
       </div>
     </section>

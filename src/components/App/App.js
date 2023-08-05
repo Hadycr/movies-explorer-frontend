@@ -30,10 +30,9 @@ function App() {
   useEffect(() => {
     moviesApi.getMovies()
       .then ((movies) => {
-        setMovies(movies);
-      
+        setMovies(movies);    
       })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+      .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
 
   })
 

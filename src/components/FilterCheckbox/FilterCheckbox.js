@@ -3,6 +3,7 @@ import './FilterCheckbox.css';
 
 
 function FilterCheckbox({onChangeFilter, isChecked }) {
+  // function FilterCheckbox({onChangeFilter, isChecked }) {
   // const [checked, setChecked] = useState(false);
 
   // function handleChangeFilter() {
@@ -11,7 +12,7 @@ function FilterCheckbox({onChangeFilter, isChecked }) {
   // }
 
 
-  
+  // checked={isChecked}
   return (
     <div className="filter-checkbox">
       <label className="filter-checkbox__switch">
