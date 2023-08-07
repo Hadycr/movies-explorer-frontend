@@ -10,11 +10,11 @@ function handleResponse(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = (values) => {
+export const register = ({ name, email, password }) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(values.name, values.email, values.password)
+    body: JSON.stringify({ name, email, password })
 
   })
   .then(res => handleResponse(res))
@@ -31,23 +31,24 @@ export const authorize = ({email, password}) => {
   .then(res => handleResponse(res))
 }
 
-// export const checkToken = () => {
-//   const token = localStorage.getItem('token');
-//   return fetch(`${BASE_URL}/users/me`, {   
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${token}`,
-//     }
-//   })
-//   .then(res => handleResponse(res))
-// }
+export const checkToken = () => {
+  const token = localStorage.getItem('token');
+  return fetch(`${BASE_URL}/users/me`, {   
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+}
 
 
 export const getUserInfo = () => {
+  const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/users/me`, {
     headers: {
-      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   })
@@ -55,10 +56,11 @@ export const getUserInfo = () => {
 }
 
 export const editUserInfo = ({name, email, password})=> {
+  const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH',
     headers: {
-      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -71,9 +73,10 @@ export const editUserInfo = ({name, email, password})=> {
 }
 
 export const getSavedMovies = () => {
+  const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/movies`, {
     headers: {
-      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   })
@@ -82,9 +85,11 @@ export const getSavedMovies = () => {
 
 export const addMovies = ({country, director, duration, year, description, image, trailerLink, 
   thumbnail, movieId, nameRU, nameEN}) => {
+  const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/movies `, {
     method: 'POST',
     headers: {
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -105,9 +110,11 @@ export const addMovies = ({country, director, duration, year, description, image
 }
 
 export const deleteCard = (movie) => {
+  const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/movies/${movie._id}`, {
   method: 'DELETE',
   headers: {
+    Authorization: `Bearer ${token}`,
     'Content-Type': 'application/json',
   },
   })

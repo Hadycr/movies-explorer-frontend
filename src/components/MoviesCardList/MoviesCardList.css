@@ -1,5 +1,8 @@
-
-
+/* 
+.movie-items {
+  display: flex;
+  flex-direction: column;
+} */
 .movie-items__container {
   padding: 80px 70px 30px;
   box-sizing: border-box;
@@ -13,7 +16,7 @@
 }
 
  @media screen and (max-width: 1279px) {
-  .movie-items {
+  .movie-items__container {
     padding: 80px 30px 0;
     grid-template-columns: repeat(2, 1fr);
     /* max-height: 1240px; */
@@ -25,11 +28,11 @@
 } 
 
 @media screen and (max-width: 670px) {
-  .movie-items {
+  .movie-items__container {
     padding: 50px 10px 30px;
     grid-template-columns: 1fr;
     /* min-height: 558px; */
-    max-height: 1314px;
+    /* max-height: 1314px; */
     row-gap: 20px;
   } 
 }

@@ -15,8 +15,8 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
   }, [movies]);
 
   const moviesRender = useMemo(() => {
-    const countRender = size.width < 768 ? 5 : size.width < 1280 ? 8 : 12;
-
+    const countRender = size.width < 670 ? 5 : size.width < 1279 ? 8 : 16;
+    console.log(countRender);
     return movies.slice(0, countRender + addMovies);
   }, [movies, addMovies, size]);
 
@@ -35,10 +35,10 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
         ))}
       </div>
       {pathName === "/movies" && 
-        // movies.length > moviesRender.length &&  
+        movies.length > moviesRender.length &&  
         (<button type="button" className="movie-items__button"
         onClick={() => {
-          setaddMovies((prev) => prev + (size.width >= 768 ? 2 : 4));
+          setaddMovies((prev) => prev + (size.width >= 1280 ? 4 : 2));
         }}>
           Ещё
          </button>

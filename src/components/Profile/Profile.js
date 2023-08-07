@@ -4,7 +4,7 @@ import './Profile.css';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
-function Profile({ handleSubmit }) {
+function Profile({ onUpdateUser }) {
   const { values, handleChange, errors, isValid } = ValidatorForm();
   const currentUser = useContext(CurrentUserContext);
   const [isUpdate, setIsUpdate] = useState(false);
@@ -20,6 +20,13 @@ function Profile({ handleSubmit }) {
     evt.preventDefault();
     setIsUpdate(!isUpdate);
   }
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onUpdateUser( {name: values.name,
+      email: values.email,
+  });
+}
 
 
   return (
