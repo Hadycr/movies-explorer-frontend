@@ -24,7 +24,10 @@ export const authorize = ({email, password}) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({
+      email,
+      password
+    })
 
   })
 
@@ -55,7 +58,7 @@ export const getUserInfo = () => {
   .then(res => handleResponse(res))
 }
 
-export const editUserInfo = ({name, email, password})=> {
+export const editUserInfo = ({name, email})=> {
   const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH',
@@ -65,8 +68,7 @@ export const editUserInfo = ({name, email, password})=> {
     },
     body: JSON.stringify({
       name,
-      email,
-      password
+      email
     })
   })
   .then(res => handleResponse(res))
@@ -83,8 +85,7 @@ export const getSavedMovies = () => {
   .then(res => handleResponse(res))
 }
 
-export const addMovies = ({country, director, duration, year, description, image, trailerLink, 
-  thumbnail, movieId, nameRU, nameEN}) => {
+export const addMovies = (card) => {
   const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/movies `, {
     method: 'POST',
@@ -93,17 +94,18 @@ export const addMovies = ({country, director, duration, year, description, image
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      country,
-      director,
-      duration, 
-      year, 
-      description, 
-      image: `${MOVIES_BASE_URL}${image.url}`,
-      trailerLink, 
-      thumbnail: `${MOVIES_BASE_URL}${image.formats.thumbnail.url}`, 
-      movieId, 
-      nameRU, 
-      nameEN
+      country: card.country,
+      director: card.director,
+      duration: card.duration, 
+      year: card.year, 
+      description: card.description, 
+      image: `${MOVIES_BASE_URL}${card.image.url}`,
+      trailerLink: card.trailerLink, 
+      thumbnail: `${MOVIES_BASE_URL}${card.image.formats.thumbnail.url}`, 
+      movieId: card.movieId, 
+      nameRU: card.nameRU, 
+      nameEN: card.nameEN,
+      owner: card.owner
     })
   })
   .then(res => handleResponse(res))

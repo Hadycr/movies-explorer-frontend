@@ -1,18 +1,27 @@
+import { useEffect } from "react";
 import '../Login/Login.css';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
 
-function Register({handleRegistration, errorRegistration, handleSubmit}) {
-  const { values, handleChange, errors, isValid } = ValidatorForm();
+function Register({handleRegistration, errorRegistration}) {
+  const { values, handleChange, errors, isValid, resetForm } = ValidatorForm();
 
   function handleSubmit(evt) {
     evt.preventDefault();
       // registrationInfo.name = values.name;
       // registrationInfo.email = values.email;
       // registrationInfo.password = values.password;
-      handleRegistration(values);
+      handleRegistration({
+        name: values.name,
+        email: values.email,
+        password: values.password
+      });
   }
+
+  useEffect(() => {
+    resetForm();
+  }, []);
 
   return (
     <main className="login">
@@ -35,7 +44,7 @@ function Register({handleRegistration, errorRegistration, handleSubmit}) {
             <label className="login__label">
               <div className="login__placeholder">E-mail</div>
               <input  className="login__input" id="email" type="email" name="email" 
-                value={values.email || ""} pattern="^\w+@\w+\.(com|net|ru)$" 
+                value={values.email || ""} pattern="/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,10})+$/"
                 onChange={ handleChange } required placeholder="Ваш email"/>
               <span className={`login__error ${
                 errors.email ? "login__error_active" : ""

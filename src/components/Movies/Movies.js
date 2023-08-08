@@ -23,7 +23,6 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
         setIsNotFound(!isNotFound);  // статус ничего не найдено
       } else {
         setFilteredMovies(filtered);  //записываем в сатйт фильмт филмы
-        console.log(filtered);
         localStorage.setItem("movieFiltered", filtered); //записываем эти самы фильмы
         // setFilteredMovies(movies.filter(movie => {
         //   return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())

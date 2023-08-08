@@ -21,19 +21,20 @@ function Profile({ onUpdateUser }) {
     setIsUpdate(!isUpdate);
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    onUpdateUser( {name: values.name,
-      email: values.email,
+
+function handleSubmit(e) {
+  e.preventDefault();
+  onUpdateUser({
+    name: values.name,
+    email: values.email,
   });
 }
-
 
   return (
     <main className="profile">  
       <div className="profile__container">
         <h1 className="profile__title">Привет,{currentUser.name}!</h1>
-        <form className="profile__form" onSubmit ={handleSubmit}>
+        <form className="profile__form"  onSubmit={handleSubmit}>
           <div className="profile__form-input profile__form-input_underline">
             <p className="profile__user-name">
               Имя

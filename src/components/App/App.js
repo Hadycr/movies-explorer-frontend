@@ -21,6 +21,7 @@ import * as mainApi from '../../utils/MainApi';
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const [errorRegistration, seterrorRegistration] = useState("");
   const [isLogIn, setIsLogIn] = useState(false);
   const [currentUser, setСurrentUser] = useState({
@@ -31,6 +32,8 @@ function App() {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
 
+
+  //получение фильмов
   useEffect(() => {
     if(isLogIn) {
     moviesApi.getMovies()
@@ -41,6 +44,9 @@ function App() {
     };
   },[isLogIn]);
 
+
+
+  //получение инфо о юзере
   useEffect(() => {
     if(isLogIn) {
       mainApi.getUserInfo()
@@ -51,6 +57,8 @@ function App() {
     };
   }, [isLogIn]);
 
+
+  //проверка токена
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -58,18 +66,32 @@ function App() {
         .then((data) => {
           if (data) {
             setIsLogIn(true);
-            navigate(pathName);
+            // navigate('/');
+            // navigate(pathName);
           }
         })
-        .catch((err) => {
-          console.error(err);
-        });
+        .catch((err) => console.log(`Ошибка: ${err}`));
     }
   }, [navigate]);
 
+  //получение сохораненых фильиов
+  useEffect(() => {
+    if(isLogIn) {
+      mainApi.getSavedMovies()
+      .then ((movies) => {
+        setSavedMovies(movies);   
+        localStorage.setItem('savedMovies', JSON.stringify(movies)); 
+      })
+      .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
+    };
+  },[isLogIn]);
+
+
+
   function handleRegistration({ name, email, password }) {
-    mainApi.register(name, email, password)
+    mainApi.register({ name, email, password })
       .then((data) => {
+        console.log(data);
         if(data !== undefined) {
           handleLogin({email, password})
           // localStorage.setItem('token', data.token);
@@ -90,7 +112,7 @@ function App() {
         if(data !== undefined) {
           localStorage.setItem('token', data.token);
           setIsLogIn(true);
-          setСurrentUser(data);
+          // setСurrentUser(data);
           navigate('/movies');
         }
       })
@@ -106,6 +128,29 @@ function App() {
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
   }
+
+//при нажатие на кнопку добавляется в save
+  function handleSaveMovie(movie) {
+      console.log(movie);
+      mainApi.addMovies(movie)
+        .then((res) => {
+          console.log(res);
+          setSavedMovies([...savedMovies, res]);
+          console.log(savedMovies);
+        })
+        .catch((err) => console.log(`Ошибка: ${err}`));
+      }
+
+
+
+  function handleDeleteMovie(movie) {
+    mainApi.deleteCard (movie._id)
+      .then(() => {
+        setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+    }
+
 
   function closeAllPopups() {
     setMenuOpen(false);
@@ -130,8 +175,8 @@ function App() {
           loggedIn = {isLogIn}
           element= {Movies} 
           movies={movies}
-            // onSaveMovie={onSaveMovie}
-            // onDeleteMovie={onSaveMovie}
+          onSaveMovie={handleSaveMovie}
+          onDeleteMovie={handleDeleteMovie}
         />}/>
         <Route path="/saved-movies" element={<ProtectedRoute 
           loggedIn = {isLogIn}

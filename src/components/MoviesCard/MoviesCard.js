@@ -7,9 +7,9 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
   const pathName = uselocation.pathname;
   const imageUrl = `${MOVIES_BASE_URL}${movie.image.url}`
   
-  function handleCardSaveClick () {
-    onSaveMovie(movie);
-  }
+  // function handleCardSaveClick () {
+  //   onSaveMovie(movie);
+  // }
   
   function handleDeleteCliсk() {
     onDeleteMovie(movie)
@@ -39,7 +39,7 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
         </div>
         <button 
           className={pathName === "/movies" ? "movie__save-button" : "movie__delete-button"}
-          onClick={pathName === "/movies" ? handleCardSaveClick : handleDeleteCliсk}
+          onClick={pathName === "/movies" ? onSaveMovie(movie) : handleDeleteCliсk(movie)}
           type="button">
         </button>
       </div>
