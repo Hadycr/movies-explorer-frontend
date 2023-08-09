@@ -11,6 +11,7 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
   const [isChecked, setChecked] = useState(false); 
   const savedMovies = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
+  const movieFiltered = localStorage.getItem("movieFiltered");
   const [isNotFound, setIsNotFound] = useState(false);
   const size = useWindowSize();
 
@@ -23,7 +24,7 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
         setIsNotFound(!isNotFound);  // статус ничего не найдено
       } else {
         setFilteredMovies(filtered);  //записываем в сатйт фильмт филмы
-        localStorage.setItem("movieFiltered", filtered); //записываем эти самы фильмы
+        localStorage.setItem("movieFiltered", JSON.stringify(filtered)); //записываем эти самы фильмы
         // setFilteredMovies(movies.filter(movie => {
         //   return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
         // }
@@ -46,6 +47,11 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
 
     }
 
+    // useEffect(() => {
+    //   if (movieFiltered) {
+    //     setFilteredMovies(JSON.parse(movieFiltered));
+    //   }
+    // }, [movieFiltered]);
 
     // function handleAddCard(card) {
     //   setAddCard(card)

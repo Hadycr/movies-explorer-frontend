@@ -33,7 +33,7 @@ function Login({handleLogin, errorRegistration}) {
             <label className="login__label">
               <div className="login__placeholder">E-mail</div>
               <input  className="login__input" id="email" type="email" name="email" 
-                value={values.email || ""} pattern="^\w+@\w+\.(com|net|ru)$"
+                value={values.email || ""}
                 onChange={ handleChange } required placeholder="Ваш email"/>
               <span className={`login__error ${
                 errors.email ? "login__error_active" : ""

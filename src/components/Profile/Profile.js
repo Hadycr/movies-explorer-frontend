@@ -4,8 +4,8 @@ import './Profile.css';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
-function Profile({ onUpdateUser }) {
-  const { values, handleChange, errors, isValid } = ValidatorForm();
+function Profile({ onUpdateUser, onLogout }) {
+  const { values, handleChange, errors, isValid, setValues } = ValidatorForm();
   const currentUser = useContext(CurrentUserContext);
   const [isUpdate, setIsUpdate] = useState(false);
 
@@ -15,6 +15,16 @@ function Profile({ onUpdateUser }) {
   //     setIsValid(true);
   //   }
   // }, [currentUser, setIsValid, setValues]);
+
+  useEffect(() => {
+    if (currentUser.name === values.name && currentUser.email === values.email) {
+      setIsUpdate(true);
+      setValues(currentUser);
+    } else {
+      setIsUpdate(false);
+      // setValues(currentUser);
+    }
+  }, [currentUser.email, currentUser.name, values]);
 
   function switchUpdate(evt) {
     evt.preventDefault();
@@ -39,11 +49,10 @@ function handleSubmit(e) {
             <p className="profile__user-name">
               Имя
             </p>
-            <input  className="profile__input" placeholder="Имя" id="name" 
+            <input  className="profile__input" placeholder={currentUser.name} id="name" 
               type="text" name="name" value={values.name || ''} onChange={ handleChange }
                minLength="2" maxLength="40" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
-              required/>
-            
+               />
           </div>
           <span className={`profile__error ${
                 errors.name ? "profile__error_active" : ""
@@ -54,8 +63,9 @@ function handleSubmit(e) {
             <p className="profile__user-name">
               E-mail
             </p>
-          <input  className="profile__input" placeholder="E-mail" id="email" type="text" 
-          name="email" value={values.email || ""}  pattern="^\w+@\w+\.(com|net|ru)$" onChange={ handleChange } required/>
+          <input  className="profile__input" placeholder={currentUser.email} id="email" type="text" 
+            name="email" value={values.email || ""}  pattern="^\w+@\w+\.(com|net|ru)$" onChange={ handleChange }
+          />
           </div>
           <span className={`profile__error ${
                 errors.email ? "profile__error_active" : ""
@@ -69,17 +79,18 @@ function handleSubmit(e) {
           disabled={!isValid ? true : false}>
             Редактировать
           </button>
-          <Link to="/signin" className="profile__signin profile__link">Выйти из аккаунта</Link>
+          <Link to="/"  onClick={onLogout}
+            className="profile__signin profile__link">Выйти из аккаунта</Link>
         </div>
         )}
-        {isUpdate && (
+        {/* {isUpdate && (
         <div className="profile__info">
           <button type="submit" className="profile__save profile__link" onclick={switchUpdate}
            disabled={!isValid ? true : false}>
             Сохранить
           </button>
         </div>
-        )}
+        )} */}
       </div>
     </main>  
   )

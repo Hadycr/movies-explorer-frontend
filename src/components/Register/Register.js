@@ -33,7 +33,7 @@ function Register({handleRegistration, errorRegistration}) {
             <label className="login__label">
               <div className="login__placeholder">Имя</div>
               <input  className="login__input" id="name" type="text" name="name"
-                 value={values.name || ""} minLength="2" maxLength="40" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
+                 value={values.name || ""} minLength="2" maxLength="40"
                  onChange={ handleChange } required placeholder="Ваше имя"/>  
               <span className={`login__error ${
                 errors.name ? "login__error_active" : ""

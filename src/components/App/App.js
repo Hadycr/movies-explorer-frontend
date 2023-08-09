@@ -61,13 +61,23 @@ function App() {
   //проверка токена
   useEffect(() => {
     const token = localStorage.getItem('token');
+    // console.log(token);
     if (token) {
       mainApi.checkToken(token)
         .then((data) => {
+          console.log(data);
           if (data) {
+            handleLogin({
+              email: data.email,
+              password: data.password
+              });
             setIsLogIn(true);
-            // navigate('/');
-            // navigate(pathName);
+            // navigate('/movies');
+            // setСurrentUser({
+            //   name: data.name,
+            //   email: data.email
+            // })
+            navigate(pathName);
           }
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
@@ -91,7 +101,6 @@ function App() {
   function handleRegistration({ name, email, password }) {
     mainApi.register({ name, email, password })
       .then((data) => {
-        console.log(data);
         if(data !== undefined) {
           handleLogin({email, password})
           // localStorage.setItem('token', data.token);
@@ -109,11 +118,17 @@ function App() {
   function handleLogin({email, password}) {
     mainApi.authorize({email, password})
       .then((data) => {
+        // console.log(data);
         if(data !== undefined) {
           localStorage.setItem('token', data.token);
+
           setIsLogIn(true);
           // setСurrentUser(data);
           navigate('/movies');
+          // setСurrentUser({
+          //   name: data.name,
+          //   email: data.email
+          // })
         }
       })
       .catch(() => {
@@ -124,7 +139,10 @@ function App() {
   function handleUpdateUser(currentUser) {
     mainApi.editUserInfo(currentUser)
       .then((data) => {
-        setСurrentUser(data);
+        setСurrentUser({
+          name: data.name,
+          email: data.email
+        })
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
   }
@@ -159,6 +177,10 @@ function App() {
   function handleMenuButtonClick() {
     setMenuOpen(true);
   }
+
+  function handleSignOut () {
+    localStorage.removeItem('token');
+  }
   
   return (
     <>
@@ -186,6 +208,7 @@ function App() {
           loggedIn = {isLogIn}
           element = {Profile}
           onUpdateUser = {handleUpdateUser} 
+          onLogout = {handleSignOut}
         />}/>
         <Route path="/signup" element={<Register 
           handleRegistration = {handleRegistration}
