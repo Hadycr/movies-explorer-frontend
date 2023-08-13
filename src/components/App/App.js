@@ -31,6 +31,7 @@ function App() {
   const navigate = useNavigate();
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
+  const [isUpdate, setIsUpdate] = useState(false);
 
 
   //получение фильмов
@@ -38,20 +39,20 @@ function App() {
     if(isLogIn) {
     moviesApi.getMovies()
       .then ((movies) => {
-        setMovies(movies);    
+        // console.log(movies)
+;        setMovies(movies);    
       })
       .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
     };
   },[isLogIn]);
-
-
 
   //получение инфо о юзере
   useEffect(() => {
     if(isLogIn) {
       mainApi.getUserInfo()
       .then((res) => {
-        setСurrentUser(res);
+        console.log(res);
+        setСurrentUser(res)
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
     };
@@ -65,36 +66,22 @@ function App() {
     if (token) {
       mainApi.checkToken(token)
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data) {
-            handleLogin({
-              email: data.email,
-              password: data.password
-              });
+            // handleLogin(data);
+            // handleLogin({email: data.email, password: data.password});
             setIsLogIn(true);
             // navigate('/movies');
-            // setСurrentUser({
-            //   name: data.name,
-            //   email: data.email
-            // })
-            navigate(pathName);
+            // navigate(pathName);
           }
+                      navigate(pathName);
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
     }
-  }, [navigate]);
+  }, []);
 
   //получение сохораненых фильиов
-  useEffect(() => {
-    if(isLogIn) {
-      mainApi.getSavedMovies()
-      .then ((movies) => {
-        setSavedMovies(movies);   
-        localStorage.setItem('savedMovies', JSON.stringify(movies)); 
-      })
-      .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
-    };
-  },[isLogIn]);
+
 
 
 
@@ -139,27 +126,47 @@ function App() {
   function handleUpdateUser(currentUser) {
     mainApi.editUserInfo(currentUser)
       .then((data) => {
-        setСurrentUser({
-          name: data.name,
-          email: data.email
-        })
+        // setСurrentUser({
+        //   ...currentUser,
+        //   name: data.name,
+        //   email: data.email
+        // });
+        console.log(data);
+        setСurrentUser(data);
+        setIsUpdate(true);
+        // console.log(data);
+        // setСurrentUser({
+        //   name: data.name,
+        //   email: data.email
+        // })
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
   }
 
 //при нажатие на кнопку добавляется в save
   function handleSaveMovie(movie) {
-      console.log(movie);
       mainApi.addMovies(movie)
+        // .then((res) => {
+        //   console.log(res.image);
+        // })
         .then((res) => {
-          console.log(res);
           setSavedMovies([...savedMovies, res]);
-          console.log(savedMovies);
+          // console.log(savedMovies);
+      
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
       }
 
-
+      useEffect(() => {
+        if(isLogIn) {
+          mainApi.getSavedMovies()
+          .then ((movies) => {
+            setSavedMovies(movies);   
+            localStorage.setItem("savedMovies", JSON.stringify(movies)); 
+          })
+          .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
+        };
+      },[isLogIn]);
 
   function handleDeleteMovie(movie) {
     mainApi.deleteCard (movie._id)
@@ -198,11 +205,13 @@ function App() {
           element= {Movies} 
           movies={movies}
           onSaveMovie={handleSaveMovie}
-          onDeleteMovie={handleDeleteMovie}
+          // onDeleteMovie={handleDeleteMovie}
         />}/>
         <Route path="/saved-movies" element={<ProtectedRoute 
           loggedIn = {isLogIn}
-          element= {SavedMovies} 
+          element= {SavedMovies}
+          savedMovies={savedMovies} 
+          onDeleteMovie={handleDeleteMovie}
         />}/>
         <Route path="/profile" element={<ProtectedRoute 
           loggedIn = {isLogIn}

@@ -25,7 +25,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
       <div className="movie-items__container">
         {moviesRender.map((movie) =>  (
           <MoviesCard 
-            key={movie.id}
+            key={movie.id || movie.movieId}
             movie={movie}
             movies={movies}
             onSaveMovie={onSaveMovie}

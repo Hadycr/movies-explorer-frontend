@@ -3,17 +3,49 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 import Preolader from '../Preolader/Preloader';
-import useWindowSize from '../../config/WindowSize';
 
 function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
-  const [isChecked, setChecked] = useState(false); 
+  const [isCheckedShort, setisCheckedShort] = useState(false); 
   const savedMovies = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
   const movieFiltered = localStorage.getItem("movieFiltered");
+  const shortMovieFiltered = localStorage.getItem("shortMovieFiltered");
+  const filteredShortMoviesList = localStorage.getItem("filteredShortMovies");
   const [isNotFound, setIsNotFound] = useState(false);
-  const size = useWindowSize();
+
+
+  //показывает все фильмы после поиска после перезагрузки
+  useEffect(() => {
+    if (movieFiltered) {
+      if (filteredMovies.length === 0) {
+        setIsNotFound(true);
+        setFilteredMovies(JSON.parse(movieFiltered))
+      } else {
+        setIsNotFound(false);
+      }
+    } else {
+      setIsNotFound(false);
+    }
+  }, [movieFiltered, filteredMovies]);
+
+//показыет chebox псоле перезагрузки
+  useEffect(() => {
+    if (shortMovieFiltered === true) {
+      setisCheckedShort(true);
+    } else {
+      setisCheckedShort(false);
+    }
+  }, [shortMovieFiltered]);
+
+  //показывает короткие видео после перезагрузки
+  useEffect(() => {
+    if (filteredShortMoviesList) {
+             
+      setFilteredMovies(JSON.parse(filteredShortMoviesList));
+} 
+  }, [filteredShortMoviesList]);
 
   function handleSearchMovie(searchValue) { 
     const filtered = movies.filter(movie => {
@@ -35,50 +67,27 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
     }
 
     function handleChangeFilter() {
-      setChecked(!isChecked);
+      setisCheckedShort(!isCheckedShort);
       const filteredShort = filteredMovies.filter(filteredMovie => {
         return filteredMovie.duration <= 40
       })
       setFilteredShortMovies(filteredShort);
       setFilteredMovies(filteredShort);
-      localStorage.setItem("shortMovieFiltered", !isChecked);
+      localStorage.setItem("shortMovieFiltered", !isCheckedShort);
+      localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
+      // console.log(filteredShort);
       // setChecked(checked);
       // console.log(filteredMovie.duration);
 
     }
 
-    // useEffect(() => {
-    //   if (movieFiltered) {
-    //     setFilteredMovies(JSON.parse(movieFiltered));
-    //   }
-    // }, [movieFiltered]);
-
-    // function handleAddCard(card) {
-    //   setAddCard(card)
-
-    // }
-  // useEffect(() => {
-  //   setTimeout(() => setIsLoading(false), 8000);//чтоб прелоадер чуть покрутилсмя
-  // })
-
-  useEffect(() => {
-    if (localStorage.getItem("movieFiltered")) {
-      if (filteredMovies.length === 0) {
-        setIsNotFound(true);
-      } else {
-        setIsNotFound(false);
-      }
-    } else {
-      setIsNotFound(false);
-    }
-  }, [filteredMovies]);
 
   return (
     <main className="movies">
       <SearchForm 
         onSearchMovie={handleSearchMovie}
         onChangeFilter={handleChangeFilter}
-        isChecked={isChecked}
+        isCheckedShort={isCheckedShort}
         />    
       {isLoading && <Preolader />}
       {isLoading && isNotFound && 
@@ -89,7 +98,7 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
         <MoviesCardList
         movies= {filteredMovies}
         onSaveMovie={onSaveMovie}
-        onDeleteMovie={onDeleteMovie}
+        // onDeleteMovie={onDeleteMovie}
         // setAddCard={setAddCard}
         />
       }

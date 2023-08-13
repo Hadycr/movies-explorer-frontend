@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
+function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
   // function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
+  const searchValueMovie = localStorage.getItem("searchValueMovie");
+
+    useEffect(() => {
+    if (searchValueMovie) {
+      setSearchValue(searchValueMovie)
+    } 
+  }, [searchValueMovie]);
+  
 
   function handleChange(evt) {
     setSearchValue(evt.target.value.replace(/^\s+/,''));
@@ -35,7 +43,7 @@ function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
         <div className="search__films-short-filter">
           <FilterCheckbox 
             onChangeFilter = {onChangeFilter}
-            isChecked = {isChecked}
+            isCheckedShort = {isCheckedShort}
           />
         </div>
       </div>

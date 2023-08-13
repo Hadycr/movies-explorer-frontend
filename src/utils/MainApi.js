@@ -58,7 +58,7 @@ export const getUserInfo = () => {
   .then(res => handleResponse(res))
 }
 
-export const editUserInfo = ({name, email})=> {
+export const editUserInfo = (data)=> {
   const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH',
@@ -67,8 +67,8 @@ export const editUserInfo = ({name, email})=> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name,
-      email
+      name: data.name,
+      email: data.email
     })
   })
   .then(res => handleResponse(res))
@@ -85,7 +85,7 @@ export const getSavedMovies = () => {
   .then(res => handleResponse(res))
 }
 
-export const addMovies = (card) => {
+export const addMovies = (movie) => {
   const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/movies `, {
     method: 'POST',
@@ -94,18 +94,18 @@ export const addMovies = (card) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      country: card.country,
-      director: card.director,
-      duration: card.duration, 
-      year: card.year, 
-      description: card.description, 
-      image: `${MOVIES_BASE_URL}${card.image.url}`,
-      trailerLink: card.trailerLink, 
-      thumbnail: `${MOVIES_BASE_URL}${card.image.formats.thumbnail.url}`, 
-      movieId: card.movieId, 
-      nameRU: card.nameRU, 
-      nameEN: card.nameEN,
-      owner: card.owner
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration, 
+      year: movie.year, 
+      description: movie.description, 
+      image:movie.image.url,
+      // image:`${MOVIES_BASE_URL}${movie.image.url}`,
+      trailerLink: movie.trailerLink, 
+      thumbnail: `${MOVIES_BASE_URL}${movie.image.formats.thumbnail.url}`, 
+      movieId: movie.id, 
+      nameRU: movie.nameRU, 
+      nameEN: movie.nameEN
     })
   })
   .then(res => handleResponse(res))

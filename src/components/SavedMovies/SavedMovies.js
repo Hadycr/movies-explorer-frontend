@@ -4,14 +4,16 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './SavedMovies.css';
 import Preolader from '../Preolader/Preloader';
 
-function SavedMovies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
+function SavedMovies ({savedMovies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
   const [isLoading, setIsLoading] = useState(false);
+  const [filteredShortMovies, setFilteredShortMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const savedMovies = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
+  const savedMoviesList = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
   const [isNotFound, setIsNotFound] = useState(false);
-  
+  const [isCheckedShort, setisCheckedShort] = useState(false); 
+
 function handleSearchMovie(searchValue) { 
-  const filtered = savedMovies.filter(savemovie => {
+  const filtered = savedMoviesList.filter(savemovie => {
     return savemovie.nameRU.toLowerCase().trim().includes(searchValue.toLowerCase())
   })
   if (!filtered.length) {  //если не нашли фильмы то 
@@ -28,14 +30,33 @@ function handleSearchMovie(searchValue) {
     // )
 
   }
+
+
 }
+
+
+function handleChangeFilter() {
+  setisCheckedShort(!isCheckedShort);
+  const filteredShort = filteredMovies.filter(filteredMovie => {
+    return filteredMovie.duration <= 40
+  })
+  setFilteredShortMovies(filteredShort);
+  setFilteredMovies(filteredShort);
+  localStorage.setItem("shortMovieFiltered", !isCheckedShort);
+  localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
+  // console.log(filteredShort);
+  // setChecked(checked);
+  // console.log(filteredMovie.duration);
+
+}
+
 // }
   return (
     <main className="movies">
       <SearchForm 
         onSearchMovie={handleSearchMovie}
-        // onChangeFilter={handleChangeFilter}
-        // isChecked={isChecked}
+        onChangeFilter={handleChangeFilter}
+        isCheckedShort={isCheckedShort}
         />    
       {isLoading && <Preolader />}
       {isLoading && isNotFound && 
@@ -45,7 +66,7 @@ function handleSearchMovie(searchValue) {
       {!isLoading && !isNotFound &&
         <MoviesCardList
         movies= {filteredMovies}
-        onSaveMovie={onSaveMovie}
+        // onSaveMovie={onSaveMovie}
         onDeleteMovie={onDeleteMovie}
       />
       }
