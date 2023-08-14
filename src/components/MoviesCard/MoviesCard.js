@@ -5,14 +5,17 @@ import {MOVIES_BASE_URL} from "../../config/config";
 function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-  // const imageUrl = `${MOVIES_BASE_URL}${movie.image.url}`
-  const imageUrl = movie.image.url
-  ? `${MOVIES_BASE_URL}${movie.image.url}`
-  : movie.image;
+  const imageUrl = `${MOVIES_BASE_URL}${movie.image.url}`
+
+  // const imageUrl = `${
+  //   pathName === "/movies"
+  //     ? `${MOVIES_BASE_URL}${movie.image.url}`
+  //     : movie.image
+  // }`;
   // console.log(imageUrl);
-  // function handleCardSaveClick () {
-  //   onSaveMovie(movie);
-  // }
+  function handleCardSaveClick () {
+    onSaveMovie(movie);
+  }
   
   function handleDeleteCliсk() {
     onDeleteMovie()
@@ -42,7 +45,7 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
         </div>
         <button 
           className={pathName === "/movies" ? "movie__save-button" : "movie__delete-button"}
-          onClick={pathName === "/movies" ? onSaveMovie : handleDeleteCliсk}
+          onClick={pathName === "/movies" ? handleCardSaveClick : handleDeleteCliсk}
           type="button">
         </button>
       </div>

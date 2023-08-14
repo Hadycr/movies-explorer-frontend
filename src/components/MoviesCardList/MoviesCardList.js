@@ -8,10 +8,10 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
   const size = useWindowSize();
-  const [addMovies, setaddMovies] = useState(0);
+  const [addMovies, setAddMovies] = useState(0);
 
   useEffect(() => {
-    setaddMovies(0);
+    setAddMovies(0);
   }, [movies]);
 
   const moviesRender = useMemo(() => {
@@ -25,6 +25,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
       <div className="movie-items__container">
         {moviesRender.map((movie) =>  (
           <MoviesCard 
+          // key={isSavedFilms ? card._id : card.id}
             key={movie.id || movie.movieId}
             movie={movie}
             movies={movies}
@@ -38,7 +39,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
         movies.length > moviesRender.length &&  
         (<button type="button" className="movie-items__button"
         onClick={() => {
-          setaddMovies((prev) => prev + (size.width >= 1280 ? 4 : 2));
+          setAddMovies((prev) => prev + (size.width >= 1280 ? 4 : 2));
         }}>
           Ещё
          </button>

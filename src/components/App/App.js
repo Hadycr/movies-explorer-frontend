@@ -128,12 +128,7 @@ function App() {
   function handleUpdateUser(currentUser) {
     mainApi.editUserInfo(currentUser)
       .then((data) => {
-        // setСurrentUser({
-        //   ...currentUser,
-        //   name: data.name,
-        //   email: data.email
-        // });
-        console.log(data);
+
         setСurrentUser(data);
         setIsUpdate(true);
         // console.log(data);
@@ -145,24 +140,13 @@ function App() {
       .catch((err) => console.log(`Ошибка: ${err}`));
   }
 
-//при нажатие на кнопку добавляется в save
-  function handleSaveMovie(movie) {
-      mainApi.addMovies(movie)
-        // .then((res) => {
-        //   console.log(res.image);
-        // })
-        .then((res) => {
-          setSavedMovies([...savedMovies, res]);
-          // console.log(savedMovies);
-      
-        })
-        .catch((err) => console.log(`Ошибка: ${err}`));
-      }
+
 
       useEffect(() => {
         if(isLogIn) {
           mainApi.getSavedMovies()
           .then ((movies) => {
+            console.log(movies);
             setSavedMovies(movies);   
             localStorage.setItem("savedMovies", JSON.stringify(movies)); 
           })
@@ -170,8 +154,22 @@ function App() {
         };
       },[isLogIn]);
 
+      //при нажатие на кнопку добавляется в save
+  function handleSaveMovie(movie) {
+    mainApi.addMovies(movie)
+      // .then((res) => {
+      //   console.log(res.image);
+      // })
+      .then((res) => {
+        setSavedMovies([...savedMovies, res]);
+        // console.log(savedMovies);
+    
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+    }
+
   function handleDeleteMovie(movie) {
-    mainApi.deleteCard (movie._id)
+    mainApi.deleteCard(movie._id)
       .then(() => {
         setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
       })

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
@@ -7,13 +8,20 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
   const searchValueMovie = localStorage.getItem("searchValueMovie");
+  const uselocation  = useLocation();
+  const pathName = uselocation.pathname;
 
     useEffect(() => {
     if (searchValueMovie) {
       setSearchValue(searchValueMovie)
     } 
   }, [searchValueMovie]);
-  
+
+  // useEffect(() => {
+  //   if (uselocation.pathname === '/movies' && searchValueMovie) {
+  //     setSearchValue(searchValueMovie);
+  //   }
+  // }, [searchValueMovie]);
 
   function handleChange(evt) {
     setSearchValue(evt.target.value.replace(/^\s+/,''));
@@ -26,9 +34,18 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
     } else {
       onSearchMovie(searchValue);
       localStorage.setItem("searchValueMovie", searchValue);
-    }
+    
+    
+  }
 
   }
+  useEffect(() => {
+    if (pathName === "/movies") {
+      setSearchValue(localStorage.getItem("searchValueMovie"));
+    } else {
+      setSearchValue("");
+    }
+  }, [pathName]);
 
   
   return (
