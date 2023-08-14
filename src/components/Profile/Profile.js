@@ -93,19 +93,20 @@ function handleSubmit(e) {
               }`}>
                 {`${errors.email ? errors.email : ""}`}
           </span>
+        
+          {/* {!isUpdate && ( */}
+          <div className="profile__info">
+            <button type="submit" className="profile__edit profile__link"
+            //  onclick={switchUpdate}
+              disabled={!isValid ? true : false}
+            >
+              Редактировать
+            </button>
+            <Link to="/"  onClick={onLogout}
+              className="profile__signin profile__link">Выйти из аккаунта</Link>
+          </div>
+          {/* )}  */}
         </form>
-        {!isUpdate && (
-        <div className="profile__info">
-          <button type="submit" className="profile__edit profile__link"
-          //  onclick={switchUpdate}
-            disabled={!isValid ? true : false}
-          >
-            Редактировать
-          </button>
-          <Link to="/"  onClick={onLogout}
-            className="profile__signin profile__link">Выйти из аккаунта</Link>
-        </div>
-        )} 
         {/* {isUpdate && (
         <div className="profile__info">
           <button type="submit" className="profile__save profile__link" onclick={switchUpdate}

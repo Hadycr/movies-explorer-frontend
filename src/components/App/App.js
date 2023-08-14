@@ -40,6 +40,7 @@ function App() {
     moviesApi.getMovies()
       .then ((movies) => {
         // console.log(movies)
+
 ;        setMovies(movies);    
       })
       .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
@@ -52,6 +53,7 @@ function App() {
       mainApi.getUserInfo()
       .then((res) => {
         console.log(res);
+        localStorage.removeItem('movieFiltered');
         setСurrentUser(res)
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
@@ -186,7 +188,9 @@ function App() {
   }
 
   function handleSignOut () {
-    localStorage.removeItem('token');
+    localStorage.clear();
+    navigate('/');
+    setIsLogIn(false);
   }
   
   return (

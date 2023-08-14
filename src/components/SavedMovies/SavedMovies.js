@@ -4,16 +4,19 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './SavedMovies.css';
 import Preolader from '../Preolader/Preloader';
 
-function SavedMovies ({savedMovies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
+function SavedMovies ({savedMovies, onSearchMovie, onDeleteMovie}) {
   const [isLoading, setIsLoading] = useState(false);
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const savedMoviesList = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
+  // const savedMoviesList = localStorage.getItem('savedMovies'); //получяаем данные с хранилища? надо чтоб эти сохраненые фильмы шли с аппи
+  const saveMovieFiltered = localStorage.getItem('saveMovieFiltered');
+  const queries = localStorage.getItem('searchQuerySavedMovies');
+
   const [isNotFound, setIsNotFound] = useState(false);
   const [isCheckedShort, setisCheckedShort] = useState(false); 
 
 function handleSearchMovie(searchValue) { 
-  const filtered = savedMoviesList.filter(savemovie => {
+  const filtered = savedMovies.filter(savemovie => {
     return savemovie.nameRU.toLowerCase().trim().includes(searchValue.toLowerCase())
   })
   if (!filtered.length) {  //если не нашли фильмы то 
@@ -22,7 +25,7 @@ function handleSearchMovie(searchValue) {
   } else {
     setFilteredMovies(filtered);  //записываем в сатйт фильмт филмы
     console.log(filtered);
-    localStorage.setItem("movieSaveFiltered", filtered); //записываем эти самы фильмы
+    localStorage.setItem("saveMovieFiltered", filtered); //записываем эти самы фильмы
     // setFilteredMovies(movies.filter(movie => {
     //   return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
     // }

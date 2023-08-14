@@ -36,7 +36,7 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
       <div className="search__container">
         <form className="search__form" onSubmit={handleSubmit}>
           <input className="search__input" name="movie" type="text" placeholder="Фильм" 
-            value={searchValue} onChange={handleChange}></input>
+            value={searchValue || ""} onChange={handleChange}></input>
           <button className="search__button search__link" type="submit">Найти</button>
         </form>
         <span className="search__error">{!searchValue && searchError}</span>

@@ -4,7 +4,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 import Preolader from '../Preolader/Preloader';
 
-function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
+function Movies ({movies, onSearchMovie, onSaveMovie}) {
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
@@ -16,7 +16,7 @@ function Movies ({movies, onSearchMovie, onSaveMovie, onDeleteMovie}) {
   const [isNotFound, setIsNotFound] = useState(false);
 
 
-  //показывает все фильмы после поиска после перезагрузки
+  //показывает все фильмы после поиска после перезагрузки - работает только со старым изером, надо очищать токен при выходе
   useEffect(() => {
     if (movieFiltered) {
       if (filteredMovies.length === 0) {
