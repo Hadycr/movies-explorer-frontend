@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import useWindowSize from '../../config/WindowSize'
 import { useLocation } from "react-router-dom";
 
-function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
+function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
   const size = useWindowSize();
@@ -26,13 +26,11 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie}) {
         {moviesRender.map((movie) =>  (
           <MoviesCard 
           // key={isSavedFilms ? card._id : card.id}
-            key={movie.id || movie.movieId}
+            key={movie.id || movie.movieId || movie.id }
             movie={movie}
-            movies={movies}
             onSaveMovie={onSaveMovie}
             onDeleteMovie={onDeleteMovie}
           />
-          
         ))}
       </div>
       {pathName === "/movies" && 

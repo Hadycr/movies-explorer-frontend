@@ -4,20 +4,23 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 import Preolader from '../Preolader/Preloader';
 
-function Movies ({movies, onSearchMovie, onSaveMovie}) {
+function Movies ({movies, onSaveMovie, savedMovies }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]); 
+  const movieFiltered = localStorage.getItem("movieFiltered");
+  const [isNotFound, setIsNotFound] = useState(false);
+  
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
   const [isCheckedShort, setisCheckedShort] = useState(false); 
-  const savedMovies = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
-  const movieFiltered = localStorage.getItem("movieFiltered");
+  // const savedMovies = localStorage.getItem('savedMovies'); //получяаем данные с хранилища
+
   const shortMovieFiltered = localStorage.getItem("shortMovieFiltered");
   const filteredShortMoviesList = localStorage.getItem("filteredShortMovies");
-  const [isNotFound, setIsNotFound] = useState(false);
 
 
-  //показывает все фильмы после поиска после перезагрузки - работает только со старым изером, надо очищать токен при выходе
-  useEffect(() => {
+
+  //показывает все фильмы после поиска после перезагрузки 
+    useEffect(() => {
     if (movieFiltered) {
       if (filteredMovies.length === 0) {
         setIsNotFound(true);
@@ -57,29 +60,19 @@ function Movies ({movies, onSearchMovie, onSaveMovie}) {
       } else {
         setFilteredMovies(filtered);  //записываем в сатйт фильмт филмы
         localStorage.setItem("movieFiltered", JSON.stringify(filtered)); //записываем эти самы фильмы
-        // setFilteredMovies(movies.filter(movie => {
-        //   return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
-        // }
-        // )
-        // )
-
       }
     }
 
-    function handleChangeFilter() {
-      setisCheckedShort(!isCheckedShort);
-      const filteredShort = filteredMovies.filter(filteredMovie => {
-        return filteredMovie.duration <= 40
-      })
-      setFilteredShortMovies(filteredShort);
-      setFilteredMovies(filteredShort);
-      localStorage.setItem("shortMovieFiltered", !isCheckedShort);
-      localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
-      // console.log(filteredShort);
-      // setChecked(checked);
-      // console.log(filteredMovie.duration);
-
-    }
+  function handleChangeFilter() {
+    setisCheckedShort(!isCheckedShort);
+    const filteredShort = filteredMovies.filter(filteredMovie => {
+      return filteredMovie.duration <= 40
+    })
+    setFilteredShortMovies(filteredShort);
+    setFilteredMovies(filteredShort);
+    localStorage.setItem("shortMovieFiltered", !isCheckedShort);
+    localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
+  }
 
 
   return (
@@ -98,8 +91,7 @@ function Movies ({movies, onSearchMovie, onSaveMovie}) {
         <MoviesCardList
         movies= {filteredMovies}
         onSaveMovie={onSaveMovie}
-        // onDeleteMovie={onDeleteMovie}
-        // setAddCard={setAddCard}
+        savedMovies={savedMovies} 
         />
       }
       {/* <button type="button" className="movies__button"

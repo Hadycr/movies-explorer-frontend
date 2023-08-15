@@ -9,13 +9,11 @@ function Login({handleLogin, errorRegistration}) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-      // registrationInfo.name = values.name;
-      // registrationInfo.email = values.email;
-      // registrationInfo.password = values.password;
-      handleLogin({
-        email: values.email,
-        password: values.password
-      });
+      
+    handleLogin({
+      email: values.email,
+      password: values.password
+    });
   }
 
   useEffect(() => {

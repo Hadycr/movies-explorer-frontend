@@ -20,7 +20,7 @@ import * as mainApi from '../../utils/MainApi';
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);  //все фильмы с внешнего айпи
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorRegistration, seterrorRegistration] = useState("");
   const [isLogIn, setIsLogIn] = useState(false);
@@ -39,9 +39,7 @@ function App() {
     if(isLogIn) {
     moviesApi.getMovies()
       .then ((movies) => {
-        // console.log(movies)
-
-;        setMovies(movies);    
+        setMovies(movies);    
       })
       .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
     };
@@ -64,60 +62,39 @@ function App() {
   //проверка токена
   useEffect(() => {
     const token = localStorage.getItem('token');
-    // console.log(token);
     if (token) {
       mainApi.checkToken(token)
         .then((data) => {
-          // console.log(data);
           if (data) {
-            // handleLogin(data);
-            // handleLogin({email: data.email, password: data.password});
             setIsLogIn(true);
-            // navigate('/movies');
-            // navigate(pathName);
           }
-                      navigate(pathName);
+          navigate(pathName);
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
     }
   }, []);
 
-  //получение сохораненых фильиов
 
-
-
-
+//регистрация пользователя
   function handleRegistration({ name, email, password }) {
     mainApi.register({ name, email, password })
       .then((data) => {
         if(data !== undefined) {
           handleLogin({email, password})
-          // localStorage.setItem('token', data.token);
-          // navigate('/signin', {replace: true})
         }
       })
       .catch(() => {
         seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
       })
-      // .finally(
-      //   handleRegister()
-      // );
   }
-
+//вход пользователя
   function handleLogin({email, password}) {
     mainApi.authorize({email, password})
       .then((data) => {
-        // console.log(data);
         if(data !== undefined) {
           localStorage.setItem('token', data.token);
-
           setIsLogIn(true);
-          // setСurrentUser(data);
           navigate('/movies');
-          // setСurrentUser({
-          //   name: data.name,
-          //   email: data.email
-          // })
         }
       })
       .catch(() => {
@@ -125,28 +102,22 @@ function App() {
       })
   }
 
+  //редактирование пользователя
   function handleUpdateUser(currentUser) {
     mainApi.editUserInfo(currentUser)
       .then((data) => {
-
         setСurrentUser(data);
         setIsUpdate(true);
-        // console.log(data);
-        // setСurrentUser({
-        //   name: data.name,
-        //   email: data.email
-        // })
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
   }
 
-
-
+  //получение сохраненных карточек
       useEffect(() => {
         if(isLogIn) {
           mainApi.getSavedMovies()
           .then ((movies) => {
-            console.log(movies);
+            // console.log(movies);
             setSavedMovies(movies);   
             localStorage.setItem("savedMovies", JSON.stringify(movies)); 
           })
@@ -156,26 +127,27 @@ function App() {
 
       //при нажатие на кнопку добавляется в save
   function handleSaveMovie(movie) {
+
     mainApi.addMovies(movie)
-      // .then((res) => {
-      //   console.log(res.image);
-      // })
       .then((res) => {
+        console.log(res);
         setSavedMovies([...savedMovies, res]);
-        // console.log(savedMovies);
+        console.log(savedMovies);
     
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
+
     }
 
+
+//при  нажатие на кретик удаляет карточку
   function handleDeleteMovie(movie) {
-    mainApi.deleteCard(movie._id)
+    mainApi.deleteCard(movie.movieId)
       .then(() => {
-        setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
+        setSavedMovies((state) => state.filter((item) => item._id !== movie.movieId));
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
     }
-
 
   function closeAllPopups() {
     setMenuOpen(false);
@@ -206,6 +178,7 @@ function App() {
           loggedIn = {isLogIn}
           element= {Movies} 
           movies={movies}
+          savedMovies={savedMovies}
           onSaveMovie={handleSaveMovie}
           // onDeleteMovie={handleDeleteMovie}
         />}/>

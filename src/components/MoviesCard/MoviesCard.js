@@ -5,18 +5,14 @@ import {MOVIES_BASE_URL} from "../../config/config";
 function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-  const imageUrl = `${MOVIES_BASE_URL}${movie.image.url}`
 
-  // const imageUrl = `${
-  //   pathName === "/movies"
-  //     ? `${MOVIES_BASE_URL}${movie.image.url}`
-  //     : movie.image
-  // }`;
-  // console.log(imageUrl);
+  const imageUrl = movie.image.url
+    ? `${MOVIES_BASE_URL}${movie.image.url}`
+    : movie.image;
   function handleCardSaveClick () {
     onSaveMovie(movie);
   }
-  
+
   function handleDeleteCliсk() {
     onDeleteMovie()
   }
@@ -26,7 +22,8 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
     let minutes = mins % 60;
     return hours + "ч " + minutes + "м";
 };
-  
+
+
   return (
     <section className="movie">
       <a 
@@ -54,3 +51,13 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie}) {
 }
 
 export default MoviesCard;
+
+  // const isSaved = movie.likes.some(id => id === currentUser._id);
+
+  // function handleCardSaveClick() {
+  //   if (savedMovies) {
+  //     onDeleteMovie(savedMovies.filter((m) => m.movieId === movie.id)[0]);
+  //   } else {
+  //     onSaveMovie(movie);
+  //   }
+  // }

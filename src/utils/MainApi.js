@@ -99,7 +99,6 @@ export const addMovies = (movie) => {
       duration: movie.duration, 
       year: movie.year, 
       description: movie.description, 
-      // image:movie.image.url,
       image:`${MOVIES_BASE_URL}${movie.image.url}`,
       trailerLink: movie.trailerLink, 
       thumbnail: `${MOVIES_BASE_URL}${movie.image.formats.thumbnail.url}`, 
@@ -111,9 +110,9 @@ export const addMovies = (movie) => {
   .then(res => handleResponse(res))
 }
 
-export const deleteCard = (movieId) => {
+export const deleteCard = (movie) => {
   const token = localStorage.getItem('token');
-  return fetch(`${BASE_URL}/movies/${movieId}`, {
+  return fetch(`${BASE_URL}/movies/${movie.movieId}`, {
   method: 'DELETE',
   headers: {
     Authorization: `Bearer ${token}`,

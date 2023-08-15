@@ -8,15 +8,7 @@ function Profile({ onUpdateUser, onLogout }) {
   const { values, handleChange, errors, isValid, setValues, resetForm } = ValidatorForm();
   const currentUser = useContext(CurrentUserContext);
   const [isUpdate, setIsUpdate] = useState(false);
-  // const [name, setInputName] = useState("");
-  // const [email, setInputEmail] = useState("");
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     setValues(currentUser);
-  //     // setIsValid(true);
-  //   }
-  // }, [currentUser, setValues]);
   useEffect(() => {
     if (currentUser) {
       resetForm(currentUser);
@@ -29,15 +21,7 @@ function Profile({ onUpdateUser, onLogout }) {
     } else {
       setIsUpdate(false);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
-
-  // function switchUpdate(evt) {
-  //   evt.preventDefault();
-  //   setIsUpdate(!isUpdate);
-  // }
-
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -46,21 +30,6 @@ function handleSubmit(e) {
     email: values.email,
   });
 }
-
-// function handleChangeName(e) {
-//   setInputName(e.target.value);
-// }
-
-// function handleChangeEmail(e) {
-//   setInputEmail(e.target.value);
-// }
-// useEffect(() => {
-//   setInputName(currentUser.name);
-//   setInputEmail(currentUser.email);
-//   setIsUpdate(true);
-//   console.log(currentUser);
-// }, [currentUser, isUpdate]);
-
   return (
     <main className="profile">  
       <div className="profile__container">
