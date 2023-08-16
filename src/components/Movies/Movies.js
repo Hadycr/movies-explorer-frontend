@@ -1,8 +1,9 @@
-import {useState, useEffect } from 'react';
+import {useState, useEffect, useContext } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 import Preolader from '../Preolader/Preloader';
+// import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 function Movies ({movies, onSaveMovie, savedMovies }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,11 +17,14 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
 
   const shortMovieFiltered = localStorage.getItem("shortMovieFiltered");
   const filteredShortMoviesList = localStorage.getItem("filteredShortMovies");
+  // const currentUser = useContext(CurrentUserContext);
+  // const isOwn = movies.some((i) => i.owner === currentUser._id); 
 
 
 
   //показывает все фильмы после поиска после перезагрузки 
     useEffect(() => {
+  // if(isOwn) {
     if (movieFiltered) {
       if (filteredMovies.length === 0) {
         setIsNotFound(true);
@@ -31,6 +35,7 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
     } else {
       setIsNotFound(false);
     }
+  // }
   }, [movieFiltered, filteredMovies]);
 
 //показыет chebox псоле перезагрузки
@@ -44,7 +49,7 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
 
   //показывает короткие видео после перезагрузки
   useEffect(() => {
-    if (filteredShortMoviesList) {
+    if (isCheckedShort) {
              
       setFilteredMovies(JSON.parse(filteredShortMoviesList));
 } 
@@ -63,8 +68,20 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
       }
     }
 
+  // function handleChangeFilter() {
+  //   setisCheckedShort(!isCheckedShort);
+  //   const filteredShort = filteredMovies.filter(filteredMovie => {
+  //     return filteredMovie.duration <= 40
+  //   })
+  //   setFilteredShortMovies(filteredShort);
+  //   setFilteredMovies(filteredShort);
+  //   localStorage.setItem("shortMovieFiltered", !isCheckedShort);
+  //   localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
+  // }
+
   function handleChangeFilter() {
     setisCheckedShort(!isCheckedShort);
+    // if(isCheckedShort) {
     const filteredShort = filteredMovies.filter(filteredMovie => {
       return filteredMovie.duration <= 40
     })
@@ -72,7 +89,11 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
     setFilteredMovies(filteredShort);
     localStorage.setItem("shortMovieFiltered", !isCheckedShort);
     localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
-  }
+  } 
+  // else {
+  //   setFilteredMovies(JSON.parse(movieFiltered));
+  // }
+  // }
 
 
   return (

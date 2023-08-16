@@ -110,9 +110,9 @@ export const addMovies = (movie) => {
   .then(res => handleResponse(res))
 }
 
-export const deleteCard = (movie) => {
+export const deleteCard = (movieId) => {
   const token = localStorage.getItem('token');
-  return fetch(`${BASE_URL}/movies/${movie.movieId}`, {
+  return fetch(`${BASE_URL}/movies/${movieId}`, {
   method: 'DELETE',
   headers: {
     Authorization: `Bearer ${token}`,

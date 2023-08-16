@@ -107,6 +107,18 @@
   cursor: auto;
 }
 
+.movie__save-button-clear {
+  background-image: url('../../images/save8dgray.svg');
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: white;
+}
+
 .movie__delete-button {
   background-image: url('../../images/delete.svg');
   width: 16px;

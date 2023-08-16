@@ -32,17 +32,25 @@ function App() {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
   const [isUpdate, setIsUpdate] = useState(false);
+  // const isLiked = savedMovies.some((i) => i.owner === currentUser._id);
 
+  useEffect(() => {
+    if(pathName === "/signin" || pathName === "/signup")
+    seterrorRegistration("");
 
+  }, [pathName]);
   //получение фильмов
   useEffect(() => {
     if(isLogIn) {
     moviesApi.getMovies()
       .then ((movies) => {
-        setMovies(movies);    
+        // localStorage.removeItem('savedMovies');
+        setMovies(movies );    
+        // setMovies(movies.filter((item) => item.owner === currentUser._id));
       })
       .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
     };
+    
   },[isLogIn]);
 
   //получение инфо о юзере
@@ -118,36 +126,82 @@ function App() {
           mainApi.getSavedMovies()
           .then ((movies) => {
             // console.log(movies);
-            setSavedMovies(movies);   
-            localStorage.setItem("savedMovies", JSON.stringify(movies)); 
+            // setSavedMovies(movies);   
+
+            const save = setSavedMovies(movies.data.filter((item) => item.owner._id === currentUser._id));
+            localStorage.setItem("savedMovies", JSON.stringify(save)); 
           })
           .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
         };
       },[isLogIn]);
 
       //при нажатие на кнопку добавляется в save
-  function handleSaveMovie(movie) {
+  // function handleSaveMovie(movie) {
+  //   if (isLiked) {
+  //     handleDeleteMovie(movie)
+  //    } else {
+  //        mainApi.addMovies(movie)
+  //          .then((res) => {
+  //            console.log(res);
+  //            setSavedMovies([...savedMovies, { ...res, id: res.movieId }]);
+  //    //думаю так сделать для того чтобы у обычнх муви и муви с айди был одинаковы movie.id
+  //            console.log(savedMovies);
+  //          })
+          
+  //            .catch((err) => console.log(`Ошибка: ${err}`));
+     
+  //        }
+  //       }
 
-    mainApi.addMovies(movie)
-      .then((res) => {
-        console.log(res);
-        setSavedMovies([...savedMovies, res]);
-        console.log(savedMovies);
+        function handleSaveMovie(movie, isLiked, id) {
+          if (isLiked) {
+            handleDeleteMovie(id)
+           } else {
+               mainApi.addMovies(movie)
+                 .then((res) => {
+                   console.log(res);
+                   setSavedMovies([...savedMovies, res]);
+                   console.log(savedMovies);
+                 })
+                
+                   .catch((err) => console.log(`Ошибка: ${err}`));
+           
+               }
+              }
+     
+    // mainApi.addMovies(movie)
+    //   .then((res) => {
+    //     console.log(res);
+    //     setSavedMovies([...savedMovies, res]);
+    //     console.log(savedMovies);
     
-      })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+    //   })
+    //   .catch((err) => console.log(`Ошибка: ${err}`));
 
-    }
+    // }
 
 
 //при  нажатие на кретик удаляет карточку
-  function handleDeleteMovie(movie) {
-    mainApi.deleteCard(movie.movieId)
-      .then(() => {
-        setSavedMovies((state) => state.filter((item) => item._id !== movie.movieId));
-      })
-      .catch((err) => console.log(`Ошибка: ${err}`));
-    }
+function handleDeleteMovie(id) {
+  mainApi.deleteCard(id)
+    .then(() => {
+      const newSaveMovies = setSavedMovies((state) => state.filter((item) => item._id !== id));
+      setSavedMovies(newSaveMovies);
+      // localStorage.setItem("savedMovies", JSON.stringify(newSaveMovies)); 
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`));
+  }
+
+
+
+
+// function handleDeleteMovie(movie) {
+//     mainApi.deleteCard(movie.movieId)
+//       .then(() => {
+//         setSavedMovies((state) => state.filter((item) => item._id !== movie.movieId));
+//       })
+//       .catch((err) => console.log(`Ошибка: ${err}`));
+//     }
 
   function closeAllPopups() {
     setMenuOpen(false);

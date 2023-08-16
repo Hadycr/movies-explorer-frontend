@@ -10,7 +10,7 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
   const [isLoading, setIsLoading] = useState(false);
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
   const [filteredSaveMovies, setFilteredMovies] = useState(savedMovies);
-  // const savedMoviesList = localStorage.getItem('savedMovies'); //получяаем данные с хранилища? надо чтоб эти сохраненые фильмы шли с аппи
+  const movieSaveFiltered = localStorage.getItem("movieSaveFiltered");
   const [isNotFound, setIsNotFound] = useState(false);
   const [isCheckedShort, setisCheckedShort] = useState(false); 
   const shortMovieFiltered = localStorage.getItem("shortMovieFiltered");
@@ -58,11 +58,13 @@ function handleSearchMovie(searchValue) {
     } else {
       console.log(filtered);
       setFilteredMovies(filtered);  //записываем в сатйт фильмт филмы
+      localStorage.setItem("movieSaveFiltered", JSON.stringify(filtered));
     }
   }
 
   function handleChangeFilter() {
     setisCheckedShort(!isCheckedShort);
+    // if(isCheckedShort) {
     const filteredShort = filteredSaveMovies.filter(filteredMovie => {
       return filteredMovie.duration <= 40
     })
@@ -74,7 +76,11 @@ function handleSearchMovie(searchValue) {
     // setChecked(checked);
     // console.log(filteredMovie.duration);
 
-  }
+  } 
+  // else {
+  //   setFilteredMovies(JSON.parse(movieSaveFiltered));
+  // }
+// }
 
   
   return (
@@ -92,6 +98,7 @@ function handleSearchMovie(searchValue) {
       {!isLoading && !isNotFound &&
         <MoviesCardList
         movies= {filteredSaveMovies}
+        savedMovies = {savedMovies}
         // onSaveMovie={onSaveMovie}
         onDeleteMovie={onDeleteMovie}
       />
