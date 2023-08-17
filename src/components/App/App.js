@@ -20,7 +20,7 @@ import * as mainApi from '../../utils/MainApi';
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [movies, setMovies] = useState([]);  //все фильмы с внешнего айпи
+  const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorRegistration, seterrorRegistration] = useState("");
   const [isLogIn, setIsLogIn] = useState(false);
@@ -32,33 +32,31 @@ function App() {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
   const [isUpdate, setIsUpdate] = useState(false);
-  // const isLiked = savedMovies.some((i) => i.owner === currentUser._id);
 
   useEffect(() => {
     if(pathName === "/signin" || pathName === "/signup")
     seterrorRegistration("");
-
   }, [pathName]);
-  //получение фильмов
+
   useEffect(() => {
     if(isLogIn) {
-    moviesApi.getMovies()
-      .then ((movies) => {
-        // localStorage.removeItem('savedMovies');
-        setMovies(movies );    
-        // setMovies(movies.filter((item) => item.owner === currentUser._id));
-      })
-      .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
-    };
-    
+      if (localStorage.getItem('movies')) {
+        setMovies(JSON.parse(localStorage.getItem('movies')));
+      } else {
+        moviesApi.getMovies()
+          .then((movies) => {
+            localStorage.setItem('movies', JSON.stringify(movies));
+            setMovies(movies);
+          })
+          .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
+        };
+    }
   },[isLogIn]);
 
-  //получение инфо о юзере
   useEffect(() => {
     if(isLogIn) {
       mainApi.getUserInfo()
       .then((res) => {
-        console.log(res);
         localStorage.removeItem('movieFiltered');
         setСurrentUser(res)
       })
@@ -66,8 +64,6 @@ function App() {
     };
   }, [isLogIn]);
 
-
-  //проверка токена
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -78,12 +74,15 @@ function App() {
           }
           navigate(pathName);
         })
-        .catch((err) => console.log(`Ошибка: ${err}`));
-    }
+        .catch((err) => {
+          if (err.status === 401) {
+            localStorage.removeItem('token');
+          }
+          console.log(err);
+        });
+    } 
   }, []);
 
-
-//регистрация пользователя
   function handleRegistration({ name, email, password }) {
     mainApi.register({ name, email, password })
       .then((data) => {
@@ -95,7 +94,7 @@ function App() {
         seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
       })
   }
-//вход пользователя
+
   function handleLogin({email, password}) {
     mainApi.authorize({email, password})
       .then((data) => {
@@ -110,7 +109,6 @@ function App() {
       })
   }
 
-  //редактирование пользователя
   function handleUpdateUser(currentUser) {
     mainApi.editUserInfo(currentUser)
       .then((data) => {
@@ -120,89 +118,49 @@ function App() {
       .catch((err) => console.log(`Ошибка: ${err}`));
   }
 
-  //получение сохраненных карточек
-      useEffect(() => {
-        if(isLogIn) {
-          mainApi.getSavedMovies()
-          .then ((movies) => {
-            // console.log(movies);
-            // setSavedMovies(movies);   
 
-            const save = setSavedMovies(movies.data.filter((item) => item.owner._id === currentUser._id));
-            localStorage.setItem("savedMovies", JSON.stringify(save)); 
-          })
-          .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
-        };
-      },[isLogIn]);
+  useEffect(() => {
+    if(isLogIn) {
+      mainApi.getSavedMovies()
+      .then ((movies) => {
+        setSavedMovies(movies);   
+        localStorage.setItem("savedMovies", JSON.stringify(movies)); 
+      })
+      .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
+    };
+  },[isLogIn]);
 
-      //при нажатие на кнопку добавляется в save
-  // function handleSaveMovie(movie) {
-  //   if (isLiked) {
-  //     handleDeleteMovie(movie)
-  //    } else {
-  //        mainApi.addMovies(movie)
-  //          .then((res) => {
-  //            console.log(res);
-  //            setSavedMovies([...savedMovies, { ...res, id: res.movieId }]);
-  //    //думаю так сделать для того чтобы у обычнх муви и муви с айди был одинаковы movie.id
-  //            console.log(savedMovies);
-  //          })
-          
-  //            .catch((err) => console.log(`Ошибка: ${err}`));
-     
-  //        }
-  //       }
-
-        function handleSaveMovie(movie, isLiked, id) {
-          if (isLiked) {
-            handleDeleteMovie(id)
-           } else {
-               mainApi.addMovies(movie)
-                 .then((res) => {
-                   console.log(res);
-                   setSavedMovies([...savedMovies, res]);
-                   console.log(savedMovies);
-                 })
-                
-                   .catch((err) => console.log(`Ошибка: ${err}`));
-           
-               }
-              }
-     
-    // mainApi.addMovies(movie)
-    //   .then((res) => {
-    //     console.log(res);
-    //     setSavedMovies([...savedMovies, res]);
-    //     console.log(savedMovies);
-    
-    //   })
-    //   .catch((err) => console.log(`Ошибка: ${err}`));
-
-    // }
-
-
-//при  нажатие на кретик удаляет карточку
-function handleDeleteMovie(id) {
-  mainApi.deleteCard(id)
-    .then(() => {
-      const newSaveMovies = setSavedMovies((state) => state.filter((item) => item._id !== id));
-      setSavedMovies(newSaveMovies);
-      // localStorage.setItem("savedMovies", JSON.stringify(newSaveMovies)); 
-    })
-    .catch((err) => console.log(`Ошибка: ${err}`));
+  function handleSaveMovie(movie, isLiked, id) {
+    if (isLiked) {
+      handleDeleteMovie(id)
+    } else {
+      mainApi.addMovies(movie)
+        .then((res) => {
+          setSavedMovies([...savedMovies, res]);
+        })
+        .catch((err) => console.log(`Ошибка: ${err}`));
+      }
   }
 
-
-
-
-// function handleDeleteMovie(movie) {
-//     mainApi.deleteCard(movie.movieId)
-//       .then(() => {
-//         setSavedMovies((state) => state.filter((item) => item._id !== movie.movieId));
-//       })
-//       .catch((err) => console.log(`Ошибка: ${err}`));
-//     }
-
+  function handleDeleteMovie(id) {
+    const searchedSavedMovies = JSON.parse(
+      localStorage.getItem('movieFiltered')
+    );
+      mainApi.deleteCard(id)
+      .then(() => {
+        const newSaveMovies = setSavedMovies((state) => state.filter((item) => item._id !== id));
+        localStorage.setItem("savedMovies", JSON.stringify(newSaveMovies)); 
+        if (searchedSavedMovies) {
+          const updatedSearchedSavedMovies = searchedSavedMovies.filter(
+            (movie) => movie._id !== id
+          );
+          localStorage.setItem('searchedSavedMovies', JSON.stringify(updatedSearchedSavedMovies)
+          );
+        }
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
+  }
+  
   function closeAllPopups() {
     setMenuOpen(false);
   }
@@ -234,7 +192,6 @@ function handleDeleteMovie(id) {
           movies={movies}
           savedMovies={savedMovies}
           onSaveMovie={handleSaveMovie}
-          // onDeleteMovie={handleDeleteMovie}
         />}/>
         <Route path="/saved-movies" element={<ProtectedRoute 
           loggedIn = {isLogIn}
@@ -256,7 +213,7 @@ function handleDeleteMovie(id) {
           handleLogin = {handleLogin}
           errorRegistration = {errorRegistration}
         />} />
-        <Route path="/404" element={<PageNotFound />} />
+        <Route path="/404" element={<PageNotFound isLoggedIn={isLogIn} />} />
       </Routes>
       <Footer /> 
     </CurrentUserContext.Provider>

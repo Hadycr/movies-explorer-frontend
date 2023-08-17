@@ -18,7 +18,7 @@ function Login({handleLogin, errorRegistration}) {
 
   useEffect(() => {
     resetForm();
-  }, []);
+  }, [resetForm]);
 
   return (
 

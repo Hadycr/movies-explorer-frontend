@@ -9,19 +9,16 @@ function Register({handleRegistration, errorRegistration}) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-      // registrationInfo.name = values.name;
-      // registrationInfo.email = values.email;
-      // registrationInfo.password = values.password;
-      handleRegistration({
-        name: values.name,
-        email: values.email,
-        password: values.password
-      });
+    handleRegistration({
+      name: values.name,
+      email: values.email,
+      password: values.password
+    });
   }
 
   useEffect(() => {
     resetForm();
-  }, []);
+  }, [resetForm]);
 
   return (
     <main className="login">

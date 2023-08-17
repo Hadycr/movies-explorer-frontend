@@ -4,24 +4,19 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
-  // function SearchForm({onSearchMovie, onChangeFilter, isChecked}) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
   const searchValueMovie = localStorage.getItem("searchValueMovie");
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
 
-    useEffect(() => {
-    if (searchValueMovie) {
+  useEffect(() => {
+    if (searchValueMovie && pathName === "/movies") {
       setSearchValue(searchValueMovie)
-    } 
-  }, [searchValueMovie]);
-
-  // useEffect(() => {
-  //   if (uselocation.pathname === '/movies' && searchValueMovie) {
-  //     setSearchValue(searchValueMovie);
-  //   }
-  // }, [searchValueMovie]);
+    } else {
+          setSearchValue("");
+        }
+  }, [searchValueMovie, pathName]);
 
   function handleChange(evt) {
     setSearchValue(evt.target.value.replace(/^\s+/,''));
@@ -33,20 +28,9 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
       setsearchError("Нужно ввести ключевое слово");
     } else {
       onSearchMovie(searchValue);
-      localStorage.setItem("searchValueMovie", searchValue);
-    
-    
-  }
-
-  }
-  useEffect(() => {
-    if (pathName === "/movies") {
-      setSearchValue(localStorage.getItem("searchValueMovie"));
-    } else {
-      setSearchValue("");
+      localStorage.setItem("searchValueMovie", searchValue); 
     }
-  }, [pathName]);
-
+  }
   
   return (
     <section className="search">

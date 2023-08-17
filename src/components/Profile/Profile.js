@@ -1,13 +1,12 @@
-import {useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 function Profile({ onUpdateUser, onLogout }) {
-  const { values, handleChange, errors, isValid, setValues, resetForm } = ValidatorForm();
+  const { values, handleChange, errors, isValid, resetForm } = ValidatorForm();
   const currentUser = useContext(CurrentUserContext);
-  const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -15,21 +14,15 @@ function Profile({ onUpdateUser, onLogout }) {
     }
   }, [currentUser, resetForm]);
 
-  useEffect(() => {
-    if (currentUser.name === values.name && currentUser.email === values.email) {
-      setIsUpdate(true);
-    } else {
-      setIsUpdate(false);
-    }
-  }, [values]);
 
-function handleSubmit(e) {
-  e.preventDefault();
-  onUpdateUser({
-    name: values.name,
-    email: values.email,
-  });
-}
+  function handleSubmit(e) {
+    e.preventDefault();
+    onUpdateUser({
+      name: values.name,
+      email: values.email,
+    });
+  }
+
   return (
     <main className="profile">  
       <div className="profile__container">
@@ -62,11 +55,8 @@ function handleSubmit(e) {
               }`}>
                 {`${errors.email ? errors.email : ""}`}
           </span>
-        
-          {/* {!isUpdate && ( */}
           <div className="profile__info">
             <button type="submit" className="profile__edit profile__link"
-            //  onclick={switchUpdate}
               disabled={!isValid ? true : false}
             >
               Редактировать
@@ -74,16 +64,7 @@ function handleSubmit(e) {
             <Link to="/"  onClick={onLogout}
               className="profile__signin profile__link">Выйти из аккаунта</Link>
           </div>
-          {/* )}  */}
         </form>
-        {/* {isUpdate && (
-        <div className="profile__info">
-          <button type="submit" className="profile__save profile__link" onclick={switchUpdate}
-           disabled={!isValid ? true : false}>
-            Сохранить
-          </button>
-        </div>
-        )} */}
       </div>
     </main>  
   )

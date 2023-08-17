@@ -25,8 +25,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
       <div className="movie-items__container">
         {moviesRender.map((movie) =>  (
           <MoviesCard 
-          // key={isSavedFilms ? card._id : card.id}
-            key={ movie.movieId }
+            key={movie.id || movie.movieId}
             movie={movie}
             savedMovies={savedMovies}
             onSaveMovie={onSaveMovie}
@@ -37,11 +36,11 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
       {pathName === "/movies" && 
         movies.length > moviesRender.length &&  
         (<button type="button" className="movie-items__button"
-        onClick={() => {
-          setAddMovies((prev) => prev + (size.width >= 1280 ? 4 : 2));
-        }}>
-          Ещё
-         </button>
+          onClick={() => {
+            setAddMovies((prev) => prev + (size.width >= 1280 ? 4 : 2));
+          }}>
+        Ещё
+        </button>
         )
       }
     </section>   

@@ -1,32 +1,23 @@
-// import { useContext } from 'react';
 import { useLocation } from "react-router-dom";
 import './MoviesCard.css';
 import {MOVIES_BASE_URL} from "../../config/config";
-// import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMovies}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-  // const currentUser = useContext(CurrentUserContext);
-  // const isLiked = savedMovies.some((i) => i.owner === currentUser._id);
   const isLiked = savedMovies
-  ? savedMovies.some((i) => i.movieId === movie.id)
-  : false; 
+    ? savedMovies.some((i) => i.movieId === movie.id)
+    : false; 
   const savedMovie = savedMovies
-  ? savedMovies.find((item) => item.movieId === movie.id)
-  : '';
+    ? savedMovies.find((item) => item.movieId === movie.id)
+    : '';
   const imageUrl = movie.image.url
     ? `${MOVIES_BASE_URL}${movie.image.url}`
     : movie.image;
 
-  // function handleCardSaveClick () {
-  //   onSaveMovie(movie);
-  // }
-
   function handleCardSaveClick () {
     onSaveMovie(movie, isLiked, savedMovie?._id);
   }
-
 
   function handleDeleteCliсk() {
     onDeleteMovie()
@@ -36,8 +27,7 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMovies}) {
     let hours = Math.trunc(mins/60);
     let minutes = mins % 60;
     return hours + "ч " + minutes + "м";
-};
-
+  };
 
   return (
     <section className="movie">
@@ -61,11 +51,6 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMovies}) {
             ? "movie__save-button"
             :  "movie__save-button-clear")
          : "movie__delete-button"}
-          
-
-           
-           
-          //  "movie__save-button" : "movie__delete-button"}
           onClick={pathName === "/movies" ? handleCardSaveClick : handleDeleteCliсk}
           type="button">
         </button>
@@ -75,13 +60,3 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMovies}) {
 }
 
 export default MoviesCard;
-
-  // const isSaved = movie.likes.some(id => id === currentUser._id);
-
-  // function handleCardSaveClick() {
-  //   if (savedMovies) {
-  //     onDeleteMovie(savedMovies.filter((m) => m.movieId === movie.id)[0]);
-  //   } else {
-  //     onSaveMovie(movie);
-  //   }
-  // }
