@@ -13,50 +13,95 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
   const [isCheckedShort, setisCheckedShort] = useState(false); 
   const shortMovieFiltered = localStorage.getItem("shortMovieFiltered");
   const filteredShortMoviesList = localStorage.getItem("filteredShortMovies");
+  
+  const [searchValueText, setSearchValueText] = useState("");
+  const searchValue = localStorage.getItem("searchValueTe");
 
-  useEffect(() => {
+
+
+  useEffect(() => {  // если есть в локл истори поиска, 
     if (movieFiltered) {
-      if (filteredMovies.length === 0) {
-        setIsNotFound(true);
-        setFilteredMovies(JSON.parse(movieFiltered))
-      } else {
-        setIsNotFound(false);
-      }
-    } else {
-      setIsNotFound(false);
+      setFilteredMovies(JSON.parse(movieFiltered));
     }
-  }, [movieFiltered, filteredMovies]);
+  }, [movieFiltered]);
+
+
+  // useEffect(() => {
+  //   if (movieFiltered) {
+  //     if (filteredMovies.length === 0) {
+  //       setIsNotFound(false);
+  //       setIsLoading(true);
+  //     } else {
+  //       setIsNotFound(true);
+  //     }
+  //   } else {
+  //     setIsNotFound(false);
+  //   }
+  // }, [movieFiltered]);
+
+  // useEffect(() => {
+  //   if (shortMovieFiltered === true) {
+  //     setisCheckedShort(true);
+  //     setFilteredMovies(JSON.parse(filteredShortMoviesList));
+
+  //   } else {
+  //     setisCheckedShort(false);
+      
+  //   }
+  // }, [shortMovieFiltered, filteredShortMoviesList]);
 
   useEffect(() => {
-    if (shortMovieFiltered === true) {
-      setisCheckedShort(true);
-    } else {
-      setisCheckedShort(false);
+    if (searchValue) {
+      console.log(searchValue);
+      setSearchValueText(searchValue);
     }
-  }, [shortMovieFiltered]);
+  }, [searchValue]);
 
-  useEffect(() => {
-    if (isCheckedShort === true) {     
-      setFilteredMovies(JSON.parse(filteredShortMoviesList));
-} 
-  }, [filteredShortMoviesList, isCheckedShort]);
+//   useEffect(() => {
+//     if (isCheckedShort === true) {     
+//       setFilteredMovies(JSON.parse(filteredShortMoviesList));
+// } 
+//   }, [filteredShortMoviesList, isCheckedShort]);
 
-  function handleSearchMovie(searchValue) { 
-    const filtered = movies.filter(movie => {
-      return movie.nameRU.toLowerCase().trim().includes(searchValue.toLowerCase())
-    })
-      if (!filtered.length) {
-        setIsLoading(true);
-        setIsNotFound(!isNotFound);
-      } else {
-        setFilteredMovies(filtered);
-        localStorage.setItem("movieFiltered", JSON.stringify(filtered));
-      }
+  function handleSearchMovie(searchValueTe) { 
+    if (!filteredMovies.length) {
+      setIsLoading(true);
+      console.log(isLoading);
     }
+
+    setTimeout(
+      () => {
+    console.log(searchValueTe);
+    localStorage.setItem('searchValue', JSON.stringify(searchValueTe));//сохраняем валью
+    let filtered = [];
+    // const filtered = movies.filter(movie => {
+    //   return movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+    // })
+
+    if(isCheckedShort) {
+      filtered = movies.filter(movie => {
+        return movies.duration <= 40 && movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+      })
+      setFilteredMovies(filtered);
+      localStorage.setItem("shortMovieFiltered", !isCheckedShort);
+      localStorage.setItem("filteredShortMovies", JSON.stringify(filtered));
+    } else if (!isCheckedShort) {
+      filtered = movies.filter(movie => {
+       return movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+      })
+        setFilteredMovies(filtered);  //если нашли то в стейт добавляем отфильтрованные фильмы
+        localStorage.setItem("movieFiltered", JSON.stringify(filtered)); //сохраняем все отфильтрованные фильмы в локал
+      // }
+    }
+
+      setIsLoading(false);
+
+  }, 500);
+}
 
   function handleChangeFilter() {
     setisCheckedShort(!isCheckedShort);
-    if(!isCheckedShort) {
+    // if(!isCheckedShort) {
       console.log(isCheckedShort);
       const filteredShort = filteredMovies.filter(filteredMovie => {
         return filteredMovie.duration <= 40
@@ -65,10 +110,10 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
       setFilteredMovies(filteredShort);
       localStorage.setItem("shortMovieFiltered", !isCheckedShort);
       localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
-    } 
-     else {
-    setFilteredMovies(JSON.parse(movieFiltered));
-    }
+    // } 
+    //  else {
+    // setFilteredMovies(JSON.parse(movieFiltered));
+    // }
   }
 
   return (
@@ -77,19 +122,22 @@ function Movies ({movies, onSaveMovie, savedMovies }) {
         onSearchMovie={handleSearchMovie}
         onChangeFilter={handleChangeFilter}
         isCheckedShort={isCheckedShort}
+        searchValueText={searchValueText}
         />    
-      {isLoading && <Preolader />}
-      {isLoading && isNotFound && 
+      {isLoading ? (<Preolader />)
+        :  filteredMovies.length ? (<MoviesCardList
+          movies= {filteredMovies}
+          onSaveMovie={onSaveMovie}
+          savedMovies={savedMovies} 
+          />)
+          
+     : (filteredMovies.length === 0 &&
         (<span className="movies__error">
           Ничего не найдено
-        </span>)}
-      {!isLoading && !isNotFound &&
-        <MoviesCardList
-        movies= {filteredMovies}
-        onSaveMovie={onSaveMovie}
-        savedMovies={savedMovies} 
-        />
-      }
+        </span>))
+        
+      
+    }
     </main>
   )
 }

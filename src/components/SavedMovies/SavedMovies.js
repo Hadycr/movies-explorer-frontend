@@ -5,34 +5,66 @@ import './SavedMovies.css';
 import Preolader from '../Preolader/Preloader';
 
 function SavedMovies ({savedMovies, onDeleteMovie}) {
-  const [isLoading, setIsLoading] = useState(false);
   const [filteredShortMovies, setFilteredShortMovies] = useState([]);
-  const [filteredSaveMovies, setFilteredMovies] = useState(savedMovies);
+  const [filteredSaveMovies, setFilteredMovies] = useState([]);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isCheckedShort, setisCheckedShort] = useState(false); 
-  const shortMovieFiltered = localStorage.getItem("shortMovieFiltered");
+  const movieSaveFiltered = localStorage.getItem("MovieSaveFiltered");
+
+ const [searchValueText, setSearchValueText] = useState("");
+ const searchValue = localStorage.getItem("searchValue");
 
   useEffect(() => {
-    if (shortMovieFiltered === true) {
-      setisCheckedShort(true);
+    if (movieSaveFiltered === true) {
+      setFilteredMovies(JSON.parse(movieSaveFiltered));
     } else {
-      setisCheckedShort(false);
+      setFilteredMovies(savedMovies);
     }
-  }, [shortMovieFiltered]);
+  }, [movieSaveFiltered, savedMovies, setSearchValueText]);
 
-  function handleSearchMovie(searchValue) { 
-    const filtered = savedMovies.filter(movie => {
-      return movie.nameRU.toLowerCase().trim().includes(searchValue.toLowerCase())
-    })
-      if (!filtered.length) {
-        setIsLoading(true);
-        setIsNotFound(!isNotFound);
-      } else {
-        console.log(filtered);
-        setFilteredMovies(filtered);
-        localStorage.setItem("movieSaveFiltered", JSON.stringify(filtered));
-      }
+
+  useEffect(() => {
+    if (searchValue) {
+      setSearchValueText(JSON.parse(searchValue));
+    } else {
+      setSearchValueText({ ...searchValue, searchText: '' });
     }
+  }, [searchValue, savedMovies]);
+
+  // useEffect(() => {
+  //   if (searchValue) {
+  //     console.log(searchValue);
+  //     setSearchValueText(searchValue);
+  //   }
+  // }, [searchValue]);
+
+  
+
+  function handleSearchMovie(searchValueTe) { 
+
+    localStorage.setItem('searchValueSaveMovies', JSON.stringify(searchValue));//сохраняем валью
+    let filtered = [];
+    // const filtered = movies.filter(movie => {
+    //   return movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+    // })
+
+    if(isCheckedShort) {
+      filtered = savedMovies.filter(movie => {
+        return savedMovies.duration <= 40 && movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+      })
+      setFilteredMovies(filtered);
+      localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered));
+    } else if (!isCheckedShort) {
+      filtered = savedMovies.filter(movie => {
+       return movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+      })
+        setFilteredMovies(filtered);  //если нашли то в стейт добавляем отфильтрованные фильмы
+        localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered)); //сохраняем все отфильтрованные фильмы в локал
+      // }
+    }
+
+
+}
 
   function handleChangeFilter() {
     setisCheckedShort(!isCheckedShort);
@@ -51,13 +83,14 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
         onSearchMovie={handleSearchMovie}
         onChangeFilter={handleChangeFilter}
         isCheckedShort={isCheckedShort}
+        searchValueText={searchValueText}
         />    
-      {isLoading && <Preolader />}
-      {isLoading && isNotFound && 
+ 
+      {isNotFound && 
         (<span className="movies__error">
           Ничего не найдено
         </span>)}
-      {!isLoading && !isNotFound &&
+      {!isNotFound &&
         <MoviesCardList
         movies= {filteredSaveMovies}
         savedMovies = {savedMovies}

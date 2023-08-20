@@ -3,14 +3,14 @@ import './Navigation.css';
 import Logo from '../Logo/Logo';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-function Navigation({onClose, isOpen, handleChangeOpen}) {
+function Navigation({onClose, isOpen, handleChangeOpen, loggedIn}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
 
   return (
     <div className="navigation">
       <Logo />
-      <nav className={pathName === "/" ? "navigation__main" : "navigation__hidden"}>
+      <nav className={(pathName === "/" && !loggedIn) ? "navigation__main" : "navigation__hidden"}>
         <Link to="/signup" className="navigation__registration-link navigation__link">
           Регистрация
         </Link>
@@ -18,7 +18,7 @@ function Navigation({onClose, isOpen, handleChangeOpen}) {
           Войти
         </Link>
       </nav>
-      <nav className={pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" 
+      <nav className={(pathName === "/" && loggedIn) || pathName === "/movies" || pathName === "/saved-movies" || pathName === "/profile" 
       ? "navigation__movies" : "navigation__hidden"}>
         <Link to="/movies" className={`navigation__movies-link navigation__link ${
           pathName === "/movies" ? "navigation__movies-link_active" : ""}`}>

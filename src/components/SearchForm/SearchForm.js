@@ -3,20 +3,43 @@ import { useLocation } from "react-router-dom";
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
+function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
   const searchValueMovie = localStorage.getItem("searchValueMovie");
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-
+  
+  
   useEffect(() => {
     if (searchValueMovie && pathName === "/movies") {
       setSearchValue(searchValueMovie)
     } else {
-          setSearchValue("");
-        }
+      setSearchValue("");
+    }
   }, [searchValueMovie, pathName]);
+
+  // function handleChange(evt) {
+  //   setSearchValue(evt.target.value.replace(/^\s+/,''));
+  // }
+
+  // function handleSubmit(evt) {
+  //   evt.preventDefault();
+  //   if (!searchValue) {
+  //     setsearchError("Нужно ввести ключевое слово");
+  //   } else {
+  //     onSearchMovie(searchValue);
+  //     localStorage.setItem("searchValueMovie", searchValue); 
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   if (searchValueMovie && pathName === "/movies") {
+  //     setSearchValue(searchValueMovie)
+  //   } else {
+  //     setSearchValue("");
+  //   }
+  // }, [searchValueMovie, pathName]);
 
   function handleChange(evt) {
     setSearchValue(evt.target.value.replace(/^\s+/,''));
@@ -27,8 +50,10 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort}) {
     if (!searchValue) {
       setsearchError("Нужно ввести ключевое слово");
     } else {
-      onSearchMovie(searchValue);
-      localStorage.setItem("searchValueMovie", searchValue); 
+      onSearchMovie(
+        searchValue
+      );
+      // localStorage.setItem("searchValueMovie", searchValue); 
     }
   }
   

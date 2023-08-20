@@ -13,6 +13,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Footer from '../Footer/Footer';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import * as moviesApi from '../../utils/MoviesApi';
 import * as mainApi from '../../utils/MainApi';
 
@@ -31,7 +32,9 @@ function App() {
   const navigate = useNavigate();
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-  const [isUpdate, setIsUpdate] = useState(false);
+  // const [isUpdate, setIsUpdate] = useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [popupTitle, setPopupTitle] = useState("");
 
   useEffect(() => {
     if(pathName === "/signin" || pathName === "/signup")
@@ -40,11 +43,12 @@ function App() {
 
   useEffect(() => {
     if(isLogIn) {
-      if (localStorage.getItem('movies')) {
+      if (localStorage.getItem('movies')) { //если  в истории уже есть фильмы, то то получаем от туда, если нет(первая загрузка - получаем из апи)
         setMovies(JSON.parse(localStorage.getItem('movies')));
       } else {
         moviesApi.getMovies()
           .then((movies) => {
+            console.log(movies);
             localStorage.setItem('movies', JSON.stringify(movies));
             setMovies(movies);
           })
@@ -87,10 +91,12 @@ function App() {
     mainApi.register({ name, email, password })
       .then((data) => {
         if(data !== undefined) {
+          // setPopupTitle("Редактирование прошло успешно!");
           handleLogin({email, password})
         }
       })
       .catch(() => {
+        // setPopupTitle("Что-то пошло не так! Попробуйте ещё раз.")
         seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
       })
   }
@@ -113,9 +119,16 @@ function App() {
     mainApi.editUserInfo(currentUser)
       .then((data) => {
         setСurrentUser(data);
-        setIsUpdate(true);
+        setPopupTitle("Редактирование прошло успешно!");
+        // setIsUpdate(true);
       })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+      .catch(() => {
+        setPopupTitle("Что-то пошло не так! Попробуйте ещё раз.")
+        // seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
+      })
+      .finally(
+        handleRegister()
+      );
   }
 
 
@@ -163,6 +176,7 @@ function App() {
   
   function closeAllPopups() {
     setMenuOpen(false);
+    setIsInfoTooltipOpen(false);
   }
 
   function handleMenuButtonClick() {
@@ -174,6 +188,11 @@ function App() {
     navigate('/');
     setIsLogIn(false);
   }
+
+  function handleRegister() {
+    setIsInfoTooltipOpen(true);
+    console.log(isInfoTooltipOpen)
+  }
   
   return (
     <>
@@ -182,6 +201,7 @@ function App() {
       isOpen={isMenuOpen}
       onClose={closeAllPopups} 
       handleChangeOpen={handleMenuButtonClick}
+      loggedIn = {isLogIn}
       />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -216,6 +236,11 @@ function App() {
         <Route path="/404" element={<PageNotFound isLoggedIn={isLogIn} />} />
       </Routes>
       <Footer /> 
+      <InfoTooltip
+        isOpen={isInfoTooltipOpen}
+        onClose={closeAllPopups}
+        info={popupTitle}
+      /> 
     </CurrentUserContext.Provider>
     </> 
   );

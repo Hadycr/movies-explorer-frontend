@@ -4,6 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import useWindowSize from '../../config/WindowSize'
 import { useLocation } from "react-router-dom";
 
+
 function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
@@ -16,6 +17,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
 
   const moviesRender = useMemo(() => {
     const countRender = size.width < 670 ? 5 : size.width < 1279 ? 8 : 16;
+    // const countRender = size.width < 768 ? 6 : size.width < 1280 ? 8 : 12;
     console.log(countRender);
     return movies.slice(0, countRender + addMovies);
   }, [movies, addMovies, size]);

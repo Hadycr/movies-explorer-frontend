@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
@@ -7,6 +7,7 @@ import {CurrentUserContext} from '../contexts/CurrentUserContext';
 function Profile({ onUpdateUser, onLogout }) {
   const { values, handleChange, errors, isValid, resetForm } = ValidatorForm();
   const currentUser = useContext(CurrentUserContext);
+  const [isValues, setValues] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -14,6 +15,13 @@ function Profile({ onUpdateUser, onLogout }) {
     }
   }, [currentUser, resetForm]);
 
+  useEffect(() => {
+    if (currentUser.name === values.name && currentUser.email === values.email) {
+      setValues(true);
+    } else {
+      setValues(false);
+    }
+  }, [values]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,6 +30,8 @@ function Profile({ onUpdateUser, onLogout }) {
       email: values.email,
     });
   }
+
+  
 
   return (
     <main className="profile">  
@@ -57,7 +67,7 @@ function Profile({ onUpdateUser, onLogout }) {
           </span>
           <div className="profile__info">
             <button type="submit" className="profile__edit profile__link"
-              disabled={!isValid ? true : false}
+              disabled={isValues ? true : false}
             >
               Редактировать
             </button>
