@@ -4,6 +4,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './SavedMovies.css';
 
 function SavedMovies ({savedMovies, onDeleteMovie}) {
+
   const [filteredSaveMovies, setFilteredMovies] = useState([]);
   const [isCheckedShort, setisCheckedShort] = useState(false); 
 
