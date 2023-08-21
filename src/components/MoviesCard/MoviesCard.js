@@ -20,7 +20,7 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMovies}) {
   }
 
   function handleDeleteCliсk() {
-    onDeleteMovie()
+    onDeleteMovie(movie._id);
   }
 
   function getTimeFromMins(mins) {

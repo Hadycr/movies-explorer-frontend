@@ -1,11 +1,19 @@
 import { useEffect } from "react";
 import '../Login/Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
 
-function Register({handleRegistration, errorRegistration}) {
+function Register({handleRegistration, errorRegistration, loggedIn}) {
   const { values, handleChange, errors, isValid, resetForm } = ValidatorForm();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/movies');
+    }
+  }, [loggedIn]);
+
 
   function handleSubmit(evt) {
     evt.preventDefault();

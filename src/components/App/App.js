@@ -32,7 +32,6 @@ function App() {
   const navigate = useNavigate();
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-  // const [isUpdate, setIsUpdate] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [popupTitle, setPopupTitle] = useState("");
 
@@ -43,7 +42,7 @@ function App() {
 
   useEffect(() => {
     if(isLogIn) {
-      if (localStorage.getItem('movies')) { //если  в истории уже есть фильмы, то то получаем от туда, если нет(первая загрузка - получаем из апи)
+      if (localStorage.getItem('movies')) {
         setMovies(JSON.parse(localStorage.getItem('movies')));
       } else {
         moviesApi.getMovies()
@@ -91,12 +90,10 @@ function App() {
     mainApi.register({ name, email, password })
       .then((data) => {
         if(data !== undefined) {
-          // setPopupTitle("Редактирование прошло успешно!");
           handleLogin({email, password})
         }
       })
       .catch(() => {
-        // setPopupTitle("Что-то пошло не так! Попробуйте ещё раз.")
         seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
       })
   }
@@ -120,11 +117,9 @@ function App() {
       .then((data) => {
         setСurrentUser(data);
         setPopupTitle("Редактирование прошло успешно!");
-        // setIsUpdate(true);
       })
       .catch(() => {
         setPopupTitle("Что-то пошло не так! Попробуйте ещё раз.")
-        // seterrorRegistration("Что-то пошло не так! Попробуйте ещё раз.")
       })
       .finally(
         handleRegister()
@@ -205,7 +200,6 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Main />} />
-        
         <Route path="/movies" element={<ProtectedRoute 
           loggedIn = {isLogIn}
           element= {Movies} 
@@ -226,14 +220,16 @@ function App() {
           onLogout = {handleSignOut}
         />}/>
         <Route path="/signup" element={<Register 
+          loggedIn = {isLogIn}
           handleRegistration = {handleRegistration}
           errorRegistration = {errorRegistration}
         />} />
         <Route path="/signin" element={<Login 
+          loggedIn = {isLogIn}
           handleLogin = {handleLogin}
           errorRegistration = {errorRegistration}
         />} />
-        <Route path="/404" element={<PageNotFound isLoggedIn={isLogIn} />} />
+        <Route path="*" element={<PageNotFound isLoggedIn={isLogIn} />} />
       </Routes>
       <Footer /> 
       <InfoTooltip

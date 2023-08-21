@@ -48,14 +48,6 @@
   opacity: 0.2;
   cursor: auto;
 }
-/* @media screen and (max-width: 670px) {
-  .popup__closed {
-    width: 20px;
-    height: 20px;
-    top: -11%;
-    right: 0;
-  } 
-} */
 
 .popup__infotooltip_info {
   padding: 32px 36px 60px;

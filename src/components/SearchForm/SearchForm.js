@@ -6,10 +6,10 @@ import './SearchForm.css';
 function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setsearchError] = useState('');
-  const searchValueMovie = localStorage.getItem("searchValueMovie");
+  const searchValueMovie = localStorage.getItem("searchValue");
+
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
-  
   
   useEffect(() => {
     if (searchValueMovie && pathName === "/movies") {
@@ -19,28 +19,7 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort }) {
     }
   }, [searchValueMovie, pathName]);
 
-  // function handleChange(evt) {
-  //   setSearchValue(evt.target.value.replace(/^\s+/,''));
-  // }
-
-  // function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   if (!searchValue) {
-  //     setsearchError("Нужно ввести ключевое слово");
-  //   } else {
-  //     onSearchMovie(searchValue);
-  //     localStorage.setItem("searchValueMovie", searchValue); 
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   if (searchValueMovie && pathName === "/movies") {
-  //     setSearchValue(searchValueMovie)
-  //   } else {
-  //     setSearchValue("");
-  //   }
-  // }, [searchValueMovie, pathName]);
-
+  
   function handleChange(evt) {
     setSearchValue(evt.target.value.replace(/^\s+/,''));
   }
@@ -53,7 +32,6 @@ function SearchForm({onSearchMovie, onChangeFilter, isCheckedShort }) {
       onSearchMovie(
         searchValue
       );
-      // localStorage.setItem("searchValueMovie", searchValue); 
     }
   }
   
