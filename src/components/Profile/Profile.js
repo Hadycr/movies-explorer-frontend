@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Profile.css';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
+import { EMAIL_PATTERN } from "../../config/config";
 
 function Profile({ onUpdateUser, onLogout }) {
   const { values, handleChange, errors, isValid, resetForm } = ValidatorForm();
@@ -44,7 +45,7 @@ function Profile({ onUpdateUser, onLogout }) {
             </p>
             <input  className="profile__input" id="name" 
               type="text" name="name" value={values.name || ""} onChange={ handleChange }
-               minLength="2" maxLength="40" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
+               minLength="2" maxLength="40" pattern = {EMAIL_PATTERN}
                />
           </div>
           <span className={`profile__error ${

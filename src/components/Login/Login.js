@@ -3,6 +3,7 @@ import '../Login/Login.css';
 import { Link, useNavigate  } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import {ValidatorForm} from '../ValidatorForm/ValidatorForm';
+import { EMAIL_PATTERN } from "../../config/config";
 
 function Login({handleLogin, errorRegistration, loggedIn}) {
   const { values, handleChange, errors, isValid, resetForm } = ValidatorForm();
@@ -39,7 +40,7 @@ function Login({handleLogin, errorRegistration, loggedIn}) {
             <label className="login__label">
               <div className="login__placeholder">E-mail</div>
               <input  className="login__input" id="email" type="email" name="email" 
-                value={values.email || ""} pattern= "[a-z0-9]+@[a-z]+\\.{1,1}[a-z]{2,}"
+                value={values.email || ""} pattern = {EMAIL_PATTERN}
                 onChange={ handleChange } required placeholder="Ваш email"/>
               <span className={`login__error ${
                 errors.email ? "login__error_active" : ""
