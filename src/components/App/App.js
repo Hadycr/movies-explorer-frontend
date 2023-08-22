@@ -21,7 +21,7 @@ import * as mainApi from '../../utils/MainApi';
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorRegistration, seterrorRegistration] = useState("");
   const [isLogIn, setIsLogIn] = useState(false);
@@ -34,27 +34,28 @@ function App() {
   const pathName = uselocation.pathname;
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [popupTitle, setPopupTitle] = useState("");
+  const isOpen = isMenuOpen || isInfoTooltipOpen;
 
   useEffect(() => {
     if(pathName === "/signin" || pathName === "/signup")
     seterrorRegistration("");
   }, [pathName]);
 
-  useEffect(() => {
-    if(isLogIn) {
-      if (localStorage.getItem('movies')) {
-        setMovies(JSON.parse(localStorage.getItem('movies')));
-      } else {
-        moviesApi.getMovies()
-          .then((movies) => {
-            console.log(movies);
-            localStorage.setItem('movies', JSON.stringify(movies));
-            setMovies(movies);
-          })
-          .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
-        };
-    }
-  },[isLogIn]);
+  // useEffect(() => {
+  //   if(isLogIn) {
+  //     if (localStorage.getItem('movies')) {
+  //       setMovies(JSON.parse(localStorage.getItem('movies')));
+  //     } else {
+  //       moviesApi.getMovies()
+  //         .then((movies) => {
+  //           console.log(movies);
+  //           localStorage.setItem('movies', JSON.stringify(movies));
+  //           setMovies(movies);
+  //         })
+  //         .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
+  //       };
+  //   }
+  // },[isLogIn]);
 
   useEffect(() => {
     if(isLogIn) {
@@ -174,6 +175,26 @@ function App() {
     setIsInfoTooltipOpen(false);
   }
 
+  function closeByOverlay(event) {
+    if (event.target === event.currentTarget) {
+      closeAllPopups();
+    }
+  }
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if(evt.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+    if(isOpen) {
+      document.addEventListener('keydown', closeByEscape);
+      return () => {
+        document.removeEventListener('keydown', closeByEscape);
+      }
+    }
+  }, [isOpen]) 
+
   function handleMenuButtonClick() {
     setMenuOpen(true);
   }
@@ -203,7 +224,7 @@ function App() {
         <Route path="/movies" element={<ProtectedRoute 
           loggedIn = {isLogIn}
           element= {Movies} 
-          movies={movies}
+          // movies={movies}
           savedMovies={savedMovies}
           onSaveMovie={handleSaveMovie}
         />}/>
@@ -236,6 +257,7 @@ function App() {
         isOpen={isInfoTooltipOpen}
         onClose={closeAllPopups}
         info={popupTitle}
+        closeByOverlay={closeByOverlay}
       /> 
     </CurrentUserContext.Provider>
     </> 

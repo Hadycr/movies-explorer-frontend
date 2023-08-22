@@ -45,7 +45,7 @@ function Profile({ onUpdateUser, onLogout }) {
             </p>
             <input  className="profile__input" id="name" 
               type="text" name="name" value={values.name || ""} onChange={ handleChange }
-               minLength="2" maxLength="40" pattern = {EMAIL_PATTERN}
+               minLength="2" maxLength="40"
                />
           </div>
           <span className={`profile__error ${
@@ -58,7 +58,7 @@ function Profile({ onUpdateUser, onLogout }) {
               E-mail
             </p>
           <input  className="profile__input" id="email" type="text" 
-            name="email" value={values.email || ""}  pattern= "[a-z0-9]+@[a-z]+\\.{1,1}[a-z]{2,}" onChange={ handleChange }
+            name="email" value={values.email || ""}  pattern = {EMAIL_PATTERN} onChange={ handleChange }
           />
           </div>
           <span className={`profile__error ${

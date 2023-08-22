@@ -1,6 +1,7 @@
 import {useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { SHORTS } from "../../config/config";
 import './SavedMovies.css';
 
 function SavedMovies ({savedMovies, onDeleteMovie}) {
@@ -9,10 +10,20 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
   const [isCheckedShort, setisCheckedShort] = useState(false); 
 
   const movieSaveFiltered = localStorage.getItem("MovieSaveFiltered");
+  const filteredShortMovies = localStorage.getItem("filteredShortMovies");
+
+  // useEffect(() => {
+  //     setFilteredMovies(savedMovies);
+  // }, [savedMovies]);
 
   useEffect(() => {
+    if (movieSaveFiltered) {
+      setFilteredMovies(JSON.parse(movieSaveFiltered));
+    } else {
       setFilteredMovies(savedMovies);
-  }, [savedMovies]);
+    }
+  }, [movieSaveFiltered, savedMovies]);
+
 
   function handleSearchMovie(searchValueTe) { 
     let filtered = savedMovies.filter(movie => {
@@ -21,7 +32,7 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
 
     if(isCheckedShort) {
       const saveFiltered = filtered.filter(movie => {
-        return savedMovies.duration <= 40 && movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+        return savedMovies.duration <= SHORTS && movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
       })
       setFilteredMovies(saveFiltered);
       localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered));
@@ -38,7 +49,7 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
     setisCheckedShort(!isCheckedShort);
     if(!isCheckedShort) {
       const filteredShort = filteredSaveMovies.filter(filteredMovie => {
-        return filteredMovie.duration <= 40
+        return filteredMovie.duration <= SHORTS
       })
       setFilteredMovies(filteredShort);
       localStorage.setItem("shortMovieFiltered", !isCheckedShort);

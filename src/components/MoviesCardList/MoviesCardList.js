@@ -3,6 +3,11 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import useWindowSize from '../../config/WindowSize'
 import { useLocation } from "react-router-dom";
+import { SHOW_MORE_DECKTOP, 
+         SHOW_MORE_MOBILE,
+         SHOW_DECKTOP,
+         SHOW_TABLET, 
+         SHOW_MOBILE} from "../../config/config";
 
 
 function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
@@ -16,8 +21,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
   }, [movies]);
 
   const moviesRender = useMemo(() => {
-    const countRender = size.width < 670 ? 5 : size.width < 1279 ? 8 : 16;
-    console.log(countRender);
+    const countRender = size.width < 670 ? SHOW_MOBILE : size.width < 1279 ? SHOW_TABLET : SHOW_DECKTOP;
     return movies.slice(0, countRender + addMovies);
   }, [movies, addMovies, size]);
 
@@ -38,7 +42,7 @@ function MoviesCardList({movies, onSaveMovie, onDeleteMovie, savedMovies}) {
         movies.length > moviesRender.length &&  
         (<button type="button" className="movie-items__button"
           onClick={() => {
-            setAddMovies((prev) => prev + (size.width >= 1280 ? 4 : 2));
+            setAddMovies((prev) => prev + (size.width >= 1280 ? SHOW_MORE_DECKTOP : SHOW_MORE_MOBILE));
           }}>
         Ещё
         </button>
