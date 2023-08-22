@@ -57,7 +57,7 @@ function Profile({ onUpdateUser, onLogout }) {
               E-mail
             </p>
           <input  className="profile__input" id="email" type="text" 
-            name="email" value={values.email || ""}  pattern="^\w+@\w+\.(com|net|ru)$" onChange={ handleChange }
+            name="email" value={values.email || ""}  pattern= "[a-z0-9]+@[a-z]+\\.{1,1}[a-z]{2,}" onChange={ handleChange }
           />
           </div>
           <span className={`profile__error ${

@@ -49,7 +49,7 @@ function Register({handleRegistration, errorRegistration, loggedIn}) {
             <label className="login__label">
               <div className="login__placeholder">E-mail</div>
               <input  className="login__input" id="email" type="email" name="email" 
-                value={values.email || ""} pattern="/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/"
+                value={values.email || ""} pattern= "[a-z0-9]+@[a-z]+\\.{1,1}[a-z]{2,}"
                 onChange={ handleChange } required placeholder="Ваш email"/>
               <span className={`login__error ${
                 errors.email ? "login__error_active" : ""
