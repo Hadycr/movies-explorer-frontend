@@ -13,14 +13,20 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
   const shortMovieSaveFiltered = localStorage.getItem("shortMovieSaveFiltered");
   const searchValueSave = localStorage.getItem("searchValueSave");
 
+  // useEffect(() => {
+  //     setFilteredMovies(savedMovies);
+  // }, [savedMovies]);
+
   useEffect(() => {
     if (movieSaveFiltered) {
       setFilteredMovies(JSON.parse(movieSaveFiltered));
+      console.log(setFilteredMovies(JSON.parse(movieSaveFiltered)));
     } 
     else {
       setFilteredMovies(savedMovies);
+      console.log(setFilteredMovies(savedMovies));
     }
-  }, []);
+  }, [movieSaveFiltered, savedMovies, searchValueSave]);
 
   function handleFilteredMovies (savedMovies, searchValueTe, isCheckedShort) {
     const filtered = savedMovies.filter(movie => {
@@ -37,7 +43,6 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
         setFilteredMovies(filtered);                                     
       }
       localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered));
-      console.log(JSON.stringify(filtered));
   };
 
   function handleSearchMovie(searchValueTe) {                              
