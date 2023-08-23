@@ -32,8 +32,6 @@ function Profile({ onUpdateUser, onLogout }) {
     });
   }
 
-  
-
   return (
     <main className="profile">  
       <div className="profile__container">

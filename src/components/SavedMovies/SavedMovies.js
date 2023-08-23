@@ -10,56 +10,59 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
   const [isCheckedShort, setisCheckedShort] = useState(false); 
 
   const movieSaveFiltered = localStorage.getItem("MovieSaveFiltered");
-  const filteredShortMovies = localStorage.getItem("filteredShortMovies");
-
-  // useEffect(() => {
-  //     setFilteredMovies(savedMovies);
-  // }, [savedMovies]);
+  const shortMovieSaveFiltered = localStorage.getItem("shortMovieSaveFiltered");
+  const searchValueSave = localStorage.getItem("searchValueSave");
 
   useEffect(() => {
     if (movieSaveFiltered) {
       setFilteredMovies(JSON.parse(movieSaveFiltered));
-    } else {
+    } 
+    else {
       setFilteredMovies(savedMovies);
     }
-  }, [movieSaveFiltered, savedMovies]);
+  }, []);
 
-
-  function handleSearchMovie(searchValueTe) { 
-    let filtered = savedMovies.filter(movie => {
+  function handleFilteredMovies (savedMovies, searchValueTe, isCheckedShort) {
+    const filtered = savedMovies.filter(movie => {
       return movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
-    })
+    }) 
+      if(isCheckedShort) {                                            
+        const shortfiltered = filtered.filter(movie => {
+          return movie.duration <= SHORTS && movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
+        })
+        setFilteredMovies(shortfiltered);                                  
+        localStorage.setItem("shortMovieSaveFiltered", !isCheckedShort);  
+        localStorage.setItem("MovieSaveShortFiltered", JSON.stringify(shortfiltered));    
+      } else if (!isCheckedShort) {                                       
+        setFilteredMovies(filtered);                                     
+      }
+      localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered));
+      console.log(JSON.stringify(filtered));
+  };
 
-    if(isCheckedShort) {
-      const saveFiltered = filtered.filter(movie => {
-        return savedMovies.duration <= SHORTS && movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
-      })
-      setFilteredMovies(saveFiltered);
-      localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered));
-    } else if (!isCheckedShort) {
-      filtered = savedMovies.filter(movie => {
-      return movie.nameRU.toLowerCase().trim().includes(searchValueTe.toLowerCase())
-      })
-      setFilteredMovies(filtered);
-      localStorage.setItem("MovieSaveFiltered", JSON.stringify(filtered));
-    }
-  }
+  function handleSearchMovie(searchValueTe) {                              
+    localStorage.setItem('searchValueSave', searchValueTe);
+    handleFilteredMovies(savedMovies, searchValueTe, isCheckedShort)
+   
+    };
 
   function handleChangeFilter() {
     setisCheckedShort(!isCheckedShort);
     if(!isCheckedShort) {
-      const filteredShort = filteredSaveMovies.filter(filteredMovie => {
+      const filteredShort = savedMovies.filter(filteredMovie => {
         return filteredMovie.duration <= SHORTS
       })
       setFilteredMovies(filteredShort);
-      localStorage.setItem("shortMovieFiltered", !isCheckedShort);
-      localStorage.setItem("filteredShortMovies", JSON.stringify(filteredShort));
+      localStorage.setItem("MovieSaveShortFiltered", JSON.stringify(filteredShort)); 
+    } 
+    else if (isCheckedShort) {   
+      console.log(JSON.parse(movieSaveFiltered));
+    setFilteredMovies(JSON.parse(movieSaveFiltered));
     }
-    else {
-      setFilteredMovies(JSON.parse(movieSaveFiltered));
-      console.log(setFilteredMovies(JSON.parse(movieSaveFiltered)));
-    }
-  }
+    localStorage.setItem("shortMovieFiltered", !isCheckedShort);
+  };
+
+
    
   return (
     <main className="movies">
@@ -75,11 +78,11 @@ function SavedMovies ({savedMovies, onDeleteMovie}) {
         savedMovies = {savedMovies}
         onDeleteMovie={onDeleteMovie}
       />)
-      : 
-      
+      : ( movieSaveFiltered &&
       (<span className="movies__error">
         Ничего не найдено
-      </span>)}
+      </span>))
+      }
     </main>
   )
 }

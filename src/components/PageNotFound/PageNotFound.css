@@ -49,6 +49,8 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+  background:none;
+  border: none;
 }
 
 @media screen and (max-width: 550px) {

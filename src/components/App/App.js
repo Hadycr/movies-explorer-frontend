@@ -14,14 +14,10 @@ import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Footer from '../Footer/Footer';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import * as moviesApi from '../../utils/MoviesApi';
 import * as mainApi from '../../utils/MainApi';
-
-
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  // const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorRegistration, seterrorRegistration] = useState("");
   const [isLogIn, setIsLogIn] = useState(false);
@@ -41,27 +37,11 @@ function App() {
     seterrorRegistration("");
   }, [pathName]);
 
-  // useEffect(() => {
-  //   if(isLogIn) {
-  //     if (localStorage.getItem('movies')) {
-  //       setMovies(JSON.parse(localStorage.getItem('movies')));
-  //     } else {
-  //       moviesApi.getMovies()
-  //         .then((movies) => {
-  //           console.log(movies);
-  //           localStorage.setItem('movies', JSON.stringify(movies));
-  //           setMovies(movies);
-  //         })
-  //         .catch((err) => console.log("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"));
-  //       };
-  //   }
-  // },[isLogIn]);
-
   useEffect(() => {
     if(isLogIn) {
       mainApi.getUserInfo()
       .then((res) => {
-        localStorage.removeItem('movieFiltered');
+        // localStorage.removeItem('movieFiltered');
         setСurrentUser(res)
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
@@ -126,7 +106,6 @@ function App() {
         handleRegister()
       );
   }
-
 
   useEffect(() => {
     if(isLogIn) {
@@ -224,7 +203,6 @@ function App() {
         <Route path="/movies" element={<ProtectedRoute 
           loggedIn = {isLogIn}
           element= {Movies} 
-          // movies={movies}
           savedMovies={savedMovies}
           onSaveMovie={handleSaveMovie}
         />}/>
