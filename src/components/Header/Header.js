@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
-function Header({onClose, isOpen, handleChangeOpen}) {
+function Header({onClose, isOpen, handleChangeOpen, loggedIn}) {
   const uselocation  = useLocation();
   const pathName = uselocation.pathname;
 
@@ -25,6 +25,7 @@ function Header({onClose, isOpen, handleChangeOpen}) {
         isOpen={isOpen}
         handleChangeOpen={handleChangeOpen}
         onClose={onClose}
+        loggedIn ={loggedIn}
       />
     </header>
   )

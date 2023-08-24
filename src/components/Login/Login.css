@@ -101,6 +101,11 @@
   margin-top: 10px;
   box-sizing: border-box;
   min-height: 10px;
+  display: none;
+}
+
+.login__error_active {
+  display: flex;
 }
 
 .login__button {
@@ -185,5 +190,6 @@
   opacity: 0.2;
   cursor: auto;
 }
+
 
 
